@@ -1,0 +1,124 @@
+<?php
+
+defined('BASEPATH') OR exit('No direct script access allowed');
+class M_hitung_turbine extends CI_Model {
+
+    public function __construct() {
+        parent::__construct();
+        $this->load->database();
+    }
+
+    public function get_all_data(){
+      
+        $this->db->select('*');
+        
+        $this->db->from('energy');
+  
+        $this->db->order_by('time', 'desc');
+        return $this->db->get()->result();
+     
+    }
+    
+    public function add_hitungan($tanggal, $data_jam = array()){
+        // Insert data 'time' into the 'energy' table
+        $this->db->insert('energy', array('time' => $tanggal));
+    
+        // Get the ID of the last inserted row
+        $id_energy = $this->db->insert_id();
+    
+        // Check if $data_jam is not empty before updating
+        if (!empty($data_jam)) {
+            // Add additional data (id_jam_15, id_jam_23, id_jam_07) with the obtained ID
+            $data_jam['id_energy'] = $id_energy;
+            $this->db->update('energy', $data_jam, array('id_energy' => $id_energy));
+        }
+    
+        // Return the ID of the newly inserted energy
+        return $id_energy;
+    }
+
+    
+  
+    public function detail_hitung($id_energy) {
+        $this->db->select('energy.id_energy, energy.time, 
+            jam_15.kwh_synchro_15, jam_15.kwh_turbine_15, jam_15.kwh_pln_15, jam_15.hasil_turbine_15, jam_15.hasil_pln_15,
+            jam_23.kwh_synchro_23, jam_23.kwh_turbine_23, jam_23.kwh_pln_23, jam_23.hasil_turbine_23, jam_23.hasil_pln_23,
+            jam_07.kwh_synchro_07, jam_07.kwh_turbine_07, jam_07.kwh_pln_07, jam_07.hasil_turbine_07, jam_07.hasil_pln_07');
+        $this->db->from('energy');
+        $this->db->where('energy.id_energy', $id_energy);
+        $this->db->join('jam_15', 'energy.id_jam_15 = jam_15.id_jam_15', 'left');
+        $this->db->join('jam_23', 'energy.id_jam_23 = jam_23.id_jam_23', 'left');
+        $this->db->join('jam_07', 'energy.id_jam_07 = jam_07.id_jam_07', 'left');
+        return $this->db->get()->row();
+    }
+    
+    public function get_combined_energy_data($current_id, $previous_id) {
+        $query1 = $this->db->select('energy.id_energy, energy.time, 
+                jam_15.kwh_synchro_15, jam_15.kwh_turbine_15, jam_15.kwh_pln_15, 
+                jam_15.hasil_turbine_15, jam_15.hasil_pln_15,
+                jam_23.kwh_synchro_23, jam_23.kwh_turbine_23, jam_23.kwh_pln_23, 
+                jam_23.hasil_turbine_23, jam_23.hasil_pln_23,
+                jam_07.kwh_synchro_07, jam_07.kwh_turbine_07, jam_07.kwh_pln_07, 
+                jam_07.hasil_turbine_07, jam_07.hasil_pln_07')
+            ->from('energy')
+            ->join('jam_15', 'energy.id_jam_15 = jam_15.id_jam_15', 'left')
+            ->join('jam_23', 'energy.id_jam_23 = jam_23.id_jam_23', 'left')
+            ->join('jam_07', 'energy.id_jam_07 = jam_07.id_jam_07', 'left')
+            ->where('energy.id_energy', $current_id)
+            ->get_compiled_select();
+
+        $query2 = $this->db->select('energy.id_energy, energy.time, 
+                NULL AS kwh_synchro_15, NULL AS kwh_turbine_15, NULL AS kwh_pln_15, 
+                NULL AS hasil_turbine_15, NULL AS hasil_pln_15,
+                NULL AS kwh_synchro_23, NULL AS kwh_turbine_23, NULL AS kwh_pln_23, 
+                NULL AS hasil_turbine_23, NULL AS hasil_pln_23,
+                jam_07.kwh_synchro_07, jam_07.kwh_turbine_07, jam_07.kwh_pln_07, 
+                jam_07.hasil_turbine_07, jam_07.hasil_pln_07')
+            ->from('energy')
+            ->join('jam_07', 'energy.id_jam_07 = jam_07.id_jam_07', 'left')
+            ->where('energy.id_energy', $previous_id)
+            ->get_compiled_select();
+
+        return $this->db->query("$query1 UNION ALL $query2")->result();
+    }
+    
+
+   
+    
+    public function delete_energy($id_energy) {
+        // Check if ID Energy exists
+        $this->db->where('id_energy', $id_energy);
+        $query = $this->db->get('energy');
+        if ($query->num_rows() > 0) {
+            // If ID Energy exists, perform deletion
+            $this->db->where('id_energy', $id_energy);
+            $this->db->delete('energy');
+            return true; // Return true if deletion is successful
+        } else {
+            return false; // Return false if ID Energy does not exist
+        }
+    }
+
+// Insert data baru ke tabel jam (15, 23, 07, 19)
+public function insert_jam($table, $data) {
+    $this->db->insert($table, $data);
+    return $this->db->insert_id(); // Mengembalikan ID yang baru dibuat
+}
+
+// Update data yang sudah ada
+public function update_jam($table, $id, $data) {
+    // Tentukan nama kolom primary key, misal id_jam_15
+    $pk = "id_" . $table; 
+    $this->db->where($pk, $id);
+    $this->db->update($table, $data);
+}
+
+// Update tabel energy untuk menyambungkan Foreign Key
+public function update_energy_link($id_energy, $col_jam, $id_jam_baru) {
+    $this->db->where('id_energy', $id_energy);
+    $this->db->update('energy', array($col_jam => $id_jam_baru));
+}
+
+
+}
+?>

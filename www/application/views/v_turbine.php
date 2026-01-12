@@ -65,18 +65,18 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                   <td data-hasil="hasil_turbine_15"><?= $current_data->hasil_turbine_15 ?? '' ?></td>
                   
                   <td><input type="number" name="PLN_15" class="form-control"  placeholder="Masukan kWh PLN" value="<?= $current_data->kwh_pln_15 ?? '' ?>"></td>
-                  <td data-hasil="hasil_pln_15">0</td>
+                  <td data-hasil="hasil_pln_15"><?= $current_data->hasil_pln_15 ?? '' ?></td>
                   <!-- <td> <button type="button" class="btn btn-success">simpan</button></td> -->
 
                 </tr>
                 <tr>
                   <td>23:00</td>
-                  <td><input type="number" name="Synchro_23" class="form-control"  placeholder="Masukan kWh Synchro"></td>
-                  <td><input type="number" name="Turbine_23" class="form-control"  placeholder="Masukan kWh Turbine"></td>
-                  <td data-hasil="hasil_turbine_23">0</td>
+                  <td><input type="number" name="Synchro_23" class="form-control"  placeholder="Masukan kWh Synchro" ></td>
+                  <td><input type="number" name="Turbine_23" class="form-control"  placeholder="Masukan kWh Turbine" value="<?= $current_data->kwh_turbine_23 ?? '' ?>"></td>
+                  <td data-hasil="hasil_turbine_23"><?= $current_data->hasil_turbine_23 ?? '' ?></td>
                   
-                  <td><input type="number" name="PLN_23" class="form-control"  placeholder="Masukan kWh PLN"></td>
-                  <td data-hasil="hasil_pln_23">0</td>
+                  <td><input type="number" name="PLN_23" class="form-control"  placeholder="Masukan kWh PLN" value="<?= $current_data->kwh_pln_23 ?? '' ?>"></td>
+                  <td data-hasil="hasil_pln_23"><?= $current_data->hasil_pln_23 ?? '' ?></td>
                   <!-- <td> <button type="button" class="btn btn-success">simpan</button></td> -->
                 </tr>
              <?php else: ?>
@@ -94,12 +94,12 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
             <?php endif; ?>
                 <tr>
                   <td>07:00</td>
-                  <td><input type="number" name="Synchro_07" class="form-control"  placeholder="Masukan kWh Synchro"></td>
-                  <td><input type="number" name="Turbine_07" class="form-control"  placeholder="Masukan kWh Turbine"></td>
-                  <td data-hasil="hasil_turbine_07">0</td>
-                  
-                  <td><input type="number" name="PLN_07" class="form-control"  placeholder="Masukan kWh PLN"></td>
-                  <td data-hasil="hasil_pln_07">0</td>
+                  <td><input type="number" name="Synchro_07" class="form-control"  placeholder="Masukan kWh Synchro" ></td>
+                  <td><input type="number" name="Turbine_07" class="form-control"  placeholder="Masukan kWh Turbine" value="<?= $current_data->kwh_turbine_07 ?? '' ?>"></td>
+                  <td data-hasil="hasil_turbine_07"><?= $current_data->hasil_turbine_07 ?? '' ?></td>
+
+                  <td><input type="number" name="PLN_07" class="form-control"  placeholder="Masukan kWh PLN" value="<?= $current_data->kwh_pln_07 ?? '' ?>"></td>
+                  <td data-hasil="hasil_pln_07"><?= $current_data->hasil_pln_07 ?? '' ?></td>
                   <!-- <td> <button type="button" class="btn btn-success">simpan</button></td> -->
 
                 </tr>

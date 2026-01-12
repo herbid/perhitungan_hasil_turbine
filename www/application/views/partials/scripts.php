@@ -53,7 +53,14 @@
 <script>
   $(function () {
     $('#example1').DataTable({
-        "order": [[0, "desc"]]
+        "order": [[0, "desc"]],
+        "columnDefs": [
+            {
+                "targets": 0,
+                "type": "date",
+                "orderData": 0
+            }
+        ]
     });
     
     $('#example2').DataTable({

@@ -23,7 +23,7 @@
                 <tbody>
                 <?php foreach ($energy as $key => $value): ?>
                 <tr>
-                <td>
+                <td data-order="<?php echo $value->time; ?>">
                   <?php echo date('j F, Y ', strtotime($value->time)); ?></td>
                   <td><span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span></td>
                   <td><span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span></td>

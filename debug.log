@@ -24304,3 +24304,673 @@ ted()
 - 15:53:30.188 DEBUG: OnContextCreated()
 - 15:53:30.078 INFO: GET 200 /hitungan_turbine
 - 15:53:30.391 DEBUG: OnLoadingStateChange: loading=0, url=http://127.0.0.1:53541/hitungan_turbine
+- 20:25:06.016 INFO: --------------------------------------------------------
+- 20:25:06.016 INFO: Started application
+- 20:25:06.016 INFO: Logging to: C:\xampp\htdocs\hitungan-turbine\debug.log
+- 20:25:06.016 INFO: Log level = DEBUG4
+- 20:25:06.016 INFO: Starting Mongoose 3.9c web server
+- 20:25:06.016 INFO: WWW directory: C:\xampp\htdocs\hitungan-turbine\www
+- 20:25:06.016 INFO: Index files: index.html,index.php
+- 20:25:06.016 INFO: CGI interpreter: C:\xampp\htdocs\hitungan-turbine\php\php-cgi.exe
+- 20:25:06.016 INFO: CGI pattern: **.php$
+- 20:25:06.016 INFO: Hide files patterns: 
+- 20:25:06.016 INFO: CGI environment variables set: TMP=C:\Users\VICTUS\AppData\Local\Temp\,TEMP=C:\Users\VICTUS\AppData\Local\Temp\,TMPDIR=C:\Users\VICTUS\AppData\Local\Temp\,SERVER_NAME=127.0.0.1,PHPDESKTOP_VERSION=57.0
+- 20:25:06.016 INFO: Web server url: http://127.0.0.1:49888/
+- 20:25:06.016 INFO: remote_debugging_port = 62135
+- 20:25:06.016 DEBUG: Command line string for the browser process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --no-sandbox --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --remote-debugging-port=62135
+- 20:25:07.672 DEBUG: App::OnContextInitialized()
+- 20:25:07.672 INFO: DPI, window enlarged by 25% new width/height = 1000/750
+- 20:25:07.672 DEBUG: Window max width/height = 1842/1034
+- 20:25:07.672 DEBUG: GetBrowserWindow(): not found, hwnd = 395106
+- 20:25:07.672 DEBUG: WindowProc(): event WM_GETMINMAXINFO: could not fetch BrowserWindow
+- 20:25:07.672 DEBUG: BrowserWindow::CreateBrowserControl()
+- 20:25:07.672 DEBUG: StoreBrowserWindow(): hwnd = 395106
+- 20:25:07.000 DEBUG: Command line string for the gpu-process process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --type=gpu-process --no-sandbox --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --disable-direct-composition --supports-dual-gpus=false --gpu-driver-bug-workarounds=7,10,18,19,20,23,26,41,74 --disable-gl-extensions="GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent" --gpu-vendor-id=0x1002 --gpu-device-id=0x1638 --gpu-driver-vendor="Advanced Micro Devices, Inc." --gpu-driver-version=31.0.21914.8004 --gpu-driver-date=8-20-2024 --gpu-secondary-vendor-ids=0x10de --gpu-secondary-device-ids=0x25a0 --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --service-request-channel-token=CB5CA7F9E91D19EEBCA8074729F115A9 --mojo-platform-channel-handle=1892 /prefetch:2
+- 20:25:07.750 DEBUG: ClientHandler::OnAfterCreated()
+- 20:25:07.750 DEBUG: SetCefBrowser() called in ClientHandler::OnAfterCreated()
+- 20:25:07.766 DEBUG: OnLoadingStateChange: loading=1, url=
+- 20:25:07.000 DEBUG: Command line string for the renderer process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --type=renderer --no-sandbox --primordial-pipe-token=22873F8FADC34775459850D5C6259D8D --lang=en-US --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --enable-pinch --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --content-image-texture-target=0,0,3553;0,1,3553;0,2,3553;0,3,3553;0,4,3553;0,5,3553;0,6,3553;0,7,3553;0,8,3553;0,9,3553;0,10,3553;0,11,3553;0,12,3553;0,13,3553;0,14,3553;0,15,3553;1,0,3553;1,1,3553;1,2,3553;1,3,3553;1,4,3553;1,5,3553;1,6,3553;1,7,3553;1,8,3553;1,9,3553;1,10,3553;1,11,3553;1,12,3553;1,13,3553;1,14,3553;1,15,3553;2,0,3553;2,1,3553;2,2,3553;2,3,3553;2,4,3553;2,5,3553;2,6,3553;2,7,3553;2,8,3553;2,9,3553;2,10,3553;2,11,3553;2,12,3553;2,13,3553;2,14,3553;2,15,3553;3,0,3553;3,1,3553;3,2,3553;3,3,3553;3,4,3553;3,5,3553;3,6,3553;3,7,3553;3,8,3553;3,9,3553;3,10,3553;3,11,3553;3,12,3553;3,13,3553;3,14,3553;3,15,3553 --service-request-channel-token=22873F8FADC34775459850D5C6259D8D --renderer-client-id=3 --mojo-platform-channel-handle=2444 /prefetch:1
+- 20:25:07.031 DEBUG: OnBrowserCreated()
+[0112/202507.980:ERROR:child_thread_impl.cc(762)] Request for unknown Channel-associated interface: ui::mojom::GpuMain
+- 20:25:13.797 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css
+- 20:25:13.797 INFO: GET 200 /assets/bower_components/font-awesome/css/font-awesome.min.css
+- 20:25:13.797 INFO: GET 200 /assets/plugins/iCheck/square/blue.css
+- 20:25:13.797 INFO: GET 200 /assets/bower_components/Ionicons/css/ionicons.min.css
+- 20:25:13.797 INFO: GET 200 /assets/dist/css/AdminLTE.min.css
+- 20:25:13.797 INFO: GET 200 /
+- 20:25:13.015 DEBUG: OnContextCreated()
+- 20:25:13.829 INFO: GET 200 /assets/plugins/iCheck/icheck.min.js
+- 20:25:13.844 INFO: GET 200 /assets/bower_components/bootstrap/dist/js/bootstrap.min.js
+- 20:25:13.860 INFO: GET 200 /assets/bower_components/jquery/dist/jquery.min.js
+- 20:25:18.750 INFO: GET 200 /assets/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+- 20:25:18.797 DEBUG: OnLoadingStateChange: loading=0, url=http://127.0.0.1:49888/
+- 20:25:21.844 INFO: GET 200 /
+- 20:25:21.844 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css
+- 20:25:21.844 INFO: GET 200 /assets/bower_components/font-awesome/css/font-awesome.min.css
+- 20:25:21.844 INFO: GET 200 /assets/plugins/iCheck/square/blue.css
+- 20:25:21.844 INFO: GET 200 /assets/bower_components/Ionicons/css/ionicons.min.css
+- 20:25:21.844 INFO: GET 200 /assets/dist/css/AdminLTE.min.css
+- 20:25:21.844 INFO: GET 200 /assets/bower_components/jquery/dist/jquery.min.js
+- 20:25:21.844 INFO: GET 200 /assets/bower_components/bootstrap/dist/js/bootstrap.min.js
+- 20:25:21.860 INFO: GET 200 /assets/plugins/iCheck/icheck.min.js
+- 20:25:21.907 INFO: GET 200 /assets/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+- 20:25:21.079 INFO: GET 404 /favicon.ico
+- 20:25:39.454 INFO: POST 303 /auth/process_login
+- 20:25:39.532 INFO: GET 200 /auth/login
+- 20:25:39.610 INFO: GET 200 /assets/bower_components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0
+- 20:25:56.813 INFO: POST 303 /auth/process_login
+- 20:25:56.032 INFO: GET 200 /home
+- 20:25:56.047 INFO: GET 200 /assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css
+- 20:25:56.047 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.css
+- 20:25:56.047 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.css
+- 20:25:56.047 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css
+- 20:25:56.047 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css
+- 20:25:56.063 INFO: GET 200 /assets/dist/css/skins/_all-skins.min.css
+- 20:25:57.079 INFO: GET 200 /assets/dist/img/user2-160x160.jpg
+- 20:25:57.079 INFO: GET 200 /assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js
+- 20:25:57.094 INFO: GET 200 /assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js
+- 20:25:57.094 INFO: GET 200 /assets/bower_components/fastclick/lib/fastclick.js
+- 20:25:57.110 INFO: GET 200 /assets/dist/js/adminlte.min.js
+- 20:25:57.110 INFO: GET 200 /assets/bower_components/datatables.net/js/jquery.dataTables.min.js
+- 20:25:57.125 INFO: GET 200 /assets/dist/js/demo.js
+- 20:25:57.125 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.date.extensions.js
+- 20:25:57.141 INFO: GET 200 /assets/bower_components/moment/min/moment.min.js
+- 20:25:57.157 INFO: GET 200 /assets/bower_components/select2/dist/js/select2.full.min.js
+- 20:25:57.157 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.js
+- 20:25:57.172 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.extensions.js
+- 20:25:57.172 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js
+- 20:25:57.188 INFO: GET 200 /assets/bower_components/Ionicons/fonts/ionicons.ttf?v=2.0.0
+- 20:25:57.188 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.js
+- 20:25:57.188 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js
+- 20:25:57.188 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.js
+- 20:25:59.000 INFO: GET 200 /hitungan_turbine
+- 20:26:15.954 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:28:24.032 INFO: POST 200 /hitungan_turbine/simpan
+- 20:28:26.813 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:29:04.204 INFO: POST 200 /hitungan_turbine/simpan
+- 20:29:06.141 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:33:01.532 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:33:17.688 INFO: GET 200 /hitungan_turbine
+- 20:33:19.235 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:35:32.438 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:36:18.657 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:37:32.922 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:38:09.625 INFO: GET 200 /hitungan_turbine
+- 20:46:07.266 INFO: GET 200 /hitungan_turbine
+- 20:46:08.485 INFO: GET 200 /hitungan_turbine
+- 20:46:09.344 INFO: GET 200 /hitungan_turbine
+- 20:46:09.610 INFO: GET 200 /hitungan_turbine
+- 20:46:09.829 INFO: GET 200 /hitungan_turbine
+- 20:46:09.047 INFO: GET 200 /hitungan_turbine
+- 20:46:12.438 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:46:17.782 INFO: GET 200 /hitungan_turbine
+- 20:46:45.157 INFO: GET 200 /hitungan_turbine
+- 20:47:06.391 INFO: GET 200 /hitungan_turbine
+- 20:47:06.407 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css
+- 20:47:06.422 INFO: GET 200 /assets/bower_components/font-awesome/css/font-awesome.min.css
+- 20:47:06.422 INFO: GET 200 /assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css
+- 20:47:06.422 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.css
+- 20:47:06.422 INFO: GET 200 /assets/bower_components/Ionicons/css/ionicons.min.css
+- 20:47:06.422 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css
+- 20:47:06.422 INFO: GET 200 /assets/dist/css/AdminLTE.min.css
+- 20:47:06.422 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css
+- 20:47:06.422 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.css
+- 20:47:06.438 INFO: GET 200 /assets/dist/css/skins/_all-skins.min.css
+- 20:47:06.438 INFO: GET 200 /assets/dist/img/user2-160x160.jpg
+- 20:47:06.438 INFO: GET 200 /assets/bower_components/bootstrap/dist/js/bootstrap.min.js
+- 20:47:06.438 INFO: GET 200 /assets/bower_components/jquery/dist/jquery.min.js
+- 20:47:06.438 INFO: GET 200 /assets/bower_components/datatables.net/js/jquery.dataTables.min.js
+- 20:47:06.438 INFO: GET 200 /assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js
+- 20:47:06.438 INFO: GET 200 /assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js
+- 20:47:06.438 INFO: GET 200 /assets/bower_components/fastclick/lib/fastclick.js
+- 20:47:06.438 INFO: GET 200 /assets/dist/js/adminlte.min.js
+- 20:47:06.454 INFO: GET 200 /assets/dist/js/demo.js
+- 20:47:06.454 INFO: GET 200 /assets/bower_components/moment/min/moment.min.js
+- 20:47:06.454 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.js
+- 20:47:06.454 INFO: GET 200 /assets/bower_components/select2/dist/js/select2.full.min.js
+- 20:47:06.454 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.date.extensions.js
+- 20:47:06.454 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.extensions.js
+- 20:47:06.454 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.js
+- 20:47:06.454 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js
+- 20:47:06.454 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js
+- 20:47:06.469 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.js
+- 20:47:06.469 INFO: GET 200 /assets/plugins/iCheck/icheck.min.js
+- 20:47:08.094 INFO: GET 200 /assets/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+- 20:47:08.094 INFO: GET 200 /assets/bower_components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0
+- 20:47:12.204 INFO: GET 404 /favicon.ico
+- 20:47:15.938 INFO: GET 200 /hitungan_turbine
+- 20:49:50.188 INFO: GET 200 /hitungan_turbine
+- 20:51:37.360 INFO: GET 200 /hitungan_turbine
+- 20:51:37.000 INFO: GET 200 /hitungan_turbine
+- 20:51:38.188 INFO: GET 200 /hitungan_turbine
+- 20:54:22.719 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:58:46.141 INFO: GET 200 /hitungan_turbine/mulai_hitung/1
+- 20:58:49.235 INFO: GET 200 /hitungan_turbine
+- 20:58:51.454 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 22:24:42.250 INFO: GET 200 /hitungan_turbine
+- 22:24:47.266 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 22:25:06.000 INFO: GET 200 /hitungan_turbine
+- 22:25:23.625 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 22:25:43.766 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 22:25:45.922 INFO: GET 200 /hitungan_turbine
+- 22:25:48.063 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 22:25:55.079 INFO: GET 200 /hitungan_turbine
+- 22:25:56.594 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 22:26:22.485 INFO: GET 200 /hitungan_turbine
+- 20:36:41.032 INFO: --------------------------------------------------------
+- 20:36:41.032 INFO: Started application
+- 20:36:41.032 INFO: Logging to: C:\xampp\htdocs\hitungan-turbine\debug.log
+- 20:36:41.032 INFO: Log level = DEBUG4
+- 20:36:41.032 INFO: Starting Mongoose 3.9c web server
+- 20:36:41.032 INFO: WWW directory: C:\xampp\htdocs\hitungan-turbine\www
+- 20:36:41.032 INFO: Index files: index.html,index.php
+- 20:36:41.032 INFO: CGI interpreter: C:\xampp\htdocs\hitungan-turbine\php\php-cgi.exe
+- 20:36:41.032 INFO: CGI pattern: **.php$
+- 20:36:41.032 INFO: Hide files patterns: 
+- 20:36:41.032 INFO: CGI environment variables set: TMP=C:\Users\VICTUS\AppData\Local\Temp\,TEMP=C:\Users\VICTUS\AppData\Local\Temp\,TMPDIR=C:\Users\VICTUS\AppData\Local\Temp\,SERVER_NAME=127.0.0.1,PHPDESKTOP_VERSION=57.0
+- 20:36:41.047 INFO: Web server url: http://127.0.0.1:54989/
+- 20:36:41.047 INFO: remote_debugging_port = 59856
+- 20:36:41.047 DEBUG: Command line string for the browser process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --no-sandbox --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --remote-debugging-port=59856
+- 20:36:43.641 DEBUG: App::OnContextInitialized()
+- 20:36:43.641 INFO: DPI, window enlarged by 25% new width/height = 1000/750
+- 20:36:43.641 DEBUG: Window max width/height = 1842/1034
+- 20:36:43.657 DEBUG: GetBrowserWindow(): not found, hwnd = 1181500
+- 20:36:43.657 DEBUG: WindowProc(): event WM_GETMINMAXINFO: could not fetch BrowserWindow
+- 20:36:43.657 DEBUG: BrowserWindow::CreateBrowserControl()
+- 20:36:43.657 DEBUG: StoreBrowserWindow(): hwnd = 1181500
+- 20:36:43.000 DEBUG: Command line string for the gpu-process process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --type=gpu-process --no-sandbox --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --disable-direct-composition --supports-dual-gpus=false --gpu-driver-bug-workarounds=7,10,18,19,20,23,26,41,74 --disable-gl-extensions="GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent" --gpu-vendor-id=0x1002 --gpu-device-id=0x1638 --gpu-driver-vendor="Advanced Micro Devices, Inc." --gpu-driver-version=31.0.21914.8004 --gpu-driver-date=8-20-2024 --gpu-secondary-vendor-ids=0x10de --gpu-secondary-device-ids=0x25a0 --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --service-request-channel-token=84A2F46B28571997EA17BA722E832D83 --mojo-platform-channel-handle=1848 /prefetch:2
+- 20:36:43.828 DEBUG: ClientHandler::OnAfterCreated()
+- 20:36:43.828 DEBUG: SetCefBrowser() called in ClientHandler::OnAfterCreated()
+- 20:36:43.860 DEBUG: OnLoadingStateChange: loading=1, url=
+- 20:36:43.000 DEBUG: Command line string for the renderer process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --type=renderer --no-sandbox --primordial-pipe-token=41F2515BE5F9C8ADB7A3B5CAFFA9035F --lang=en-US --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --enable-pinch --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --content-image-texture-target=0,0,3553;0,1,3553;0,2,3553;0,3,3553;0,4,3553;0,5,3553;0,6,3553;0,7,3553;0,8,3553;0,9,3553;0,10,3553;0,11,3553;0,12,3553;0,13,3553;0,14,3553;0,15,3553;1,0,3553;1,1,3553;1,2,3553;1,3,3553;1,4,3553;1,5,3553;1,6,3553;1,7,3553;1,8,3553;1,9,3553;1,10,3553;1,11,3553;1,12,3553;1,13,3553;1,14,3553;1,15,3553;2,0,3553;2,1,3553;2,2,3553;2,3,3553;2,4,3553;2,5,3553;2,6,3553;2,7,3553;2,8,3553;2,9,3553;2,10,3553;2,11,3553;2,12,3553;2,13,3553;2,14,3553;2,15,3553;3,0,3553;3,1,3553;3,2,3553;3,3,3553;3,4,3553;3,5,3553;3,6,3553;3,7,3553;3,8,3553;3,9,3553;3,10,3553;3,11,3553;3,12,3553;3,13,3553;3,14,3553;3,15,3553 --service-request-channel-token=41F2515BE5F9C8ADB7A3B5CAFFA9035F --renderer-client-id=3 --mojo-platform-channel-handle=2396 /prefetch:1
+- 20:36:43.046 DEBUG: OnBrowserCreated()
+[0113/203644.170:ERROR:child_thread_impl.cc(762)] Request for unknown Channel-associated interface: ui::mojom::GpuMain
+- 20:36:48.391 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css
+- 20:36:48.391 INFO: GET 200 /assets/bower_components/font-awesome/css/font-awesome.min.css
+- 20:36:48.391 INFO: GET 200 /assets/bower_components/Ionicons/css/ionicons.min.css
+- 20:36:48.391 INFO: GET 200 /assets/dist/css/AdminLTE.min.css
+- 20:36:48.391 INFO: GET 200 /assets/plugins/iCheck/square/blue.css
+- 20:36:48.391 INFO: GET 200 /
+- 20:36:48.484 DEBUG: OnContextCreated()
+- 20:36:48.485 INFO: GET 200 /assets/bower_components/bootstrap/dist/js/bootstrap.min.js
+- 20:36:48.500 INFO: GET 200 /assets/plugins/iCheck/icheck.min.js
+- 20:36:48.516 INFO: GET 200 /assets/bower_components/jquery/dist/jquery.min.js
+- 20:36:50.516 INFO: GET 200 /assets/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+- 20:36:50.657 DEBUG: OnLoadingStateChange: loading=0, url=http://127.0.0.1:54989/
+- 20:37:50.219 INFO: GET 200 /
+- 20:37:50.235 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css
+- 20:37:50.250 INFO: GET 200 /assets/bower_components/font-awesome/css/font-awesome.min.css
+- 20:37:50.250 INFO: GET 200 /assets/bower_components/Ionicons/css/ionicons.min.css
+- 20:37:50.250 INFO: GET 200 /assets/plugins/iCheck/square/blue.css
+- 20:37:50.250 INFO: GET 200 /assets/dist/css/AdminLTE.min.css
+- 20:37:50.250 INFO: GET 200 /assets/bower_components/jquery/dist/jquery.min.js
+- 20:37:50.266 INFO: GET 200 /assets/bower_components/bootstrap/dist/js/bootstrap.min.js
+- 20:37:50.282 INFO: GET 200 /assets/plugins/iCheck/icheck.min.js
+- 20:37:50.407 INFO: GET 200 /assets/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+- 20:37:50.797 INFO: GET 404 /favicon.ico
+- 20:37:58.391 INFO: POST 303 /auth/process_login
+- 20:37:58.891 INFO: GET 200 /home
+- 20:37:58.922 INFO: GET 200 /assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css
+- 20:37:58.922 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.css
+- 20:37:58.922 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css
+- 20:37:58.922 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css
+- 20:37:58.922 INFO: GET 200 /assets/dist/css/skins/_all-skins.min.css
+- 20:37:58.922 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.css
+- 20:37:58.985 INFO: GET 200 /assets/dist/img/user2-160x160.jpg
+- 20:37:58.016 INFO: GET 200 /assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js
+- 20:37:58.032 INFO: GET 200 /assets/bower_components/fastclick/lib/fastclick.js
+- 20:37:58.047 INFO: GET 200 /assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js
+- 20:37:59.078 INFO: GET 200 /assets/bower_components/datatables.net/js/jquery.dataTables.min.js
+- 20:37:59.094 INFO: GET 200 /assets/dist/js/adminlte.min.js
+- 20:37:59.094 INFO: GET 200 /assets/dist/js/demo.js
+- 20:37:59.141 INFO: GET 200 /assets/bower_components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0
+- 20:37:59.157 INFO: GET 200 /assets/bower_components/moment/min/moment.min.js
+- 20:37:59.172 INFO: GET 200 /assets/bower_components/Ionicons/fonts/ionicons.ttf?v=2.0.0
+- 20:37:59.172 INFO: GET 200 /assets/bower_components/select2/dist/js/select2.full.min.js
+- 20:37:59.188 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.date.extensions.js
+- 20:37:59.219 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.js
+- 20:37:59.235 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.extensions.js
+- 20:37:59.266 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js
+- 20:37:59.266 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.js
+- 20:37:59.266 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js
+- 20:37:59.282 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.js
+- 20:38:00.922 INFO: GET 200 /hitungan_turbine
+- 20:38:05.328 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:38:52.422 INFO: POST 200 /hitungan_turbine/simpan
+- 20:38:54.844 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:41:33.032 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:41:39.188 INFO: GET 200 /hitungan_turbine
+- 20:41:40.032 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:41:52.735 INFO: GET 200 /hitungan_turbine
+- 20:42:07.516 INFO: POST 200 /hitungan_turbine/tambah_hitungan
+- 20:42:07.813 INFO: GET 200 /hitungan_turbine/mulai_hitung/3
+- 20:42:11.610 INFO: GET 200 /hitungan_turbine
+- 20:42:14.532 INFO: GET 200 /hitungan_turbine/mulai_hitung/3
+- 20:42:17.891 INFO: GET 200 /hitungan_turbine
+- 20:42:19.485 INFO: GET 200 /hitungan_turbine/mulai_hitung/2
+- 20:42:21.125 INFO: GET 200 /hitungan_turbine
+- 20:42:23.407 INFO: GET 200 /hitungan_turbine/mulai_hitung/3
+- 20:42:26.453 INFO: GET 200 /hitungan_turbine
+- 20:43:53.469 INFO: GET 200 /hitungan_turbine
+- 20:43:58.953 INFO: GET 200 /hitungan_turbine/mulai_hitung/3
+- 20:45:10.360 INFO: POST 200 /hitungan_turbine/simpan
+- 20:45:12.391 INFO: GET 200 /hitungan_turbine/mulai_hitung/3
+- 20:45:17.516 INFO: GET 200 /hitungan_turbine
+- 20:45:36.657 INFO: POST 200 /hitungan_turbine/tambah_hitungan
+- 20:45:36.969 INFO: GET 200 /hitungan_turbine/mulai_hitung/4
+- 20:46:40.985 INFO: POST 200 /hitungan_turbine/simpan
+- 20:46:43.282 INFO: GET 200 /hitungan_turbine/mulai_hitung/4
+- 20:46:46.203 INFO: GET 200 /hitungan_turbine
+- 20:46:50.844 INFO: GET 200 /hitungan_turbine/mulai_hitung/4
+- 20:47:01.797 INFO: GET 200 /hitungan_turbine
+- 20:49:04.797 INFO: POST 200 /hitungan_turbine/tambah_hitungan
+- 20:49:05.110 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:49:56.297 INFO: POST 200 /hitungan_turbine/simpan
+- 20:50:12.047 INFO: GET 404 /.well-known/appspecific/com.chrome.devtools.json
+- 20:50:13.157 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css.map
+- 20:50:13.157 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css.map
+- 20:50:24.578 INFO: GET 200 /hitungan_turbine
+- 20:50:27.657 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:50:50.875 INFO: GET 200 /hitungan_turbine
+- 20:50:54.157 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:56:14.344 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:57:37.422 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:57:48.250 INFO: POST 200 /hitungan_turbine/simpan
+- 20:58:22.610 INFO: POST 200 /hitungan_turbine/simpan
+- 20:58:36.172 INFO: GET 404 /.well-known/appspecific/com.chrome.devtools.json
+- 21:04:14.266 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:06:42.922 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:06:56.782 INFO: POST 200 /hitungan_turbine/simpan
+- 21:07:01.985 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:07:05.641 INFO: POST 200 /hitungan_turbine/simpan
+- 21:08:14.860 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:08:18.125 INFO: POST 200 /hitungan_turbine/simpan
+- 21:10:43.078 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:10:47.016 INFO: POST 200 /hitungan_turbine/simpan
+- 21:11:19.438 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:16:41.032 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:16:49.766 INFO: POST 200 /hitungan_turbine/simpan
+- 21:16:55.078 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:16:58.453 INFO: POST 200 /hitungan_turbine/simpan
+- 21:17:02.828 INFO: POST 200 /hitungan_turbine/simpan
+- 21:17:13.391 INFO: POST 200 /hitungan_turbine/simpan
+- 21:17:18.094 INFO: GET 404 /.well-known/appspecific/com.chrome.devtools.json
+- 21:18:00.985 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:18:04.047 INFO: POST 200 /hitungan_turbine/simpan
+- 21:18:14.500 INFO: GET 404 /.well-known/appspecific/com.chrome.devtools.json
+- 21:20:05.282 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:20:06.157 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:20:30.125 INFO: POST 200 /hitungan_turbine/simpan
+- 21:21:21.328 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:21:31.188 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:21:33.938 INFO: POST 200 /hitungan_turbine/simpan
+- 21:23:21.282 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:23:21.828 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:23:24.797 INFO: POST 200 /hitungan_turbine/simpan
+- 21:23:36.703 INFO: GET 404 /.well-known/appspecific/com.chrome.devtools.json
+- 21:25:31.063 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:25:34.875 INFO: POST 200 /hitungan_turbine/simpan
+- 21:25:42.282 INFO: GET 404 /.well-known/appspecific/com.chrome.devtools.json
+- 21:28:46.157 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:28:50.657 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:28:59.547 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:29:51.063 INFO: GET 200 /hitungan_turbine
+- 21:29:53.563 INFO: GET 200 /hitungan_turbine/mulai_hitung/4
+- 21:30:01.438 INFO: POST 200 /hitungan_turbine/simpan
+- 21:30:03.250 INFO: GET 200 /hitungan_turbine/mulai_hitung/4
+- 21:30:08.016 INFO: POST 200 /hitungan_turbine/simpan
+- 21:30:10.500 INFO: GET 200 /hitungan_turbine/mulai_hitung/4
+- 21:30:12.657 INFO: GET 200 /hitungan_turbine
+- 21:33:57.219 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 22:33:54.375 DEBUG: WM_DESTROY
+- 22:33:54.375 DEBUG: RemoveBrowserWindow(): hwnd = 1181500
+- 22:33:54.375 INFO: Stopping Mongoose web server
+- 22:33:54.375 DEBUG: Mongoose webserver stopped immediately
+- 22:33:54.391 DEBUG: OnBeforeClose() hwnd=2098838
+- 22:33:54.391 DEBUG: RemoveBrowserWindow(): hwnd = 2098838
+- 22:33:54.391 DEBUG: GetBrowserWindow(): not found, hwnd = 2098838
+- 22:33:54.391 WARNING: RemoveBrowserWindow() failed: GetBrowserWindow() failed
+- 22:33:54.391 DEBUG: Calling CefQuitMessageLoop()
+- 22:33:54.546 DEBUG: OnBrowserDestroyed()
+- 22:33:54.485 INFO: Ended application
+- 22:33:54.485 INFO: --------------------------------------------------------
+- 20:31:42.000 INFO: --------------------------------------------------------
+- 20:31:42.000 INFO: Started application
+- 20:31:42.000 INFO: Logging to: C:\xampp\htdocs\hitungan-turbine\debug.log
+- 20:31:42.000 INFO: Log level = DEBUG4
+- 20:31:42.000 INFO: Starting Mongoose 3.9c web server
+- 20:31:42.000 INFO: WWW directory: C:\xampp\htdocs\hitungan-turbine\www
+- 20:31:42.000 INFO: Index files: index.html,index.php
+- 20:31:42.000 INFO: CGI interpreter: C:\xampp\htdocs\hitungan-turbine\php\php-cgi.exe
+- 20:31:42.000 INFO: CGI pattern: **.php$
+- 20:31:42.000 INFO: Hide files patterns: 
+- 20:31:42.015 INFO: CGI environment variables set: TMP=C:\Users\VICTUS\AppData\Local\Temp\,TEMP=C:\Users\VICTUS\AppData\Local\Temp\,TMPDIR=C:\Users\VICTUS\AppData\Local\Temp\,SERVER_NAME=127.0.0.1,PHPDESKTOP_VERSION=57.0
+- 20:31:42.015 INFO: Web server url: http://127.0.0.1:64051/
+- 20:31:42.015 INFO: remote_debugging_port = 52319
+- 20:31:42.031 DEBUG: Command line string for the browser process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --no-sandbox --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --remote-debugging-port=52319
+- 20:31:42.375 DEBUG: App::OnContextInitialized()
+- 20:31:42.375 INFO: DPI, window enlarged by 25% new width/height = 1000/750
+- 20:31:42.375 DEBUG: Window max width/height = 1842/1034
+- 20:31:42.375 DEBUG: GetBrowserWindow(): not found, hwnd = 198380
+- 20:31:42.375 DEBUG: WindowProc(): event WM_GETMINMAXINFO: could not fetch BrowserWindow
+- 20:31:42.375 DEBUG: BrowserWindow::CreateBrowserControl()
+- 20:31:42.375 DEBUG: StoreBrowserWindow(): hwnd = 198380
+- 20:31:42.000 DEBUG: Command line string for the gpu-process process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --type=gpu-process --no-sandbox --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --disable-direct-composition --supports-dual-gpus=false --gpu-driver-bug-workarounds=7,10,18,19,20,23,26,41,74 --disable-gl-extensions="GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent" --gpu-vendor-id=0x1002 --gpu-device-id=0x1638 --gpu-driver-vendor="Advanced Micro Devices, Inc." --gpu-driver-version=31.0.21914.8004 --gpu-driver-date=8-20-2024 --gpu-secondary-vendor-ids=0x10de --gpu-secondary-device-ids=0x25a0 --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --service-request-channel-token=3E3B91B7DD1D5CBCD2E36EC475EEF47D --mojo-platform-channel-handle=1868 /prefetch:2
+- 20:31:42.562 DEBUG: ClientHandler::OnAfterCreated()
+- 20:31:42.562 DEBUG: SetCefBrowser() called in ClientHandler::OnAfterCreated()
+- 20:31:42.609 DEBUG: OnLoadingStateChange: loading=1, url=
+[0114/203142.688:ERROR:child_thread_impl.cc(762)] Request for unknown Channel-associated interface: ui::mojom::GpuMain
+- 20:31:42.000 DEBUG: Command line string for the renderer process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --type=renderer --no-sandbox --primordial-pipe-token=01B69E5F1E97D6D4D532DFAE3BA1FED7 --lang=en-US --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --enable-pinch --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --content-image-texture-target=0,0,3553;0,1,3553;0,2,3553;0,3,3553;0,4,3553;0,5,3553;0,6,3553;0,7,3553;0,8,3553;0,9,3553;0,10,3553;0,11,3553;0,12,3553;0,13,3553;0,14,3553;0,15,3553;1,0,3553;1,1,3553;1,2,3553;1,3,3553;1,4,3553;1,5,3553;1,6,3553;1,7,3553;1,8,3553;1,9,3553;1,10,3553;1,11,3553;1,12,3553;1,13,3553;1,14,3553;1,15,3553;2,0,3553;2,1,3553;2,2,3553;2,3,3553;2,4,3553;2,5,3553;2,6,3553;2,7,3553;2,8,3553;2,9,3553;2,10,3553;2,11,3553;2,12,3553;2,13,3553;2,14,3553;2,15,3553;3,0,3553;3,1,3553;3,2,3553;3,3,3553;3,4,3553;3,5,3553;3,6,3553;3,7,3553;3,8,3553;3,9,3553;3,10,3553;3,11,3553;3,12,3553;3,13,3553;3,14,3553;3,15,3553 --service-request-channel-token=01B69E5F1E97D6D4D532DFAE3BA1FED7 --renderer-client-id=3 --mojo-platform-channel-handle=2384 /prefetch:1
+- 20:31:42.047 DEBUG: OnBrowserCreated()
+- 20:31:44.172 INFO: GET 200 /
+- 20:31:44.187 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css
+- 20:31:44.187 INFO: GET 200 /assets/bower_components/font-awesome/css/font-awesome.min.css
+- 20:31:44.187 INFO: GET 200 /assets/bower_components/Ionicons/css/ionicons.min.css
+- 20:31:44.187 INFO: GET 200 /assets/plugins/iCheck/square/blue.css
+- 20:31:44.187 INFO: GET 200 /assets/dist/css/AdminLTE.min.css
+- 20:31:44.187 INFO: GET 200 /assets/bower_components/jquery/dist/jquery.min.js
+- 20:31:44.203 INFO: GET 200 /assets/plugins/iCheck/icheck.min.js
+- 20:31:44.203 INFO: GET 200 /assets/bower_components/bootstrap/dist/js/bootstrap.min.js
+- 20:31:44.578 DEBUG: OnContextCreated()
+- 20:31:44.843 INFO: GET 200 /assets/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+- 20:31:45.000 DEBUG: OnLoadingStateChange: loading=0, url=http://127.0.0.1:64051/
+- 20:31:48.187 INFO: GET 200 /
+- 20:31:48.218 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css
+- 20:31:48.218 INFO: GET 200 /assets/bower_components/font-awesome/css/font-awesome.min.css
+- 20:31:48.218 INFO: GET 200 /assets/bower_components/Ionicons/css/ionicons.min.css
+- 20:31:48.218 INFO: GET 200 /assets/plugins/iCheck/square/blue.css
+- 20:31:48.218 INFO: GET 200 /assets/dist/css/AdminLTE.min.css
+- 20:31:48.218 INFO: GET 200 /assets/bower_components/jquery/dist/jquery.min.js
+- 20:31:48.234 INFO: GET 200 /assets/bower_components/bootstrap/dist/js/bootstrap.min.js
+- 20:31:48.265 INFO: GET 200 /assets/plugins/iCheck/icheck.min.js
+- 20:31:48.312 INFO: GET 200 /assets/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+- 20:31:48.656 INFO: GET 404 /favicon.ico
+- 20:32:20.703 INFO: POST 303 /auth/process_login
+- 20:32:20.922 INFO: GET 200 /auth/login
+- 20:32:21.031 INFO: GET 200 /assets/bower_components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0
+- 20:32:29.015 INFO: POST 303 /auth/process_login
+- 20:32:29.234 INFO: GET 200 /home
+- 20:32:29.312 INFO: GET 200 /assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css
+- 20:32:29.312 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.css
+- 20:32:29.312 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css
+- 20:32:29.312 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css
+- 20:32:29.312 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.css
+- 20:32:29.312 INFO: GET 200 /assets/dist/css/skins/_all-skins.min.css
+- 20:32:29.328 INFO: GET 200 /assets/dist/img/user2-160x160.jpg
+- 20:32:29.359 INFO: GET 200 /assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js
+- 20:32:29.359 INFO: GET 200 /assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js
+- 20:32:29.359 INFO: GET 200 /assets/bower_components/datatables.net/js/jquery.dataTables.min.js
+- 20:32:29.359 INFO: GET 200 /assets/bower_components/fastclick/lib/fastclick.js
+- 20:32:29.359 INFO: GET 200 /assets/dist/js/adminlte.min.js
+- 20:32:29.359 INFO: GET 200 /assets/dist/js/demo.js
+- 20:32:29.375 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.date.extensions.js
+- 20:32:29.375 INFO: GET 200 /assets/bower_components/moment/min/moment.min.js
+- 20:32:29.375 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.js
+- 20:32:29.375 INFO: GET 200 /assets/bower_components/select2/dist/js/select2.full.min.js
+- 20:32:29.390 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.extensions.js
+- 20:32:29.453 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.js
+- 20:32:29.515 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js
+- 20:32:29.515 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.js
+- 20:32:29.515 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js
+- 20:32:29.547 INFO: GET 200 /assets/bower_components/Ionicons/fonts/ionicons.ttf?v=2.0.0
+- 20:32:31.656 INFO: GET 200 /hitungan_turbine
+- 20:32:35.015 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:32:43.781 INFO: GET 200 /hitungan_turbine
+- 20:32:45.890 INFO: GET 200 /hitungan_turbine/mulai_hitung/4
+- 20:32:55.437 INFO: GET 200 /hitungan_turbine
+- 20:32:57.468 INFO: GET 200 /hitungan_turbine/mulai_hitung/4
+- 20:33:07.843 INFO: GET 200 /hitungan_turbine
+- 20:33:09.718 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:40:48.484 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:41:03.578 INFO: GET 200 /hitungan_turbine
+- 20:41:05.562 INFO: GET 200 /hitungan_turbine/mulai_hitung/4
+- 20:41:07.609 INFO: GET 200 /hitungan_turbine
+- 20:41:09.625 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:41:32.422 INFO: POST 200 /hitungan_turbine/simpan
+- 20:41:36.031 INFO: POST 200 /hitungan_turbine/simpan
+- 20:42:26.640 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:42:30.906 INFO: POST 200 /hitungan_turbine/simpan
+- 20:47:59.234 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:48:07.578 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 20:49:23.281 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:42:56.422 DEBUG: WM_DESTROY
+- 21:42:56.422 DEBUG: RemoveBrowserWindow(): hwnd = 198380
+- 21:42:56.422 INFO: Stopping Mongoose web server
+- 21:42:56.422 DEBUG: Mongoose webserver stopped immediately
+- 21:42:56.656 DEBUG: OnBeforeClose() hwnd=67328
+- 21:42:56.656 DEBUG: RemoveBrowserWindow(): hwnd = 67328
+- 21:42:56.656 DEBUG: GetBrowserWindow(): not found, hwnd = 67328
+- 21:42:56.656 WARNING: RemoveBrowserWindow() failed: GetBrowserWindow() failed
+- 21:42:56.656 DEBUG: Calling CefQuitMessageLoop()
+- 21:42:56.047 DEBUG: OnBrowserDestroyed()
+- 21:42:56.734 INFO: Ended application
+- 21:42:56.734 INFO: --------------------------------------------------------
+- 16:33:25.031 INFO: --------------------------------------------------------
+- 16:33:25.031 INFO: Started application
+- 16:33:25.031 INFO: Logging to: C:\xampp\htdocs\hitungan-turbine\debug.log
+- 16:33:25.031 INFO: Log level = DEBUG4
+- 16:33:25.031 INFO: Starting Mongoose 3.9c web server
+- 16:33:25.031 INFO: WWW directory: C:\xampp\htdocs\hitungan-turbine\www
+- 16:33:25.031 INFO: Index files: index.html,index.php
+- 16:33:25.031 INFO: CGI interpreter: C:\xampp\htdocs\hitungan-turbine\php\php-cgi.exe
+- 16:33:25.031 INFO: CGI pattern: **.php$
+- 16:33:25.031 INFO: Hide files patterns: 
+- 16:33:25.031 INFO: CGI environment variables set: TMP=C:\Users\VICTUS\AppData\Local\Temp\,TEMP=C:\Users\VICTUS\AppData\Local\Temp\,TMPDIR=C:\Users\VICTUS\AppData\Local\Temp\,SERVER_NAME=127.0.0.1,PHPDESKTOP_VERSION=57.0
+- 16:33:25.031 INFO: Web server url: http://127.0.0.1:56776/
+- 16:33:25.031 INFO: remote_debugging_port = 53034
+- 16:33:25.047 DEBUG: Command line string for the browser process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --no-sandbox --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --remote-debugging-port=53034
+- 16:33:27.656 DEBUG: App::OnContextInitialized()
+- 16:33:27.656 INFO: DPI, window enlarged by 25% new width/height = 1000/750
+- 16:33:27.656 DEBUG: Window max width/height = 1842/1034
+- 16:33:27.656 DEBUG: GetBrowserWindow(): not found, hwnd = 263878
+- 16:33:27.656 DEBUG: WindowProc(): event WM_GETMINMAXINFO: could not fetch BrowserWindow
+- 16:33:27.656 DEBUG: BrowserWindow::CreateBrowserControl()
+- 16:33:27.656 DEBUG: StoreBrowserWindow(): hwnd = 263878
+- 16:33:27.016 DEBUG: Command line string for the gpu-process process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --type=gpu-process --no-sandbox --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --disable-direct-composition --supports-dual-gpus=false --gpu-driver-bug-workarounds=7,10,18,19,20,23,26,41,74 --disable-gl-extensions="GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent" --gpu-vendor-id=0x1002 --gpu-device-id=0x1638 --gpu-driver-vendor="Advanced Micro Devices, Inc." --gpu-driver-version=31.0.21914.8004 --gpu-driver-date=8-20-2024 --gpu-secondary-vendor-ids=0x10de --gpu-secondary-device-ids=0x25a0 --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --service-request-channel-token=4801D889C6BBBF9D5F43449C6FE48177 --mojo-platform-channel-handle=1844 /prefetch:2
+- 16:33:27.828 DEBUG: ClientHandler::OnAfterCreated()
+- 16:33:27.828 DEBUG: SetCefBrowser() called in ClientHandler::OnAfterCreated()
+- 16:33:27.860 DEBUG: OnLoadingStateChange: loading=1, url=
+- 16:33:27.016 DEBUG: Command line string for the renderer process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --type=renderer --no-sandbox --primordial-pipe-token=5D19D925B727D0C315E45D561A913ACD --lang=en-US --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --enable-pinch --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --content-image-texture-target=0,0,3553;0,1,3553;0,2,3553;0,3,3553;0,4,3553;0,5,3553;0,6,3553;0,7,3553;0,8,3553;0,9,3553;0,10,3553;0,11,3553;0,12,3553;0,13,3553;0,14,3553;0,15,3553;1,0,3553;1,1,3553;1,2,3553;1,3,3553;1,4,3553;1,5,3553;1,6,3553;1,7,3553;1,8,3553;1,9,3553;1,10,3553;1,11,3553;1,12,3553;1,13,3553;1,14,3553;1,15,3553;2,0,3553;2,1,3553;2,2,3553;2,3,3553;2,4,3553;2,5,3553;2,6,3553;2,7,3553;2,8,3553;2,9,3553;2,10,3553;2,11,3553;2,12,3553;2,13,3553;2,14,3553;2,15,3553;3,0,3553;3,1,3553;3,2,3553;3,3,3553;3,4,3553;3,5,3553;3,6,3553;3,7,3553;3,8,3553;3,9,3553;3,10,3553;3,11,3553;3,12,3553;3,13,3553;3,14,3553;3,15,3553 --service-request-channel-token=5D19D925B727D0C315E45D561A913ACD --renderer-client-id=3 --mojo-platform-channel-handle=2032 /prefetch:1
+- 16:33:27.047 DEBUG: OnBrowserCreated()
+[0117/163327.974:ERROR:child_thread_impl.cc(762)] Request for unknown Channel-associated interface: ui::mojom::GpuMain
+- 16:33:29.672 INFO: GET 200 /assets/bower_components/font-awesome/css/font-awesome.min.css
+- 16:33:29.672 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css
+- 16:33:29.672 INFO: GET 200 /assets/bower_components/Ionicons/css/ionicons.min.css
+- 16:33:29.672 INFO: GET 200 /assets/dist/css/AdminLTE.min.css
+- 16:33:29.672 INFO: GET 200 /assets/plugins/iCheck/square/blue.css
+- 16:33:29.782 DEBUG: OnContextCreated()
+- 16:33:29.688 INFO: GET 200 /
+- 16:33:29.781 INFO: GET 200 /assets/bower_components/bootstrap/dist/js/bootstrap.min.js
+- 16:33:29.828 INFO: GET 200 /assets/plugins/iCheck/icheck.min.js
+- 16:33:29.828 INFO: GET 200 /assets/bower_components/jquery/dist/jquery.min.js
+- 16:33:30.313 INFO: GET 200 /assets/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+- 16:33:30.469 DEBUG: OnLoadingStateChange: loading=0, url=http://127.0.0.1:56776/
+- 16:33:48.469 DEBUG: OnLoadingStateChange: loading=1, url=http://127.0.0.1:56776/
+- 16:33:48.656 INFO: POST 303 /auth/process_login
+- 16:33:48.922 DEBUG: OnContextCreated()
+- 16:33:48.844 INFO: GET 200 /home
+- 16:33:48.844 INFO: GET 200 /assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css
+- 16:33:48.860 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.css
+- 16:33:48.860 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css
+- 16:33:48.860 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css
+- 16:33:48.860 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.css
+- 16:33:48.860 INFO: GET 200 /assets/dist/css/skins/_all-skins.min.css
+- 16:33:48.938 INFO: GET 200 /assets/bower_components/datatables.net/js/jquery.dataTables.min.js
+- 16:33:48.985 INFO: GET 200 /assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js
+- 16:33:48.031 INFO: GET 200 /assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js
+- 16:33:48.094 INFO: GET 200 /assets/bower_components/fastclick/lib/fastclick.js
+- 16:33:48.156 INFO: GET 200 /assets/dist/js/adminlte.min.js
+- 16:33:48.203 INFO: GET 200 /assets/dist/js/demo.js
+- 16:33:49.297 INFO: GET 200 /assets/bower_components/moment/min/moment.min.js
+- 16:33:49.391 INFO: GET 200 /assets/bower_components/select2/dist/js/select2.full.min.js
+- 16:33:49.438 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.extensions.js
+- 16:33:49.438 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.date.extensions.js
+- 16:33:49.453 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.js
+- 16:33:49.453 INFO: GET 200 /assets/dist/img/user2-160x160.jpg
+- 16:33:49.453 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js
+- 16:33:49.469 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js
+- 16:33:49.485 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.js
+- 16:33:49.500 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.js
+- 16:33:49.578 INFO: GET 200 /assets/bower_components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0
+- 16:33:49.578 INFO: GET 200 /assets/bower_components/Ionicons/fonts/ionicons.ttf?v=2.0.0
+- 16:33:49.750 DEBUG: OnLoadingStateChange: loading=0, url=http://127.0.0.1:56776/home
+- 16:33:53.594 INFO: GET 200 /home
+- 16:33:53.719 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css
+- 16:33:53.735 INFO: GET 200 /assets/bower_components/font-awesome/css/font-awesome.min.css
+- 16:33:53.735 INFO: GET 200 /assets/bower_components/Ionicons/css/ionicons.min.css
+- 16:33:53.735 INFO: GET 200 /assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css
+- 16:33:53.735 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.css
+- 16:33:53.735 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css
+- 16:33:53.735 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css
+- 16:33:53.735 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.css
+- 16:33:53.735 INFO: GET 200 /assets/dist/css/AdminLTE.min.css
+- 16:33:53.750 INFO: GET 200 /assets/dist/css/skins/_all-skins.min.css
+- 16:33:53.750 INFO: GET 200 /assets/dist/img/user2-160x160.jpg
+- 16:33:53.750 INFO: GET 200 /assets/bower_components/jquery/dist/jquery.min.js
+- 16:33:53.766 INFO: GET 200 /assets/bower_components/bootstrap/dist/js/bootstrap.min.js
+- 16:33:53.781 INFO: GET 200 /assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js
+- 16:33:53.781 INFO: GET 200 /assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js
+- 16:33:53.781 INFO: GET 200 /assets/bower_components/datatables.net/js/jquery.dataTables.min.js
+- 16:33:53.781 INFO: GET 200 /assets/bower_components/fastclick/lib/fastclick.js
+- 16:33:53.781 INFO: GET 200 /assets/dist/js/adminlte.min.js
+- 16:33:53.797 INFO: GET 200 /assets/dist/js/demo.js
+- 16:33:53.797 INFO: GET 200 /assets/bower_components/moment/min/moment.min.js
+- 16:33:53.797 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.date.extensions.js
+- 16:33:53.797 INFO: GET 200 /assets/bower_components/select2/dist/js/select2.full.min.js
+- 16:33:53.797 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.extensions.js
+- 16:33:53.797 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.js
+- 16:33:53.813 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.js
+- 16:33:53.813 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js
+- 16:33:53.813 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.js
+- 16:33:53.813 INFO: GET 200 /assets/plugins/iCheck/icheck.min.js
+- 16:33:53.813 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js
+- 16:33:53.875 INFO: GET 200 /assets/bower_components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0
+- 16:33:53.875 INFO: GET 200 /assets/bower_components/Ionicons/fonts/ionicons.ttf?v=2.0.0
+- 16:33:53.156 INFO: GET 404 /favicon.ico
+- 16:33:55.625 INFO: GET 200 /hitungan_turbine
+- 16:33:55.047 INFO: GET 200 /assets/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+- 16:33:57.563 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 16:58:37.469 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+[0117/201216.658:WARNING:dns_config_service_win.cc(661)] Failed to read DnsConfig.
+- 22:25:59.969 DEBUG: WM_DESTROY
+- 22:25:59.969 DEBUG: RemoveBrowserWindow(): hwnd = 263878
+- 22:25:59.969 INFO: Stopping Mongoose web server
+- 22:25:59.969 DEBUG: Mongoose webserver stopped immediately
+- 22:25:59.188 DEBUG: OnBeforeClose() hwnd=198086
+- 22:25:59.188 DEBUG: RemoveBrowserWindow(): hwnd = 198086
+- 22:25:59.188 DEBUG: GetBrowserWindow(): not found, hwnd = 198086
+- 22:25:59.188 WARNING: RemoveBrowserWindow() failed: GetBrowserWindow() failed
+- 22:25:59.188 DEBUG: Calling CefQuitMessageLoop()
+- 22:25:59.313 DEBUG: OnBrowserDestroyed()
+- 22:26:00.235 INFO: Ended application
+- 22:26:00.235 INFO: --------------------------------------------------------
+- 20:58:44.000 INFO: --------------------------------------------------------
+- 20:58:44.000 INFO: Started application
+- 20:58:44.000 INFO: Logging to: C:\xampp\htdocs\hitungan-turbine\debug.log
+- 20:58:44.000 INFO: Log level = DEBUG4
+- 20:58:44.000 INFO: Starting Mongoose 3.9c web server
+- 20:58:44.000 INFO: WWW directory: C:\xampp\htdocs\hitungan-turbine\www
+- 20:58:44.000 INFO: Index files: index.html,index.php
+- 20:58:44.000 INFO: CGI interpreter: C:\xampp\htdocs\hitungan-turbine\php\php-cgi.exe
+- 20:58:44.000 INFO: CGI pattern: **.php$
+- 20:58:44.000 INFO: Hide files patterns: 
+- 20:58:44.000 INFO: CGI environment variables set: TMP=C:\Users\VICTUS\AppData\Local\Temp\,TEMP=C:\Users\VICTUS\AppData\Local\Temp\,TMPDIR=C:\Users\VICTUS\AppData\Local\Temp\,SERVER_NAME=127.0.0.1,PHPDESKTOP_VERSION=57.0
+- 20:58:44.016 INFO: Web server url: http://127.0.0.1:59357/
+- 20:58:44.016 INFO: remote_debugging_port = 60827
+- 20:58:44.016 DEBUG: Command line string for the browser process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --no-sandbox --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --remote-debugging-port=60827
+- 20:58:45.703 DEBUG: App::OnContextInitialized()
+- 20:58:45.703 INFO: DPI, window enlarged by 25% new width/height = 1000/750
+- 20:58:45.703 DEBUG: Window max width/height = 1842/1034
+- 20:58:45.703 DEBUG: GetBrowserWindow(): not found, hwnd = 1836382
+- 20:58:45.703 DEBUG: WindowProc(): event WM_GETMINMAXINFO: could not fetch BrowserWindow
+- 20:58:45.703 DEBUG: BrowserWindow::CreateBrowserControl()
+- 20:58:45.703 DEBUG: StoreBrowserWindow(): hwnd = 1836382
+- 20:58:45.000 DEBUG: Command line string for the gpu-process process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --type=gpu-process --no-sandbox --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --disable-direct-composition --supports-dual-gpus=false --gpu-driver-bug-workarounds=7,10,18,19,20,23,26,41,74 --disable-gl-extensions="GL_KHR_blend_equation_advanced GL_KHR_blend_equation_advanced_coherent" --gpu-vendor-id=0x1002 --gpu-device-id=0x1638 --gpu-driver-vendor="Advanced Micro Devices, Inc." --gpu-driver-version=31.0.21914.8004 --gpu-driver-date=8-20-2024 --gpu-secondary-vendor-ids=0x10de --gpu-secondary-device-ids=0x25a0 --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --service-request-channel-token=8FA052D355709C5209EA2DF5B35F69EA --mojo-platform-channel-handle=1864 /prefetch:2
+- 20:58:45.766 DEBUG: ClientHandler::OnAfterCreated()
+- 20:58:45.766 DEBUG: SetCefBrowser() called in ClientHandler::OnAfterCreated()
+- 20:58:45.797 DEBUG: OnLoadingStateChange: loading=1, url=
+- 20:58:45.000 DEBUG: Command line string for the renderer process: "C:\xampp\htdocs\hitungan-turbine\hitungan-turbine.exe" --type=renderer --no-sandbox --primordial-pipe-token=D42F677B495C8CE981C79E5699B36067 --lang=en-US --lang=en-US --log-file="C:\xampp\htdocs\hitungan-turbine\debug.log" --enable-pinch --device-scale-factor=1.25 --num-raster-threads=4 --enable-main-frame-before-activation --content-image-texture-target=0,0,3553;0,1,3553;0,2,3553;0,3,3553;0,4,3553;0,5,3553;0,6,3553;0,7,3553;0,8,3553;0,9,3553;0,10,3553;0,11,3553;0,12,3553;0,13,3553;0,14,3553;0,15,3553;1,0,3553;1,1,3553;1,2,3553;1,3,3553;1,4,3553;1,5,3553;1,6,3553;1,7,3553;1,8,3553;1,9,3553;1,10,3553;1,11,3553;1,12,3553;1,13,3553;1,14,3553;1,15,3553;2,0,3553;2,1,3553;2,2,3553;2,3,3553;2,4,3553;2,5,3553;2,6,3553;2,7,3553;2,8,3553;2,9,3553;2,10,3553;2,11,3553;2,12,3553;2,13,3553;2,14,3553;2,15,3553;3,0,3553;3,1,3553;3,2,3553;3,3,3553;3,4,3553;3,5,3553;3,6,3553;3,7,3553;3,8,3553;3,9,3553;3,10,3553;3,11,3553;3,12,3553;3,13,3553;3,14,3553;3,15,3553 --service-request-channel-token=D42F677B495C8CE981C79E5699B36067 --renderer-client-id=3 --mojo-platform-channel-handle=2316 /prefetch:1
+- 20:58:45.031 DEBUG: OnBrowserCreated()
+[0119/205845.975:ERROR:child_thread_impl.cc(762)] Request for unknown Channel-associated interface: ui::mojom::GpuMain
+- 20:58:48.485 INFO: GET 200 /
+- 20:58:48.500 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css
+- 20:58:48.500 INFO: GET 200 /assets/bower_components/font-awesome/css/font-awesome.min.css
+- 20:58:48.500 INFO: GET 200 /assets/bower_components/Ionicons/css/ionicons.min.css
+- 20:58:48.500 INFO: GET 200 /assets/plugins/iCheck/square/blue.css
+- 20:58:48.500 INFO: GET 200 /assets/dist/css/AdminLTE.min.css
+- 20:58:48.718 DEBUG: OnContextCreated()
+- 20:58:48.547 INFO: GET 200 /assets/plugins/iCheck/icheck.min.js
+- 20:58:48.547 INFO: GET 200 /assets/bower_components/bootstrap/dist/js/bootstrap.min.js
+- 20:58:48.563 INFO: GET 200 /assets/bower_components/jquery/dist/jquery.min.js
+- 20:58:49.297 INFO: GET 200 /assets/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+- 20:58:49.406 DEBUG: OnLoadingStateChange: loading=0, url=http://127.0.0.1:59357/
+- 20:59:55.360 INFO: GET 200 /
+- 20:59:55.360 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css
+- 20:59:55.375 INFO: GET 200 /assets/plugins/iCheck/square/blue.css
+- 20:59:55.375 INFO: GET 200 /assets/bower_components/font-awesome/css/font-awesome.min.css
+- 20:59:55.375 INFO: GET 200 /assets/dist/css/AdminLTE.min.css
+- 20:59:55.375 INFO: GET 200 /assets/bower_components/Ionicons/css/ionicons.min.css
+- 20:59:55.375 INFO: GET 200 /assets/bower_components/jquery/dist/jquery.min.js
+- 20:59:55.375 INFO: GET 200 /assets/bower_components/bootstrap/dist/js/bootstrap.min.js
+- 20:59:55.391 INFO: GET 200 /assets/plugins/iCheck/icheck.min.js
+- 20:59:55.406 INFO: GET 200 /assets/bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2
+- 20:59:55.625 INFO: GET 404 /favicon.ico
+- 21:00:08.875 INFO: POST 303 /auth/process_login
+- 21:00:08.969 INFO: GET 200 /auth/login
+- 21:00:09.047 INFO: GET 200 /assets/bower_components/font-awesome/fonts/fontawesome-webfont.woff2?v=4.7.0
+- 21:00:17.328 INFO: POST 303 /auth/process_login
+- 21:00:17.547 INFO: GET 200 /home
+- 21:00:17.578 INFO: GET 200 /assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css
+- 21:00:17.578 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.css
+- 21:00:17.578 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css
+- 21:00:17.578 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css
+- 21:00:17.578 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.css
+- 21:00:17.578 INFO: GET 200 /assets/dist/css/skins/_all-skins.min.css
+- 21:00:17.594 INFO: GET 200 /assets/dist/img/user2-160x160.jpg
+- 21:00:17.610 INFO: GET 200 /assets/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js
+- 21:00:17.610 INFO: GET 200 /assets/bower_components/fastclick/lib/fastclick.js
+- 21:00:17.610 INFO: GET 200 /assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js
+- 21:00:17.625 INFO: GET 200 /assets/dist/js/adminlte.min.js
+- 21:00:17.625 INFO: GET 200 /assets/bower_components/datatables.net/js/jquery.dataTables.min.js
+- 21:00:17.672 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.date.extensions.js
+- 21:00:17.672 INFO: GET 200 /assets/dist/js/demo.js
+- 21:00:17.672 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.extensions.js
+- 21:00:17.688 INFO: GET 200 /assets/bower_components/moment/min/moment.min.js
+- 21:00:17.703 INFO: GET 200 /assets/plugins/input-mask/jquery.inputmask.js
+- 21:00:17.703 INFO: GET 200 /assets/bower_components/select2/dist/js/select2.full.min.js
+- 21:00:17.703 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js
+- 21:00:17.719 INFO: GET 200 /assets/bower_components/bootstrap-daterangepicker/daterangepicker.js
+- 21:00:17.719 INFO: GET 200 /assets/bower_components/Ionicons/fonts/ionicons.ttf?v=2.0.0
+- 21:00:17.719 INFO: GET 200 /assets/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js
+- 21:00:17.735 INFO: GET 200 /assets/plugins/timepicker/bootstrap-timepicker.min.js
+- 21:01:26.156 INFO: GET 200 /hitungan_turbine
+- 21:01:27.860 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:27:34.563 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:33:38.656 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:35:47.047 INFO: POST 200 /hitungan_turbine/simpan
+- 21:35:53.406 INFO: GET 404 /.well-known/appspecific/com.chrome.devtools.json
+- 21:35:53.469 INFO: GET 200 /assets/bower_components/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css.map
+- 21:35:53.485 INFO: GET 200 /assets/bower_components/bootstrap/dist/css/bootstrap.min.css.map
+- 21:36:35.813 INFO: POST 200 /hitungan_turbine/simpan
+- 21:38:29.266 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:38:40.375 INFO: POST 200 /hitungan_turbine/simpan
+- 21:38:49.735 INFO: GET 404 /.well-known/appspecific/com.chrome.devtools.json
+- 21:44:02.860 INFO: POST 200 /hitungan_turbine/simpan
+- 21:44:05.891 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:44:17.953 INFO: POST 200 /hitungan_turbine/simpan
+- 21:44:29.594 INFO: GET 404 /.well-known/appspecific/com.chrome.devtools.json
+- 21:46:42.485 INFO: GET 200 /hitungan_turbine/mulai_hitung/5
+- 21:46:45.938 INFO: POST 200 /hitungan_turbine/simpan
+- 21:46:57.047 INFO: POST 200 /hitungan_turbine/simpan
+- 21:47:31.735 INFO: GET 404 /.well-known/appspecific/com.chrome.devtools.json
+- 22:03:51.625 DEBUG: WM_DESTROY
+- 22:03:51.625 DEBUG: RemoveBrowserWindow(): hwnd = 1836382
+- 22:03:51.625 INFO: Stopping Mongoose web server
+- 22:03:51.625 DEBUG: Mongoose webserver stopped immediately
+- 22:03:51.625 DEBUG: OnBeforeClose() hwnd=2033618
+- 22:03:51.625 DEBUG: RemoveBrowserWindow(): hwnd = 2033618
+- 22:03:51.625 DEBUG: GetBrowserWindow(): not found, hwnd = 2033618
+- 22:03:51.625 WARNING: RemoveBrowserWindow() failed: GetBrowserWindow() failed
+- 22:03:51.625 DEBUG: Calling CefQuitMessageLoop()
+- 22:03:51.688 INFO: Ended application
+- 22:03:51.688 INFO: --------------------------------------------------------

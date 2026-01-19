@@ -60,7 +60,7 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                  <!-- TAMPILKAN 15:00 dan 23:00 jika bukan Rabu -->
                 <tr>
                   <td>15:00</td>
-                  <td><input type="number" name="Synchro_15" class="form-control"  placeholder="Masukan kWh Synchro"></td>                  
+                  <td><input type="number" name="Synchro_15" class="form-control"  placeholder="Masukan kWh Synchro" value="<?= $current_data->kwh_synchro_15 ?? '' ?>"></td>                  
                   <td><input type="number" name="Turbine_15" class="form-control"  placeholder="Masukan kWh Turbine" value="<?= $current_data->kwh_turbine_15 ?? '' ?>"></td>
                   <td data-hasil="hasil_turbine_15"><?= $current_data->hasil_turbine_15 ?? '' ?></td>
                   
@@ -71,7 +71,7 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                 </tr>
                 <tr>
                   <td>23:00</td>
-                  <td><input type="number" name="Synchro_23" class="form-control"  placeholder="Masukan kWh Synchro" ></td>
+                  <td><input type="number" name="Synchro_23" class="form-control"  placeholder="Masukan kWh Synchro" value="<?= $current_data->kwh_synchro_23 ?? '' ?>"></td>
                   <td><input type="number" name="Turbine_23" class="form-control"  placeholder="Masukan kWh Turbine" value="<?= $current_data->kwh_turbine_23 ?? '' ?>"></td>
                   <td data-hasil="hasil_turbine_23"><?= $current_data->hasil_turbine_23 ?? '' ?></td>
                   
@@ -84,17 +84,17 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
 
                   <tr>
                     <td>19:00</td>
-                    <td><input type="number" name="Synchro_19" class="form-control" placeholder="Masukan kWh Synchro"></td>
-                    <td><input type="number" name="Turbine_19" class="form-control" placeholder="Masukan kWh Turbine"></td>
-                    <td data-hasil="hasil_turbine_19">0</td>
-                    <td><input type="number" name="PLN_19" class="form-control" placeholder="Masukan kWh PLN"></td>
-                    <td data-hasil="hasil_pln_19">0</td>
+                    <td><input type="number" name="Synchro_19" class="form-control" placeholder="Masukan kWh Synchro" value="<?= $current_data->kwh_synchro_19 ?? '' ?>"></td>
+                    <td><input type="number" name="Turbine_19" class="form-control" placeholder="Masukan kWh Turbine" value="<?= $current_data->kwh_turbine_19 ?? '' ?>"></td>
+                    <td data-hasil="hasil_turbine_19"><?= $current_data->hasil_turbine_19 ?? '' ?></td>
+                    <td><input type="number" name="PLN_19" class="form-control" placeholder="Masukan kWh PLN" value="<?= $current_data->kwh_pln_19 ?? '' ?>"></td>
+                    <td data-hasil="hasil_pln_19"><?= $current_data->hasil_pln_19 ?? '' ?></td>
                   </tr>
 
             <?php endif; ?>
                 <tr>
                   <td>07:00</td>
-                  <td><input type="number" name="Synchro_07" class="form-control"  placeholder="Masukan kWh Synchro" ></td>
+                  <td><input type="number" name="Synchro_07" class="form-control"  placeholder="Masukan kWh Synchro" value="<?= $current_data->kwh_synchro_07 ?? '' ?>"></td>
                   <td><input type="number" name="Turbine_07" class="form-control"  placeholder="Masukan kWh Turbine" value="<?= $current_data->kwh_turbine_07 ?? '' ?>"></td>
                   <td data-hasil="hasil_turbine_07"><?= $current_data->hasil_turbine_07 ?? '' ?></td>
 
@@ -248,21 +248,17 @@ const isRabu = "<?= $nama_hari_indonesia ?>" === "Rabu";
   // Jalankan format saat halaman dimuat
   formatAllResults();
 
-if (isRabu) {
-  
-  
 // -----------------------------
 // ====== TURBINE JAM 19:00 ====
 // -----------------------------
+if (isRabu) {
 const input_Turbine_jam19 = document.querySelector('input[name="Turbine_19"]');
 const hasil_Turbine_jam19 = document.querySelector("[data-hasil='hasil_turbine_19']");
 const tampungan_turbine_jam07_sebelumnya = toNumber("<?= $previous_data->kwh_turbine_07 ?? 0 ?>");
 
-// hitung jika hari Rabu
-if (input_Turbine_jam19) {
+
   input_Turbine_jam19.addEventListener("input", function() {
     const nilai_19 = toNumber(this.value);
-
     if (!isNaN(nilai_19)) {
       const result = (nilai_19 - tampungan_turbine_jam07_sebelumnya) / 10;
       hasil_Turbine_jam19.textContent = toCommaFormat(result, 3);
@@ -270,7 +266,7 @@ if (input_Turbine_jam19) {
       hasil_Turbine_jam19.textContent = "-";
     }
   });
-}
+
 
 // -----------------------------
 // ====== PLN JAM 19:00 =======
@@ -279,10 +275,8 @@ const input_PLN_jam19 = document.querySelector('input[name="PLN_19"]');
 const hasil_PLN_jam19 = document.querySelector("[data-hasil='hasil_pln_19']");
 const tampungan_pln_jam07_sebelumnya = toNumber("<?= $previous_data->kwh_pln_07 ?? 0 ?>");
 
-if (input_PLN_jam19) {
   input_PLN_jam19.addEventListener("input", function() {
     const nilai_19 = toNumber(this.value);
-
     if (!isNaN(nilai_19)) {
       const result = (nilai_19 - tampungan_pln_jam07_sebelumnya) * 8;
       hasil_PLN_jam19.textContent = toCommaFormat(result, 3);
@@ -290,54 +284,8 @@ if (input_PLN_jam19) {
       hasil_PLN_jam19.textContent = "-";
     }
   });
-}
-
-
-
-  // -----------------------------
-  // ====== TURBINE JAM 07:00 ====
-  // -----------------------------
-
-const input_Turbine_jam07 = document.querySelector('input[name="Turbine_07"]');
-const hasil_Turbine_jam07 = document.querySelector('[data-hasil="hasil_turbine_07"]');
-const tampungan_turbine_jam19sebelumnya = document.querySelector('input[name="Turbine_19"]');
-
-// kalau user isi nilai di jam 23:00
-  input_Turbine_jam07.addEventListener("input", function() {
-    const nilai_07 = toNumber(this.value);
-    const nilai_19 = toNumber(tampungan_turbine_jam19sebelumnya.value);
-
-    if (!isNaN(nilai_07) && !isNaN(nilai_19)) {
-      const result = (nilai_07 - nilai_19) / 10;
-      hasil_Turbine_jam07.textContent = toCommaFormat(result, 3);
-    } else {
-      hasil_Turbine_jam07.textContent = "-";
-    }
-  });
-
-// -----------------------------
-  // ====== PLN JAM 19:00 ====
-  // -----------------------------
-
-const input_PLN_jam07 = document.querySelector('input[name="PLN_07"]');
-const hasil_PLN_jam07 = document.querySelector('[data-hasil="hasil_pln_07"]');
-const tampungan_PLN_jam19sebelumnya = document.querySelector('input[name="PLN_19"]');
-
-// kalau user isi nilai di jam 23:00
-  input_PLN_jam07.addEventListener("input", function() {
-    const nilai_07 = toNumber(this.value);
-    const nilai_19 = toNumber(tampungan_PLN_jam19sebelumnya.value);
-
-    if (!isNaN(nilai_07) && !isNaN(nilai_19)) {
-      const result = (nilai_07 - nilai_19) * 8;
-      hasil_PLN_jam07.textContent = toCommaFormat(result, 3);
-    } else {
-      hasil_PLN_jam07.textContent = "-";
-    }
-  });
-
-}
-  
+   
+}else {
 
   // -----------------------------
   // ====== TURBINE JAM 15:00 ====
@@ -358,6 +306,7 @@ const tampungan_PLN_jam19sebelumnya = document.querySelector('input[name="PLN_19
 
   // -----------------------------
   // ====== PLN JAM 15:00 ========
+  
   // -----------------------------
   const input_PLN_jam15 = document.querySelector('input[name="PLN_15"]'); // kolom input kWh PLN
   const hasil_PLN_jam15 = document.querySelector('[data-hasil="hasil_pln_15"]');      // kolom hasil PLN
@@ -373,7 +322,7 @@ const tampungan_PLN_jam19sebelumnya = document.querySelector('input[name="PLN_19
     }
   });
 
-  // -----------------------------
+// -----------------------------
   // ====== TURBINE JAM 23:00 ====
   // -----------------------------
 
@@ -415,86 +364,50 @@ const tampungan_PLN_jam15sebelumnya = document.querySelector('input[name="PLN_15
     }
   });
 
-
-// -----------------------------
-// ====== TURBINE JAM 19:00 ====
-// -----------------------------
-const input_Turbine_jam19 = document.querySelector('input[name="Turbine_19"]');
-const hasil_Turbine_jam19 = document.querySelector("[data-hasil='hasil_turbine_19']");
-const tampungan_turbine_jam07_sebelumnya2 = toNumber("<?= $previous_data->kwh_turbine_07 ?? 0 ?>");
-
-// hitung jika hari Rabu
-if (input_Turbine_jam19) {
-  input_Turbine_jam19.addEventListener("input", function() {
-    const nilai_19 = toNumber(this.value);
-
-    if (!isNaN(nilai_19)) {
-      const result = (nilai_19 - tampungan_turbine_jam07_sebelumnya2) / 10;
-      hasil_Turbine_jam19.textContent = toCommaFormat(result, 3);
-    } else {
-      hasil_Turbine_jam19.textContent = "-";
-    }
-  });
-}
-
-// -----------------------------
-// ====== PLN JAM 19:00 =======
-// -----------------------------
-const input_PLN_jam19 = document.querySelector('input[name="PLN_19"]');
-const hasil_PLN_jam19 = document.querySelector("[data-hasil='hasil_pln_19']");
-const tampungan_pln_jam07_sebelumnya2 = toNumber("<?= $previous_data->kwh_pln_07 ?? 0 ?>");
-
-if (input_PLN_jam19) {
-  input_PLN_jam19.addEventListener("input", function() {
-    const nilai_19 = toNumber(this.value);
-
-    if (!isNaN(nilai_19)) {
-      const result = (nilai_19 - tampungan_pln_jam07_sebelumnya2) * 8;
-      hasil_PLN_jam19.textContent = toCommaFormat(result, 3);
-    } else {
-      hasil_PLN_jam19.textContent = "-";
-    }
-  });
-}
-
-
-
+             }
   // -----------------------------
   // ====== TURBINE JAM 07:00 ====
   // -----------------------------
 
 const input_Turbine_jam07 = document.querySelector('input[name="Turbine_07"]');
 const hasil_Turbine_jam07 = document.querySelector('[data-hasil="hasil_turbine_07"]');
-const tampungan_turbine_jam23sebelumnya = document.querySelector('input[name="Turbine_23"]');
 
-// kalau user isi nilai di jam 23:00
-  input_Turbine_jam07.addEventListener("input", function() {
+    input_Turbine_jam07.addEventListener("input", function() {
     const nilai_07 = toNumber(this.value);
-    const nilai_23 = toNumber(tampungan_turbine_jam23sebelumnya.value);
-
-    if (!isNaN(nilai_07) && !isNaN(nilai_23)) {
-      const result = (nilai_07 - nilai_23) / 10;
+    let val_sebelumnya = 0;
+    if (isRabu) {
+      val_sebelumnya = toNumber(document.querySelector('input[name="Turbine_19"]').value);
+    } else {
+      val_sebelumnya = toNumber(document.querySelector('input[name="Turbine_23"]').value);
+    }
+    if (!isNaN(nilai_07) && !isNaN(val_sebelumnya)) {
+      const result = (nilai_07 - val_sebelumnya) / 10;
       hasil_Turbine_jam07.textContent = toCommaFormat(result, 3);
     } else {
       hasil_Turbine_jam07.textContent = "-";
     }
   });
 
+
+
 // -----------------------------
-  // ====== PLN JAM 19:00 ====
+  // ====== PLN JAM 07:00 ====
   // -----------------------------
 
 const input_PLN_jam07 = document.querySelector('input[name="PLN_07"]');
 const hasil_PLN_jam07 = document.querySelector('[data-hasil="hasil_pln_07"]');
-const tampungan_PLN_jam23sebelumnya = document.querySelector('input[name="PLN_23"]');
 
 // kalau user isi nilai di jam 23:00
   input_PLN_jam07.addEventListener("input", function() {
     const nilai_07 = toNumber(this.value);
-    const nilai_23 = toNumber(tampungan_PLN_jam23sebelumnya.value);
-
-    if (!isNaN(nilai_07) && !isNaN(nilai_23)) {
-      const result = (nilai_07 - nilai_23) * 8;
+    let val_sebelumnya = 0;
+    if (isRabu) {
+      val_sebelumnya = toNumber(document.querySelector('input[name="PLN_19"]').value);
+    } else {
+      val_sebelumnya = toNumber(document.querySelector('input[name="PLN_23"]').value);
+    }
+    if (!isNaN(nilai_07) && !isNaN(val_sebelumnya)) {
+      const result = (nilai_07 - val_sebelumnya) * 8;
       hasil_PLN_jam07.textContent = toCommaFormat(result, 3);
     } else {
       hasil_PLN_jam07.textContent = "-";
@@ -663,5 +576,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
 });
+
 </script>
 

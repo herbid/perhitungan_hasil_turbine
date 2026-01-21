@@ -43,12 +43,15 @@ class M_hitung_turbine extends CI_Model {
         $this->db->select('energy.id_energy, energy.time, 
             jam_15.kwh_synchro_15, jam_15.kwh_turbine_15, jam_15.kwh_pln_15, jam_15.hasil_turbine_15, jam_15.hasil_pln_15,
             jam_23.kwh_synchro_23, jam_23.kwh_turbine_23, jam_23.kwh_pln_23, jam_23.hasil_turbine_23, jam_23.hasil_pln_23,
+            jam_19.kwh_synchro_19, jam_19.kwh_turbine_19, jam_19.kwh_pln_19, jam_19.hasil_turbine_19, jam_19.hasil_pln_19,
             jam_07.kwh_synchro_07, jam_07.kwh_turbine_07, jam_07.kwh_pln_07, jam_07.hasil_turbine_07, jam_07.hasil_pln_07');
         $this->db->from('energy');
         $this->db->where('energy.id_energy', $id_energy);
         $this->db->join('jam_15', 'energy.id_jam_15 = jam_15.id_jam_15', 'left');
         $this->db->join('jam_23', 'energy.id_jam_23 = jam_23.id_jam_23', 'left');
+        $this->db->join('jam_19', 'energy.id_jam_19 = jam_19.id_jam_19', 'left');
         $this->db->join('jam_07', 'energy.id_jam_07 = jam_07.id_jam_07', 'left');
+       
         return $this->db->get()->row();
     }
     
@@ -58,12 +61,17 @@ class M_hitung_turbine extends CI_Model {
                 jam_15.hasil_turbine_15, jam_15.hasil_pln_15,
                 jam_23.kwh_synchro_23, jam_23.kwh_turbine_23, jam_23.kwh_pln_23, 
                 jam_23.hasil_turbine_23, jam_23.hasil_pln_23,
+                jam_19.kwh_synchro_19, jam_19.kwh_turbine_19, jam_19.kwh_pln_19, 
+                jam_19.hasil_turbine_19, jam_19.hasil_pln_19,
                 jam_07.kwh_synchro_07, jam_07.kwh_turbine_07, jam_07.kwh_pln_07, 
-                jam_07.hasil_turbine_07, jam_07.hasil_pln_07')
+                jam_07.hasil_turbine_07, jam_07.hasil_pln_07'
+                )
             ->from('energy')
             ->join('jam_15', 'energy.id_jam_15 = jam_15.id_jam_15', 'left')
             ->join('jam_23', 'energy.id_jam_23 = jam_23.id_jam_23', 'left')
+            ->join('jam_19', 'energy.id_jam_19 = jam_19.id_jam_19', 'left')
             ->join('jam_07', 'energy.id_jam_07 = jam_07.id_jam_07', 'left')
+            
             ->where('energy.id_energy', $current_id)
             ->get_compiled_select();
 
@@ -72,6 +80,8 @@ class M_hitung_turbine extends CI_Model {
                 NULL AS hasil_turbine_15, NULL AS hasil_pln_15,
                 NULL AS kwh_synchro_23, NULL AS kwh_turbine_23, NULL AS kwh_pln_23, 
                 NULL AS hasil_turbine_23, NULL AS hasil_pln_23,
+                NULL AS kwh_synchro_19, NULL AS kwh_turbine_19, NULL AS kwh_pln_19, 
+                NULL AS hasil_turbine_19, NULL AS hasil_pln_19,
                 jam_07.kwh_synchro_07, jam_07.kwh_turbine_07, jam_07.kwh_pln_07, 
                 jam_07.hasil_turbine_07, jam_07.hasil_pln_07')
             ->from('energy')

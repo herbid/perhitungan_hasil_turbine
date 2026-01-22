@@ -1,4 +1,4 @@
-<a href="<?=base_url('hitungan_turbine')?>"class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"> </span> Kembali</a>
+<a href="<?=base_url('hitungan_turbine')?>"class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left"> </span> Kembali</a> 
 
 <?php
 // Mendefinisikan array nama-nama hari dalam bahasa Indonesia
@@ -22,14 +22,21 @@ $tanggal_indonesia = date('d-F-Y', strtotime($energies->time));
 $current_data  = isset($combined_data[0]) ? $combined_data[0] : null;
 $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
 ?>
+  <div class="box-tools pull-right">
+                <!-- ID ENERGY UNTUK UPDATE -->
+              <input type="hidden" id="id_energy" value="<?= $energies->id_energy ?>">
+             <button type="button" id="simpan_turbine" class="btn btn-success"> Simpan <span class="fa fa-save"> </span></button>
+          </div>
 <div class="row">
         <div class="col-xs-12">
           <div class="box">
           <div class="box-header">
-          
+        
           <h3 class='box-title'>
           Tanggal: <?= isset($energies->time) ? $nama_hari_indonesia . ', ' . $tanggal_indonesia : 'Data tidak tersedia'; ?>
-      </h3>        </div>
+        </h3>    
+            
+        </div>
 
             <!-- /.box-header -->
             <div class="box-body"> <table class="table table-bordered table-hover"> 
@@ -106,9 +113,7 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                 
                 </tbody>
               </table>
-              <!-- ID ENERGY UNTUK UPDATE -->
-              <input type="hidden" id="id_energy" value="<?= $energies->id_energy ?>">
-             <button type="button" id="simpan_turbine" class="btn btn-success"> Simpan </button>
+             
 
             </div>
           </div>
@@ -152,7 +157,6 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
 
           </div>
           <!-- /.row -->
-           <button type="button" class="btn btn-success">simpan</button>
         </div>
         
       </div>

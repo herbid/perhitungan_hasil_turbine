@@ -137,21 +137,21 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
             <div class="col-md-4">
               <div class="form-group">
                 <label>TURBINE</label>
-                <input type="number" class="form-control"  placeholder="Jumlah Total Jam Operasi Turbine">
+                <input type="number" name="jam_operasi_turbine" class="form-control"  placeholder="Jumlah Total Jam Operasi Turbine">
               </div>
             </div>
            
             <div class="col-md-4">
               <div class="form-group">
                 <label>SYNCHRO</label>
-                <input type="number" class="form-control"  placeholder="Jumlah Total Jam Operasi Synchro">
+                <input type="number" name="jam_operasi_synchro" class="form-control"  placeholder="Jumlah Total Jam Operasi Synchro">
               </div>
             </div>
 
             <div class="col-md-4">
               <div class="form-group">
                 <label>PLN</label>
-                <input type="number" class="form-control"  placeholder="Jumlah Total Jam Operasi PLN">
+                <input type="number" name="jam_operasi_pln" class="form-control"  placeholder="Jumlah Total Jam Operasi PLN">
               </div>
             </div>
 
@@ -187,14 +187,14 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                 <tbody>
                 <tr>
                   <td>Average</td>
-                  <td>1</td>
+                  <td data-hasil="hasil_avg_turbine"></td>
                   <td>1</td>
                   <td>1</td>
                 </tr>
 
                 <tr>
                   <td>Hari/Day</td>
-                  <td>1</td>
+                  <td data-hasil="hasil_day_turbine"></td>
                   <td>1</td>
                   <td>1</td>
                 </tr>
@@ -367,8 +367,7 @@ const tampungan_PLN_jam15sebelumnya = document.querySelector('input[name="PLN_15
       hasil_PLN_jam23.textContent = "-";
     }
   });
-
-             }
+ }
   // -----------------------------
   // ====== TURBINE JAM 07:00 ====
   // -----------------------------
@@ -417,6 +416,37 @@ const hasil_PLN_jam07 = document.querySelector('[data-hasil="hasil_pln_07"]');
       hasil_PLN_jam07.textContent = "-";
     }
   });
+
+// average turbine
+const input_avg_turbine = document.querySelector('input[name="jam_operasi_turbine"]');
+const total_day_turbine = document.querySelector('[data-hasil="hasil_day_turbine"]');
+
+input_avg_turbine.addEventListener("input", function() {
+    const jam_operasi_turbine = toNumber(this.value);
+    const hasil_day_turbine = toNumber(total_day_turbine.textContent);
+
+    if (!isNaN(jam_operasi_turbine) && jam_operasi_turbine > 0 && !isNaN(hasil_day_turbine)) {
+      const avg_result = hasil_day_turbine / jam_operasi_turbine;
+      const hasil_avg_turbine_elem = document.querySelector('[data-hasil="hasil_avg_turbine"]');
+      hasil_avg_turbine_elem.textContent = toCommaFormat(avg_result, 3);
+    } else {
+      const hasil_avg_turbine_elem = document.querySelector('[data-hasil="hasil_avg_turbine"]');
+      hasil_avg_turbine_elem.textContent = "-";
+    }
+  });
+
+
+
+// hari/day turbine
+const hasil_day_turbine_15 =  toNumber("<?= $current_data->hasil_turbine_15 ?? 0 ?>");
+const hasil_day_turbine_23 =  toNumber("<?= $current_data->hasil_turbine_23 ?? 0 ?>");
+const hasil_day_turbine_07 =  toNumber("<?= $current_data->hasil_turbine_07 ?? 0 ?>");  
+const hasil_day_turbine_total = hasil_day_turbine_15 + hasil_day_turbine_23 + hasil_day_turbine_07;
+const hasil_day_turbine_elem = document.querySelector('[data-hasil="hasil_day_turbine"]');
+hasil_day_turbine_elem.textContent = toCommaFormat(hasil_day_turbine_total, 3);   
+
+
+
 } catch (err) {
     console.error('Inisialisasi JS error:', err);
   }

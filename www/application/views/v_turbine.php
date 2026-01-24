@@ -195,8 +195,8 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                 <tr>
                   <td>Hari/Day</td>
                   <td data-hasil="hasil_day_turbine"></td>
-                  <td>1</td>
-                  <td>1</td>
+                  <td data-hasil="hasil_day_synchro"></td>
+                  <td data-hasil="hasil_day_pln"></td>
                 </tr>
                 <tr>
                 <td>Bulan/Month</td>
@@ -417,6 +417,8 @@ const hasil_PLN_jam07 = document.querySelector('[data-hasil="hasil_pln_07"]');
     }
   });
 
+
+//-------------- average  ----------------
 // average turbine
 const input_avg_turbine = document.querySelector('input[name="jam_operasi_turbine"]');
 const total_day_turbine = document.querySelector('[data-hasil="hasil_day_turbine"]');
@@ -436,8 +438,8 @@ input_avg_turbine.addEventListener("input", function() {
   });
 
 
-
-// hari/day turbine
+//-------------- DAY  ----------------
+// hari day turbine
 const hasil_day_turbine_15 =  toNumber("<?= $current_data->hasil_turbine_15 ?? 0 ?>");
 const hasil_day_turbine_23 =  toNumber("<?= $current_data->hasil_turbine_23 ?? 0 ?>");
 const hasil_day_turbine_07 =  toNumber("<?= $current_data->hasil_turbine_07 ?? 0 ?>");  
@@ -445,6 +447,20 @@ const hasil_day_turbine_total = hasil_day_turbine_15 + hasil_day_turbine_23 + ha
 const hasil_day_turbine_elem = document.querySelector('[data-hasil="hasil_day_turbine"]');
 hasil_day_turbine_elem.textContent = toCommaFormat(hasil_day_turbine_total, 3);   
 
+// hari day synchro
+const day_synchro_07_before = toNumber("<?= $previous_data->kwh_synchro_07 ?? 0 ?>");
+const day_synchro_07_after= toNumber("<?= $current_data->kwh_synchro_07 ?? 0 ?>");
+const hasil_day_synchro_total = (day_synchro_07_after - day_synchro_07_before)*11454/1000;
+const hasil_day_synchro_elem = document.querySelector('[data-hasil="hasil_day_synchro"]');
+hasil_day_synchro_elem.textContent = toCommaFormat(hasil_day_synchro_total, 3); 
+
+// hari day pln
+const hasil_day_pln_15 =  toNumber("<?= $current_data->hasil_pln_15 ?? 0 ?>");
+const hasil_day_pln_23 =  toNumber("<?= $current_data->hasil_pln_23 ?? 0 ?>");
+const hasil_day_pln_07 =  toNumber("<?= $current_data->hasil_pln_07 ?? 0 ?>");  
+const hasil_day_pln_total = hasil_day_pln_15 + hasil_day_pln_23 + hasil_day_pln_07;
+const hasil_day_pln_elem = document.querySelector('[data-hasil="hasil_day_pln"]');
+hasil_day_pln_elem.textContent = toCommaFormat(hasil_day_pln_total, 3);  
 
 
 } catch (err) {

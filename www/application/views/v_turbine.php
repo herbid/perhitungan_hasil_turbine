@@ -166,7 +166,7 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
         <div class="col-xs-12">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">Hasil kW</h3>
+              <h3 class="box-title">Hasil kWh</h3>
               <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
           </div>
@@ -178,7 +178,6 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                 <tr>
                  <th>Hasil</th>
                   <th>Turbine</th>
-
                   <th>Synchro</th>
                   <th>PLN</th>
                  
@@ -188,8 +187,8 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                 <tr>
                   <td>Average</td>
                   <td data-hasil="hasil_avg_turbine"></td>
-                  <td>1</td>
-                  <td>1</td>
+                  <td data-hasil="hasil_avg_synchro"></td>
+                  <td data-hasil="hasil_avg_pln"></td>
                 </tr>
 
                 <tr>
@@ -437,6 +436,13 @@ input_avg_turbine.addEventListener("input", function() {
     }
   });
 
+  // average synchro
+const input_avg_synchro = document.querySelector('input[name="jam_operasi_synchro"]');
+const total_day_synchro = document.querySelector('[data-hasil="hasil_day_synchro"]');
+
+input_avg_synchro.addEventListener("input",function(){
+  
+})
 
 //-------------- DAY  ----------------
 // hari day turbine

@@ -441,9 +441,36 @@ const input_avg_synchro = document.querySelector('input[name="jam_operasi_synchr
 const total_day_synchro = document.querySelector('[data-hasil="hasil_day_synchro"]');
 
 input_avg_synchro.addEventListener("input",function(){
-  
-})
+  const jam_operasi_synchro= toNumber(this.value);
+  const hasil_day_synchro = toNumber(total_day_synchro.textContent);
 
+  if(!isNaN(jam_operasi_synchro) && jam_operasi_synchro >0 && !isNaN(hasil_day_synchro)){
+    const avg_result = hasil_day_synchro / jam_operasi_synchro;
+    const hasil_avg_synchro_elem = document.querySelector('[data-hasil="hasil_avg_synchro"]');
+    hasil_avg_synchro_elem.textContent = toCommaFormat(avg_result,3);
+  } else {
+    const hasil_avg_synchro_elem = document.querySelector('[data-hasil="hasil_avg_synchro"]');
+    hasil_avg_synchro_elem.textContent = "-";
+  }
+});
+
+// average PLN
+const input_avg_pln = document.querySelector('input[name="jam_operasi_pln"]');
+const total_day_pln = document.querySelector('[data-hasil="hasil_day_pln"]');
+
+input_avg_pln.addEventListener("input", function(){
+const jam_operasi_pln = toNumber(this.value);
+const hasil_day_pln = toNumber(total_day_pln.textContent);
+
+if (!isNaN(jam_operasi_pln)&& jam_operasi_pln >0 && !isNaN(hasil_day_pln)) {
+  const avg_result = hasil_day_pln / jam_operasi_pln;
+  const hasil_avg_pln_elem = document.querySelector('[data-hasil="hasil_avg_pln"]');
+  hasil_avg_pln_elem.textContent= toCommaFormat(avg_result,3);
+}else{
+  const hasil_day_pln_elem = document.querySelector('[data-hasil="hasil_avg_pln"]');
+  hasil_day_pln_elem.textContent = "-";
+}
+})
 //-------------- DAY  ----------------
 // hari day turbine
 const hasil_day_turbine_15 =  toNumber("<?= $current_data->hasil_turbine_15 ?? 0 ?>");

@@ -199,9 +199,9 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                 </tr>
                 <tr>
                 <td>Bulan/Month</td>
-                <td>1</td>
-                  <td>1</td>
-                  <td>1</td>
+                <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
              
                 </tbody>

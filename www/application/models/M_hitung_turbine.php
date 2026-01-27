@@ -92,7 +92,49 @@ class M_hitung_turbine extends CI_Model {
         return $this->db->query("$query1 UNION ALL $query2")->result();
     }
     
+public function simpan_ringkasan_hasil($id_energy, $jam_op, $ringkasan) {
+    // Cek apakah data di tabel 'hasil' sudah ada untuk id_energy ini
+    $cek_hasil = $this->db->get_where('hasil', ['id_energy' => $id_energy])->row();
 
+    $data_hours = [
+        'turbine_jam' => $jam_op['turbine'],
+        'synchro_jam' => $jam_op['synchro'],
+        'pln_jam'     => $jam_op['pln']
+    ];
+
+    $data_hasil = [
+        'id_energy'     => $id_energy,
+        'avg_turbine'   => $ringkasan['avg_turbine'],
+        'avg_synchro'   => $ringkasan['avg_synchro'],
+        'avg_pln'       => $ringkasan['avg_pln'],
+        'day_turbine'   => $ringkasan['day_turbine'],
+        'day_synchro'   => $ringkasan['day_synchro'],
+        'day_pln'       => $ringkasan['day_pln'],
+        'month_turbine' => 0, // Bisa disesuaikan nanti
+        'month_synchro' => 0,
+        'month_pln'     => 0
+    ];
+
+    if ($cek_hasil) {
+        // --- PROSES EDIT (UPDATE) ---
+        // Update jam operasi
+        $this->db->where('id_hours', $cek_hasil->id_hours);
+        $this->db->update('hours', $data_hours);
+
+        // Update hasil summary
+        $this->db->where('id_hasil', $cek_hasil->id_hasil);
+        $this->db->update('hasil', $data_hasil);
+    } else {
+        // --- PROSES BARU (INSERT) ---
+        // 1. Simpan ke tabel hours
+        $this->db->insert('hours', $data_hours);
+        $id_hours_baru = $this->db->insert_id();
+
+        // 2. Simpan ke tabel hasil
+        $data_hasil['id_hours'] = $id_hours_baru;
+        $this->db->insert('hasil', $data_hasil);
+    }
+}
    
     
     public function delete_energy($id_energy) {

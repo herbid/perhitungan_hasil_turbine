@@ -216,6 +216,14 @@ public function simpan()
         }
     }
 
+    // 2. TAMBAHAN: Proses Simpan ke Tabel Hours & Hasil
+    if (isset($data_dari_js['ringkasan']) && isset($data_dari_js['jam_operasi'])) {
+        $this->m_hitung_turbine->simpan_ringkasan_hasil(
+            $id_energy, 
+            $data_dari_js['jam_operasi'], 
+            $data_dari_js['ringkasan']
+        );
+    }
     // ===========================================================
     // LANGKAH 4: SELESAI & KIRIM JAWABAN
     // ===========================================================

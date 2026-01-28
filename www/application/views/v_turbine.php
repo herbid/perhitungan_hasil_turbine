@@ -186,7 +186,7 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                 <tbody>
                 <tr>
                   <td>Average</td>
-                  <td data-hasil="hasil_avg_turbine"></td>
+                  <td data-hasil="hasil_avg_turbine"><?= isset($current_data->avg_turbine) ? number_format($current_data->avg_turbine, 2, ',', '.') : '0' ?></td>
                   <td data-hasil="hasil_avg_synchro"></td>
                   <td data-hasil="hasil_avg_pln"></td>
                 </tr>
@@ -557,6 +557,22 @@ document.addEventListener("DOMContentLoaded", function() {
             dataKirim.jam_07 = dataJam07;
         }
 
+        // [C.2] TAMBAHAN: Ambil Data Jam Operasi (untuk tabel hours)
+            dataKirim.jam_operasi = {
+                turbine: ambilNilaiInput('jam_operasi_turbine'),
+                synchro: ambilNilaiInput('jam_operasi_synchro'),
+                pln:     ambilNilaiInput('jam_operasi_pln')
+            };
+
+            // [C.3] TAMBAHAN: Ambil Data Ringkasan (untuk tabel hasil)
+            dataKirim.ringkasan = {
+                avg_turbine: ambilNilaiTeks('hasil_avg_turbine'),
+                avg_synchro: ambilNilaiTeks('hasil_avg_synchro'),
+                avg_pln:     ambilNilaiTeks('hasil_avg_pln'),
+                day_turbine: ambilNilaiTeks('hasil_day_turbine'),
+                day_synchro: ambilNilaiTeks('hasil_day_synchro'),
+                day_pln:     ambilNilaiTeks('hasil_day_pln')
+            };
         // Cek di console browser untuk memastikan data sudah benar sebelum dikirim
         console.log("Data yang akan dikirim:", dataKirim);
 

@@ -56,7 +56,8 @@ class M_hitung_turbine extends CI_Model {
     }
     
     public function get_combined_energy_data($current_id, $previous_id) {
-        $query1 = $this->db->select('energy.id_energy, energy.time, 
+    // --- QUERY 1 (Data Sekarang) ---
+    $query1 = $this->db->select('energy.id_energy, energy.time, 
                 jam_15.kwh_synchro_15, jam_15.kwh_turbine_15, jam_15.kwh_pln_15, 
                 jam_15.hasil_turbine_15, jam_15.hasil_pln_15,
                 jam_23.kwh_synchro_23, jam_23.kwh_turbine_23, jam_23.kwh_pln_23, 
@@ -64,33 +65,47 @@ class M_hitung_turbine extends CI_Model {
                 jam_19.kwh_synchro_19, jam_19.kwh_turbine_19, jam_19.kwh_pln_19, 
                 jam_19.hasil_turbine_19, jam_19.hasil_pln_19,
                 jam_07.kwh_synchro_07, jam_07.kwh_turbine_07, jam_07.kwh_pln_07, 
-                jam_07.hasil_turbine_07, jam_07.hasil_pln_07'
+                jam_07.hasil_turbine_07, jam_07.hasil_pln_07,
+                hasil.avg_turbine, hasil.avg_synchro, hasil.avg_pln,
+                hasil.day_turbine, hasil.day_synchro, hasil.day_pln,
+                hours.turbine_jam, hours.synchro_jam, hours.pln_jam'
                 )
             ->from('energy')
             ->join('jam_15', 'energy.id_jam_15 = jam_15.id_jam_15', 'left')
             ->join('jam_23', 'energy.id_jam_23 = jam_23.id_jam_23', 'left')
             ->join('jam_19', 'energy.id_jam_19 = jam_19.id_jam_19', 'left')
             ->join('jam_07', 'energy.id_jam_07 = jam_07.id_jam_07', 'left')
-            
+            ->join('hasil', 'hasil.id_energy = energy.id_energy', 'left')
+            ->join('hours', 'hasil.id_hours = hours.id_hours', 'left')
             ->where('energy.id_energy', $current_id)
             ->get_compiled_select();
 
-        $query2 = $this->db->select('energy.id_energy, energy.time, 
-                NULL AS kwh_synchro_15, NULL AS kwh_turbine_15, NULL AS kwh_pln_15, 
-                NULL AS hasil_turbine_15, NULL AS hasil_pln_15,
-                NULL AS kwh_synchro_23, NULL AS kwh_turbine_23, NULL AS kwh_pln_23, 
-                NULL AS hasil_turbine_23, NULL AS hasil_pln_23,
-                NULL AS kwh_synchro_19, NULL AS kwh_turbine_19, NULL AS kwh_pln_19, 
-                NULL AS hasil_turbine_19, NULL AS hasil_pln_19,
+    // --- QUERY 2 (Data Sebelumnya) ---
+    $query2 = $this->db->select('energy.id_energy, energy.time, 
+                jam_15.kwh_synchro_15, jam_15.kwh_turbine_15, jam_15.kwh_pln_15, 
+                jam_15.hasil_turbine_15, jam_15.hasil_pln_15,
+                jam_23.kwh_synchro_23, jam_23.kwh_turbine_23, jam_23.kwh_pln_23, 
+                jam_23.hasil_turbine_23, jam_23.hasil_pln_23,
+                jam_19.kwh_synchro_19, jam_19.kwh_turbine_19, jam_19.kwh_pln_19, 
+                jam_19.hasil_turbine_19, jam_19.hasil_pln_19,
                 jam_07.kwh_synchro_07, jam_07.kwh_turbine_07, jam_07.kwh_pln_07, 
-                jam_07.hasil_turbine_07, jam_07.hasil_pln_07')
+                jam_07.hasil_turbine_07, jam_07.hasil_pln_07,
+                hasil.avg_turbine, hasil.avg_synchro, hasil.avg_pln,
+                hasil.day_turbine, hasil.day_synchro, hasil.day_pln,
+                hours.turbine_jam, hours.synchro_jam, hours.pln_jam'
+                )
             ->from('energy')
+            ->join('jam_15', 'energy.id_jam_15 = jam_15.id_jam_15', 'left')
+            ->join('jam_23', 'energy.id_jam_23 = jam_23.id_jam_23', 'left')
+            ->join('jam_19', 'energy.id_jam_19 = jam_19.id_jam_19', 'left')
             ->join('jam_07', 'energy.id_jam_07 = jam_07.id_jam_07', 'left')
+            ->join('hasil', 'hasil.id_energy = energy.id_energy', 'left')
+            ->join('hours', 'hasil.id_hours = hours.id_hours', 'left')
             ->where('energy.id_energy', $previous_id)
             ->get_compiled_select();
 
-        return $this->db->query("$query1 UNION ALL $query2")->result();
-    }
+    return $this->db->query("$query1 UNION ALL $query2")->result();
+}
     
 public function simpan_ringkasan_hasil($id_energy, $jam_op, $ringkasan) {
     // Cek apakah data di tabel 'hasil' sudah ada untuk id_energy ini

@@ -137,21 +137,21 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
             <div class="col-md-4">
               <div class="form-group">
                 <label>TURBINE</label>
-                <input type="number" name="jam_operasi_turbine" class="form-control"  placeholder="Jumlah Total Jam Operasi Turbine">
+                <input type="number" name="jam_operasi_turbine" class="form-control"  placeholder="Jumlah Total Jam Operasi Turbine" value="<?= $current_data->turbine_jam ?? '' ?>">
               </div>
             </div>
            
             <div class="col-md-4">
               <div class="form-group">
                 <label>SYNCHRO</label>
-                <input type="number" name="jam_operasi_synchro" class="form-control"  placeholder="Jumlah Total Jam Operasi Synchro">
+                <input type="number" name="jam_operasi_synchro" class="form-control"  placeholder="Jumlah Total Jam Operasi Synchro" value="<?= $current_data->synchro_jam ?? '' ?>">
               </div>
             </div>
 
             <div class="col-md-4">
               <div class="form-group">
                 <label>PLN</label>
-                <input type="number" name="jam_operasi_pln" class="form-control"  placeholder="Jumlah Total Jam Operasi PLN">
+                <input type="number" name="jam_operasi_pln" class="form-control"  placeholder="Jumlah Total Jam Operasi PLN" value="<?= $current_data->pln_jam ?? '' ?>">
               </div>
             </div>
 
@@ -186,9 +186,9 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                 <tbody>
                 <tr>
                   <td>Average</td>
-                  <td data-hasil="hasil_avg_turbine"><?= isset($current_data->avg_turbine) ? number_format($current_data->avg_turbine, 2, ',', '.') : '0' ?></td>
-                  <td data-hasil="hasil_avg_synchro"></td>
-                  <td data-hasil="hasil_avg_pln"></td>
+                  <td data-hasil="hasil_avg_turbine"><?= number_format($current_data->avg_turbine ?? 0, 3, ',', '.') ?></td>
+                  <td data-hasil="hasil_avg_synchro"><?= number_format($current_data->avg_synchro ?? 0, 3, ',', '.') ?></td>
+                  <td data-hasil="hasil_avg_pln"><?= number_format($current_data->avg_pln ?? 0, 3, ',', '.') ?></td>
                 </tr>
 
                 <tr>

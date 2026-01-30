@@ -193,15 +193,15 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
 
                 <tr>
                   <td>Hari/Day</td>
-                  <td data-hasil="hasil_day_turbine"></td>
+                  <td data-hasil="hasil_day_turbine"><?= number_format($current_data->day_turbine ?? 0, 3, ',', '.') ?></td>
                   <td data-hasil="hasil_day_synchro"></td>
                   <td data-hasil="hasil_day_pln"></td>
                 </tr>
                 <tr>
                 <td>Bulan/Month</td>
-                <td></td>
-                  <td></td>
-                  <td></td>
+                <td data-hasil="hasil_month_turbine"></td>
+                <td data-hasil="hasil_month_synchro"></td>
+                <td data-hasil="hasil_month_pln"></td>
                 </tr>
              
                 </tbody>

@@ -35,7 +35,7 @@
         
         <li>
           <a href="<?=base_url('hitungan_turbine')?>">
-            <i class="fa fa-th"></i> <span>Hitung Turbine</span>
+            <i class="fa fa-calculator"></i> <span>Hitung Turbine</span>
             <span class="pull-right-container">
             </span>
           </a>

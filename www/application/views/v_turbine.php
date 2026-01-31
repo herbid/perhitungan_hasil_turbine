@@ -21,6 +21,24 @@ $tanggal_indonesia = date('d-F-Y', strtotime($energies->time));
 // menampilakan data id yang di klik dan data ida sebelumnya 
 $current_data  = isset($combined_data[0]) ? $combined_data[0] : null;
 $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
+
+// Ambil tanggal hari ini dari data (misal: "01", "05", "31")
+$tanggal_saat_ini = date('d', strtotime($energies->time));
+
+// Variabel untuk menyimpan akumulasi bulan lalu (Data Excel baris sebelumnya)
+$akumulasi_sebelumnya = 0;
+
+if ($tanggal_saat_ini == '01') {
+    // KONDISI TANGGAL 1: 
+    // Di Excel baris pertama, tidak ada penjumlahan dengan baris atasnya.
+    // Jadi akumulasi start dari 0.
+    $akumulasi_sebelumnya = 0; 
+} else {
+    // KONDISI TANGGAL > 1 (Tanggal 2, 3, dst):
+    // Kita ambil data 'month_turbine' dari database tanggal kemarin ($previous_data)
+    // Ini sama dengan mengambil sel H14 pada gambar Excel Anda
+    $akumulasi_sebelumnya = $previous_data->month_turbine ?? 0;
+}
 ?>
   <div class="box-tools pull-right">
                 <!-- ID ENERGY UNTUK UPDATE -->
@@ -190,19 +208,21 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
                   <td data-hasil="hasil_avg_synchro"><?= number_format($current_data->avg_synchro ?? 0, 3, ',', '.') ?></td>
                   <td data-hasil="hasil_avg_pln"><?= number_format($current_data->avg_pln ?? 0, 3, ',', '.') ?></td>
                 </tr>
-
+                
                 <tr>
                   <td>Hari/Day</td>
                   <td data-hasil="hasil_day_turbine"><?= number_format($current_data->day_turbine ?? 0, 3, ',', '.') ?></td>
-                  <td data-hasil="hasil_day_synchro"></td>
-                  <td data-hasil="hasil_day_pln"></td>
+                  <td data-hasil="hasil_day_synchro"><?= number_format($current_data->day_synchro ?? 0, 3, ',', '.') ?></td>
+                  <td data-hasil="hasil_day_pln"><?= number_format($current_data->day_pln ?? 0, 3, ',', '.') ?></td>
                 </tr>
-                <tr>
-                <td>Bulan/Month</td>
-                <td data-hasil="hasil_month_turbine"></td>
-                <td data-hasil="hasil_month_synchro"></td>
-                <td data-hasil="hasil_month_pln"></td>
-                </tr>
+
+                 <input type="hidden" id="data_akumulasi_sebelumnya" value="<?= $akumulasi_sebelumnya ?>">
+                  <tr>
+                      <td>Bulan/Month</td>
+                      <td data-hasil="hasil_month_turbine"></td>
+                      <td data-hasil="hasil_month_synchro"></td>
+                      <td data-hasil="hasil_month_pln"></td>
+                  </tr>
              
                 </tbody>
                
@@ -496,6 +516,29 @@ const hasil_day_pln_elem = document.querySelector('[data-hasil="hasil_day_pln"]'
 hasil_day_pln_elem.textContent = toCommaFormat(hasil_day_pln_total, 3);  
 
 
+//-------------- MONTH  ----------------
+// 1. Ambil "Data Kemarin" dari Hidden Input
+// Jika tgl 1, ini isinya 0.
+// Jika tgl 2, ini isinya nilai Month tgl 1 (misal 32.340).
+const nilai_akumulasi_sebelumnya = parseFloat(document.getElementById('data_akumulasi_sebelumnya').value) || 0;
+
+// 2. Ambil "Day Hari Ini" (hasil hitungan realtime)
+// Pastikan variabel 'hasil_day_turbine_total' sudah dihitung di script Anda sebelumnya
+const day_hari_ini = hasil_day_turbine_total; 
+
+// 3. Rumus Penjumlahan
+// Tanggal 1: 0 + Day Hari Ini = Day Hari Ini (Cocok dengan Excel baris 1)
+// Tanggal 2: Nilai Kemarin + Day Hari Ini (Cocok dengan Excel baris 2 rumus H14+H27)
+const total_month_turbine = nilai_akumulasi_sebelumnya + day_hari_ini;
+
+// 4. Tampilkan ke Layar
+const elemen_month_turbine = document.querySelector('[data-hasil="hasil_month_turbine"]');
+if (elemen_month_turbine) {
+    elemen_month_turbine.textContent = toCommaFormat(total_month_turbine, 3);
+}
+
+// ================================================================
+
 } catch (err) {
     console.error('Inisialisasi JS error:', err);
   }
@@ -571,7 +614,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 avg_pln:     ambilNilaiTeks('hasil_avg_pln'),
                 day_turbine: ambilNilaiTeks('hasil_day_turbine'),
                 day_synchro: ambilNilaiTeks('hasil_day_synchro'),
-                day_pln:     ambilNilaiTeks('hasil_day_pln')
+                day_pln:     ambilNilaiTeks('hasil_day_pln'),
+                month_turbine: ambilNilaiTeks('hasil_month_turbine'),
+                month_synchro: ambilNilaiTeks('hasil_month_synchro'),
+                month_pln:     ambilNilaiTeks('hasil_month_pln')
             };
         // Cek di console browser untuk memastikan data sudah benar sebelum dikirim
         console.log("Data yang akan dikirim:", dataKirim);

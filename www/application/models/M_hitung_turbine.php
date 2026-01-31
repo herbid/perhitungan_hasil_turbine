@@ -68,6 +68,7 @@ class M_hitung_turbine extends CI_Model {
                 jam_07.hasil_turbine_07, jam_07.hasil_pln_07,
                 hasil.avg_turbine, hasil.avg_synchro, hasil.avg_pln,
                 hasil.day_turbine, hasil.day_synchro, hasil.day_pln,
+                hasil.month_turbine, hasil.month_synchro, hasil.month_pln,
                 hours.turbine_jam, hours.synchro_jam, hours.pln_jam'
                 )
             ->from('energy')
@@ -92,6 +93,7 @@ class M_hitung_turbine extends CI_Model {
                 jam_07.hasil_turbine_07, jam_07.hasil_pln_07,
                 hasil.avg_turbine, hasil.avg_synchro, hasil.avg_pln,
                 hasil.day_turbine, hasil.day_synchro, hasil.day_pln,
+                hasil.month_turbine, hasil.month_synchro, hasil.month_pln,
                 hours.turbine_jam, hours.synchro_jam, hours.pln_jam'
                 )
             ->from('energy')
@@ -125,9 +127,9 @@ public function simpan_ringkasan_hasil($id_energy, $jam_op, $ringkasan) {
         'day_turbine'   => $ringkasan['day_turbine'],
         'day_synchro'   => $ringkasan['day_synchro'],
         'day_pln'       => $ringkasan['day_pln'],
-        'month_turbine' => 0, // Bisa disesuaikan nanti
-        'month_synchro' => 0,
-        'month_pln'     => 0
+        'month_turbine' => $ringkasan['month_turbine'] ?? 0, // Bisa disesuaikan nanti
+        'month_synchro' => $ringkasan['month_synchro'] ?? 0,
+        'month_pln'     => $ringkasan['month_pln'] ?? 0
     ];
 
     if ($cek_hasil) {

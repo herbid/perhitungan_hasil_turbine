@@ -26,18 +26,34 @@ $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
 $tanggal_saat_ini = date('d', strtotime($energies->time));
 
 // Variabel untuk menyimpan akumulasi bulan lalu (Data Excel baris sebelumnya)
-$akumulasi_sebelumnya = 0;
+$akumulasi_sebelumnya_turbine = 0;
+$akumulasi_sebelumnya_synchro = 0;
+$akumulasi_sebelumnya_pln = 0;
 
+//--- turbine ---
+// Cek apakah tanggal saat ini adalah tanggal 1 atau bukan
 if ($tanggal_saat_ini == '01') {
     // KONDISI TANGGAL 1: 
     // Di Excel baris pertama, tidak ada penjumlahan dengan baris atasnya.
     // Jadi akumulasi start dari 0.
-    $akumulasi_sebelumnya = 0; 
+    $akumulasi_sebelumnya_turbine = 0; 
 } else {
     // KONDISI TANGGAL > 1 (Tanggal 2, 3, dst):
     // Kita ambil data 'month_turbine' dari database tanggal kemarin ($previous_data)
     // Ini sama dengan mengambil sel H14 pada gambar Excel Anda
-    $akumulasi_sebelumnya = $previous_data->month_turbine ?? 0;
+    $akumulasi_sebelumnya_turbine = $previous_data->month_turbine ?? 0;
+}
+//--- synchro ---
+if ($tanggal_saat_ini == '01') {
+    $akumulasi_sebelumnya_synchro = 0; 
+} else {
+    $akumulasi_sebelumnya_synchro = $previous_data->month_synchro ?? 0;
+}
+//--- pln ---
+if ($tanggal_saat_ini == '01') {
+    $akumulasi_sebelumnya_pln = 0; 
+} else {
+    $akumulasi_sebelumnya_pln = $previous_data->month_pln ?? 0;
 }
 ?>
   <div class="box-tools pull-right">
@@ -216,12 +232,14 @@ if ($tanggal_saat_ini == '01') {
                   <td data-hasil="hasil_day_pln"><?= number_format($current_data->day_pln ?? 0, 3, ',', '.') ?></td>
                 </tr>
 
-                 <input type="hidden" id="data_akumulasi_sebelumnya" value="<?= $akumulasi_sebelumnya ?>">
+                 <input type="hidden" id="data_akumulasi_sebelumnya_turbine" value="<?= $akumulasi_sebelumnya_turbine ?>">
+                 <input type="hidden" id="data_akumulasi_sebelumnya_synchro" value="<?= $akumulasi_sebelumnya_synchro ?>">
+                 <input type="hidden" id="data_akumulasi_sebelumnya_pln" value="<?= $akumulasi_sebelumnya_pln ?>">
                   <tr>
                       <td>Bulan/Month</td>
-                      <td data-hasil="hasil_month_turbine"></td>
-                      <td data-hasil="hasil_month_synchro"></td>
-                      <td data-hasil="hasil_month_pln"></td>
+                      <td data-hasil="hasil_month_turbine"><?= number_format($current_data->month_turbine ?? 0, 3, ',', '.') ?></td>
+                      <td data-hasil="hasil_month_synchro"><?= number_format($current_data->month_synchro ?? 0, 3, ',', '.') ?></td>
+                      <td data-hasil="hasil_month_pln"><?= number_format($current_data->month_pln ?? 0, 3, ',', '.') ?></td>
                   </tr>
              
                 </tbody>
@@ -495,8 +513,13 @@ if (!isNaN(jam_operasi_pln)&& jam_operasi_pln >0 && !isNaN(hasil_day_pln)) {
 // hari day turbine
 const hasil_day_turbine_15 =  toNumber("<?= $current_data->hasil_turbine_15 ?? 0 ?>");
 const hasil_day_turbine_23 =  toNumber("<?= $current_data->hasil_turbine_23 ?? 0 ?>");
-const hasil_day_turbine_07 =  toNumber("<?= $current_data->hasil_turbine_07 ?? 0 ?>");  
-const hasil_day_turbine_total = hasil_day_turbine_15 + hasil_day_turbine_23 + hasil_day_turbine_07;
+const hasil_day_turbine_07 =  toNumber("<?= $current_data->hasil_turbine_07 ?? 0 ?>");
+const hasil_day_turbine_19 =  toNumber("<?= $current_data->hasil_turbine_19 ?? 0 ?>");
+    if (isRabu) {
+const hasil_day_turbine_total = hasil_day_turbine_19 + hasil_day_turbine_07;
+  }else {
+    const hasil_day_turbine_total = hasil_day_turbine_15 + hasil_day_turbine_23 + hasil_day_turbine_07;
+}
 const hasil_day_turbine_elem = document.querySelector('[data-hasil="hasil_day_turbine"]');
 hasil_day_turbine_elem.textContent = toCommaFormat(hasil_day_turbine_total, 3);   
 
@@ -520,21 +543,37 @@ hasil_day_pln_elem.textContent = toCommaFormat(hasil_day_pln_total, 3);
 // 1. Ambil "Data Kemarin" dari Hidden Input
 // Jika tgl 1, ini isinya 0.
 // Jika tgl 2, ini isinya nilai Month tgl 1 (misal 32.340).
-const nilai_akumulasi_sebelumnya = parseFloat(document.getElementById('data_akumulasi_sebelumnya').value) || 0;
+const nilai_akumulasi_sebelumnya_turbine = parseFloat(document.getElementById('data_akumulasi_sebelumnya_turbine').value) || 0;
+const nilai_akumulasi_sebelumnya_synchro = parseFloat(document.getElementById('data_akumulasi_sebelumnya_synchro').value) || 0;
+const nilai_akumulasi_sebelumnya_pln = parseFloat(document.getElementById('data_akumulasi_sebelumnya_pln').value) || 0;
+
 
 // 2. Ambil "Day Hari Ini" (hasil hitungan realtime)
 // Pastikan variabel 'hasil_day_turbine_total' sudah dihitung di script Anda sebelumnya
-const day_hari_ini = hasil_day_turbine_total; 
-
+const day_hari_ini_turbine = hasil_day_turbine_total; 
+const day_hari_ini_synchro = hasil_day_synchro_total;
+const day_hari_ini_pln = hasil_day_pln_total;
 // 3. Rumus Penjumlahan
 // Tanggal 1: 0 + Day Hari Ini = Day Hari Ini (Cocok dengan Excel baris 1)
 // Tanggal 2: Nilai Kemarin + Day Hari Ini (Cocok dengan Excel baris 2 rumus H14+H27)
-const total_month_turbine = nilai_akumulasi_sebelumnya + day_hari_ini;
+const total_month_turbine = nilai_akumulasi_sebelumnya_turbine + day_hari_ini_turbine;
+const total_month_synchro = nilai_akumulasi_sebelumnya_synchro + day_hari_ini_synchro;
+const total_month_pln = nilai_akumulasi_sebelumnya_pln + day_hari_ini_pln;
 
 // 4. Tampilkan ke Layar
 const elemen_month_turbine = document.querySelector('[data-hasil="hasil_month_turbine"]');
 if (elemen_month_turbine) {
     elemen_month_turbine.textContent = toCommaFormat(total_month_turbine, 3);
+}
+
+const elemen_month_synchro = document.querySelector('[data-hasil="hasil_month_synchro"]');
+if (elemen_month_synchro) {
+    elemen_month_synchro.textContent = toCommaFormat(total_month_synchro, 3);
+}
+
+const elemen_month_pln = document.querySelector('[data-hasil="hasil_month_pln"]');
+if (elemen_month_pln) {
+    elemen_month_pln.textContent = toCommaFormat(total_month_pln, 3);
 }
 
 // ================================================================

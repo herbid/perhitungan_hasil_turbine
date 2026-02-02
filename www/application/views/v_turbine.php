@@ -513,12 +513,13 @@ if (!isNaN(jam_operasi_pln)&& jam_operasi_pln >0 && !isNaN(hasil_day_pln)) {
 // hari day turbine
 const hasil_day_turbine_15 =  toNumber("<?= $current_data->hasil_turbine_15 ?? 0 ?>");
 const hasil_day_turbine_23 =  toNumber("<?= $current_data->hasil_turbine_23 ?? 0 ?>");
-const hasil_day_turbine_07 =  toNumber("<?= $current_data->hasil_turbine_07 ?? 0 ?>");
 const hasil_day_turbine_19 =  toNumber("<?= $current_data->hasil_turbine_19 ?? 0 ?>");
-    if (isRabu) {
-const hasil_day_turbine_total = hasil_day_turbine_19 + hasil_day_turbine_07;
-  }else {
-    const hasil_day_turbine_total = hasil_day_turbine_15 + hasil_day_turbine_23 + hasil_day_turbine_07;
+const hasil_day_turbine_07 =  toNumber("<?= $current_data->hasil_turbine_07 ?? 0 ?>");
+let hasil_day_turbine_total = 0;
+if (isRabu) {
+    hasil_day_turbine_total = hasil_day_turbine_19 + hasil_day_turbine_07;
+} else {
+    hasil_day_turbine_total = hasil_day_turbine_15 + hasil_day_turbine_23 + hasil_day_turbine_07;
 }
 const hasil_day_turbine_elem = document.querySelector('[data-hasil="hasil_day_turbine"]');
 hasil_day_turbine_elem.textContent = toCommaFormat(hasil_day_turbine_total, 3);   
@@ -526,7 +527,7 @@ hasil_day_turbine_elem.textContent = toCommaFormat(hasil_day_turbine_total, 3);
 // hari day synchro
 const day_synchro_07_before = toNumber("<?= $previous_data->kwh_synchro_07 ?? 0 ?>");
 const day_synchro_07_after= toNumber("<?= $current_data->kwh_synchro_07 ?? 0 ?>");
-const hasil_day_synchro_total = (day_synchro_07_after - day_synchro_07_before)*11454/1000;
+const hasil_day_synchro_total = (day_synchro_07_after - day_synchro_07_before)*(11454/1000);
 const hasil_day_synchro_elem = document.querySelector('[data-hasil="hasil_day_synchro"]');
 hasil_day_synchro_elem.textContent = toCommaFormat(hasil_day_synchro_total, 3); 
 
@@ -534,7 +535,13 @@ hasil_day_synchro_elem.textContent = toCommaFormat(hasil_day_synchro_total, 3);
 const hasil_day_pln_15 =  toNumber("<?= $current_data->hasil_pln_15 ?? 0 ?>");
 const hasil_day_pln_23 =  toNumber("<?= $current_data->hasil_pln_23 ?? 0 ?>");
 const hasil_day_pln_07 =  toNumber("<?= $current_data->hasil_pln_07 ?? 0 ?>");  
-const hasil_day_pln_total = hasil_day_pln_15 + hasil_day_pln_23 + hasil_day_pln_07;
+const hasil_day_pln_19 =  toNumber("<?= $current_data->hasil_pln_19 ?? 0 ?>");
+let hasil_day_pln_total = 0;
+if (isRabu) {
+    hasil_day_pln_total = hasil_day_pln_19 + hasil_day_pln_07;
+} else {
+    hasil_day_pln_total = hasil_day_pln_15 + hasil_day_pln_23 + hasil_day_pln_07;
+}
 const hasil_day_pln_elem = document.querySelector('[data-hasil="hasil_day_pln"]');
 hasil_day_pln_elem.textContent = toCommaFormat(hasil_day_pln_total, 3);  
 

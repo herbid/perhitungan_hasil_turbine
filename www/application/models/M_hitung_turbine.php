@@ -159,13 +159,68 @@ public function simpan_ringkasan_hasil($id_energy, $jam_op, $ringkasan) {
         $this->db->where('id_energy', $id_energy);
         $query = $this->db->get('energy');
         if ($query->num_rows() > 0) {
-            // If ID Energy exists, perform deletion
+            // Get energy data to find related jam and hasil records
+            $energy_data = $query->row();
+            
+            // Get hasil data to find related hours records
+            $this->db->where('id_energy', $id_energy);
+            $hasil_query = $this->db->get('hasil');
+            $hasil_data = $hasil_query->result();
+            
+            // Delete from hasil table first (has foreign key to hours)
+            $this->db->where('id_energy', $id_energy);
+            $this->db->delete('hasil');
+            
+            // Delete hours records
+            foreach ($hasil_data as $hasil) {
+                if (!empty($hasil->id_hours)) {
+                    $this->db->where('id_hours', $hasil->id_hours);
+                    $this->db->delete('hours');
+                }
+            }
+            
+            // Delete jam records that are no longer referenced
+            if (!empty($energy_data->id_jam_15)) {
+                $this->db->where('id_jam_15', $energy_data->id_jam_15);
+                $this->db->delete('jam_15');
+            }
+            if (!empty($energy_data->id_jam_23)) {
+                $this->db->where('id_jam_23', $energy_data->id_jam_23);
+                $this->db->delete('jam_23');
+            }
+            if (!empty($energy_data->id_jam_19)) {
+                $this->db->where('id_jam_19', $energy_data->id_jam_19);
+                $this->db->delete('jam_19');
+            }
+            if (!empty($energy_data->id_jam_07)) {
+                $this->db->where('id_jam_07', $energy_data->id_jam_07);
+                $this->db->delete('jam_07');
+            }
+            
+            // Finally delete from energy table
             $this->db->where('id_energy', $id_energy);
             $this->db->delete('energy');
             return true; // Return true if deletion is successful
         } else {
             return false; // Return false if ID Energy does not exist
         }
+    }
+
+    public function get_previous_id_energy($id_energy) {
+        // Mencari ID energy sebelumnya yang masih ada di database
+        // Query mencari id_energy terbesar yang lebih kecil dari parameter $id_energy
+        $this->db->select('id_energy');
+        $this->db->from('energy');
+        $this->db->where('id_energy <', $id_energy);
+        $this->db->order_by('id_energy', 'desc');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            $result = $query->row();
+            return $result->id_energy;
+        }
+        return NULL;
     }
 
 // Insert data baru ke tabel jam (15, 23, 07, 19)

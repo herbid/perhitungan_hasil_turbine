@@ -32,8 +32,8 @@ $akumulasi_sebelumnya_pln = 0;
 
 //--- turbine ---
 // Cek apakah tanggal saat ini adalah tanggal 1 atau bukan
-if ($tanggal_saat_ini == '01') {
-    // KONDISI TANGGAL 1: 
+if ($tanggal_saat_ini == '01' || !$previous_data) {
+    // KONDISI TANGGAL 1 atau TIDAK ADA DATA SEBELUMNYA: 
     // Di Excel baris pertama, tidak ada penjumlahan dengan baris atasnya.
     // Jadi akumulasi start dari 0.
     $akumulasi_sebelumnya_turbine = 0; 
@@ -44,13 +44,13 @@ if ($tanggal_saat_ini == '01') {
     $akumulasi_sebelumnya_turbine = $previous_data->month_turbine ?? 0;
 }
 //--- synchro ---
-if ($tanggal_saat_ini == '01') {
+if ($tanggal_saat_ini == '01' || !$previous_data) {
     $akumulasi_sebelumnya_synchro = 0; 
 } else {
     $akumulasi_sebelumnya_synchro = $previous_data->month_synchro ?? 0;
 }
 //--- pln ---
-if ($tanggal_saat_ini == '01') {
+if ($tanggal_saat_ini == '01' || !$previous_data) {
     $akumulasi_sebelumnya_pln = 0; 
 } else {
     $akumulasi_sebelumnya_pln = $previous_data->month_pln ?? 0;

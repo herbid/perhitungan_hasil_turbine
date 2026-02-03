@@ -81,11 +81,18 @@ public function tambah_hitungan() {
 
 
 public function mulai_hitung($id_energy = NULL) {
-    $previous_id = $id_energy - 1; // Asumsikan ID sebelumnya adalah ID - 1
     $energies = $this->m_hitung_turbine->detail_hitung($id_energy);
     if (!$energies) {
         show_error("Data dengan ID $id_energy tidak ditemukan.", 404, 'Kesalahan Data');
         return;
+    }
+
+    // Cari ID energy sebelumnya yang masih ada di database
+    $previous_id = $this->m_hitung_turbine->get_previous_id_energy($id_energy);
+    
+    // Jika tidak ada data sebelumnya, set ke NULL
+    if (!$previous_id) {
+        $previous_id = NULL;
     }
 
     $combined_data = $this->m_hitung_turbine->get_combined_energy_data($id_energy, $previous_id);

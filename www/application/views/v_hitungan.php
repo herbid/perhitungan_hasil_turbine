@@ -1,3 +1,28 @@
+<?php
+date_default_timezone_set('Asia/Jakarta');
+function tgl_indo($tanggal){
+    $bulan = array (
+        1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+        'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+    );
+    $hari = array (
+        1 => 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'
+    );
+    
+    $pecahkan = explode('-', $tanggal);
+    
+    // $pecahkan[0] = tanggal
+    // $pecahkan[1] = bulan
+    // $pecahkan[2] = tahun
+    
+    // Mendapatkan nama hari berdasarkan tanggal sekarang
+    $numHari = date('N', strtotime($tanggal));
+    
+    return $hari[$numHari] . ', ' . $pecahkan[0] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[2];
+}
+
+// Contoh Penggunaan:
+?>
 <div class="box">
             <div class="box-header">
               <!-- <h3 class="box-title">Data Table With Full Features</h3><br> -->
@@ -22,9 +47,10 @@
                 </thead>
                 <tbody>
                 <?php foreach ($energy as $key => $value): ?>
+                  
                 <tr>
                 <td data-order="<?php echo $value->time; ?>">
-                  <?php echo date('j F, Y ', strtotime($value->time)); ?></td>
+                  <?php echo tgl_indo(date('d-m-Y ', strtotime($value->time))); ?></td>
                   <td><span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span></td>
                   <td><span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span></td>
                   <td> <span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span></td>
@@ -87,15 +113,15 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h4 class="modal-title">Hapus <?= $value->time ?></h4>
+              <h1 class="modal-title">Hapus </h1>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
 
-            <h2>Anda Yakin Untuk Menghapus Hapus <?= $value->time ?> !!! </h2>	
-
+            <h2>Anda Yakin Untuk Menghapus :</h2>	
+            <h1 style="color: #FF5733;"><?= tgl_indo(date('d-m-Y ', strtotime($value->time))); ?> !!! </h1> 
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -108,8 +108,16 @@
     )
 
     //Date picker
+     //Date picker
     $('#datepicker').datepicker({
-      autoclose: true
+      autoclose: true,
+      endDate: new Date(),
+      format: 'dd/mm/yyyy'
+    }).on('changeDate', function(e) {
+      var selectedDate = $(this).val();
+      if (selectedDate) {
+        console.log('Tanggal Dipilih: ' + selectedDate);
+      }
     })
 
     //iCheck for checkbox and radio inputs

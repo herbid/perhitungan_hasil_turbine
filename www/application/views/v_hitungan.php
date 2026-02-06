@@ -51,9 +51,48 @@ function tgl_indo($tanggal){
                 <tr>
                 <td data-order="<?php echo $value->time; ?>">
                   <?php echo tgl_indo(date('d-m-Y ', strtotime($value->time))); ?></td>
-                  <td><span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span></td>
-                  <td><span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span></td>
-                  <td> <span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span></td>
+                  <td>
+                    <?php 
+                      $numHari = date('N', strtotime($value->time));
+                      // Rabu = 3
+                      if ($numHari == 3) {
+                        // Shift Pagi untuk Rabu menggunakan id_jam_19
+                        if (!empty($value->id_jam_19)): ?>
+                          <span class="label label-success" style="font-size: 14px;">Sudah Terisi</span>
+                        <?php else: ?>
+                          <span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span>
+                        <?php endif;
+                      } else {
+                        // Hari selain Rabu menggunakan id_jam_15
+                        if (!empty($value->id_jam_15)): ?>
+                          <span class="label label-success" style="font-size: 14px;">Sudah Terisi</span>
+                        <?php else: ?>
+                          <span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span>
+                        <?php endif;
+                      }
+                    ?>
+                  </td>
+                  <td>
+                    <?php 
+                      $numHari = date('N', strtotime($value->time));
+                      // Sembunyikan Shift Sore untuk Rabu
+                      if ($numHari != 3): ?>
+                        <?php if (!empty($value->id_jam_23)): ?>
+                          <span class="label label-success" style="font-size: 14px;">Sudah Terisi</span>
+                        <?php else: ?>
+                          <span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span>
+                        <?php endif; 
+                      else: ?>
+                        <span class="label label-secondary" style="font-size: 14px;">-</span>
+                      <?php endif; ?>
+                  </td>
+                  <td>
+                    <?php if (!empty($value->id_jam_07)): ?>
+                      <span class="label label-success" style="font-size: 14px;">Sudah Terisi</span>
+                    <?php else: ?>
+                      <span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span>
+                    <?php endif; ?>
+                  </td>
                   <td>
                   <a href="<?php echo base_url('hitungan_turbine/mulai_hitung/' . $value->id_energy); ?>" class="btn btn-warning">Edit</a>
                        <button type="button" class="btn btn-info">Detail</button>

@@ -36,7 +36,12 @@ class M_hitung_turbine extends CI_Model {
         // Return the ID of the newly inserted energy
         return $id_energy;
     }
-
+        // TAMBAHKAN FUNGSI INI
+        public function cek_tanggal_ada($tanggal) {
+            $this->db->where('time', $tanggal);
+            $query = $this->db->get('energy');
+            return ($query->num_rows() > 0); // Mengembalikan true jika sudah ada
+        }
     
   
     public function detail_hitung($id_energy) {

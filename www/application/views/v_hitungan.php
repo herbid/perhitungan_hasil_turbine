@@ -95,7 +95,9 @@ function tgl_indo($tanggal){
                   </td>
                   <td>
                   <a href="<?php echo base_url('hitungan_turbine/mulai_hitung/' . $value->id_energy); ?>" class="btn btn-warning">Edit</a>
-                       <button type="button" class="btn btn-info">Detail</button>
+                       <button type="button" class="btn btn-info" data-toggle="modal" 
+                       data-target="#detail<?= $value->id_energy ?>">Detail</button>
+                       
                        <button type="button" class="btn btn-danger" data-toggle="modal"
 							         data-target="#delete<?= $value->id_energy ?>">Hapus</button>
                     </td>
@@ -176,7 +178,50 @@ function tgl_indo($tanggal){
       </div>
       <?php } ?>
 
-          <!-- Add this script at the end of your view --><script>
+  <!-- /.modal detail -->
+      <?php foreach ($energy as $key => $value) { ?>
+      <div class="modal fade" role="dialog" aria-labelledby="myLargeModalLabel" id="detail<?= $value->id_energy ?>">
+        <div class="modal-dialog modal-lg ">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Detail Data</h4>
+          </div>
+            <div class="modal-body">
+<div class="box-body"> <table class="table table-bordered table-hover"> 
+  
+  
+            
+            <thead> 
+                <tr> 
+                  <th>TIME</th>
+                   <th>kWh Synchro</th>
+                    <th>kWh Turbine</th> 
+                    <th>Hasil Turbine</th> 
+                    <th>kWh PLN</th> 
+                    <th>Hasil PLN</th> 
+                    <!-- <th>AKSI</th> --> 
+                    </tr> 
+                  </thead> 
+                  <tbody>
+             
+            </div>
+            <div class="modal-footer justify-content-between">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+            </div>
+          
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <?php } ?>
+
+          <!-- Add this script at the end of your view -->
+           <script>
     function saveDate() {
     var selectedDate = $('#datepicker').val();
 

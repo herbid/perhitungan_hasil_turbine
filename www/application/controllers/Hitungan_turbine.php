@@ -12,9 +12,18 @@ class hitungan_turbine extends CI_Controller {
 
 	public function index()
 	{
+        $energy_list = $this->m_hitung_turbine->get_all_data();
+        
+        // Ambil detail data untuk setiap energy
+        $energy_details = array();
+        foreach ($energy_list as $e) {
+            $energy_details[$e->id_energy] = $this->m_hitung_turbine->get_detail_by_energy_id($e->id_energy);
+        }
+        
         $data=array(
             'judul'=>'Hitung Turbine',
-			'energy'=> $this->m_hitung_turbine->get_all_data(),
+			'energy'=> $energy_list,
+			'energy_details' => $energy_details,
 			'page'=>'v_hitungan',
         );
 		$this->load->view('v_template',$data,false);

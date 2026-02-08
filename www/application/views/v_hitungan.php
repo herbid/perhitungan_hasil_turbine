@@ -20,7 +20,6 @@ function tgl_indo($tanggal){
     
     return $hari[$numHari] . ', ' . $pecahkan[0] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[2];
 }
-
 // Contoh Penggunaan:
 ?>
 <div class="box">
@@ -189,22 +188,104 @@ function tgl_indo($tanggal){
               <h4 class="modal-title" id="myModalLabel">Detail Data</h4>
           </div>
             <div class="modal-body">
-<div class="box-body"> <table class="table table-bordered table-hover"> 
-  
-  
+     <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>kWh Synchro</th>
+              <th>kWh Turbine</th>
+              <th>Hasil Turbine</th>
+              <th>kWh PLN</th>
+              <th>Hasil PLN</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+            // Ambil detail data dari array yang sudah di-pass dari controller
+            $detail_data = isset($energy_details[$value->id_energy]) ? $energy_details[$value->id_energy] : null;
+          
+                echo "<tr>";
+                echo "<td>15:00</td>"; // No
+                echo "<td>" . ($detail_data && $detail_data->kwh_synchro_15 ? $detail_data->kwh_synchro_15 : 0) . "</td>";
+                echo "<td>" . ($detail_data && $detail_data->kwh_turbine_15 ? $detail_data->kwh_turbine_15 : 0) . "</td>"; // Kolom 2
+                echo "<td>" . ($detail_data && $detail_data->hasil_turbine_15 ? sprintf('%.3f', $detail_data->hasil_turbine_15) : 0) . "</td>"; // Kolom 3
+                echo "<td>" . ($detail_data && $detail_data->kwh_pln_15 ? $detail_data->kwh_pln_15 : 0) . "</td>"; // Kolom 4
+                echo "<td>" . ($detail_data && $detail_data->hasil_pln_15 ? sprintf('%.3f', $detail_data->hasil_pln_15) : 0) . "</td>"; // Kolom 5
+                echo "</tr>";
+
+                 echo "<tr>";
+                echo "<td>23:00</td>"; // No
+                echo "<td>" . ($detail_data && $detail_data->kwh_synchro_23 ? $detail_data->kwh_synchro_23 : 0) . "</td>"; // Kolom 1
+                echo "<td>" . ($detail_data && $detail_data->kwh_turbine_23 ? $detail_data->kwh_turbine_23 : 0) . "</td>"; // Kolom 2
+                echo "<td>" . ($detail_data && $detail_data->hasil_turbine_23 ? sprintf('%.3f', $detail_data->hasil_turbine_23) : 0) . "</td>"; // Kolom 3
+                echo "<td>" . ($detail_data && $detail_data->kwh_pln_23 ? $detail_data->kwh_pln_23 : 0) . "</td>"; // Kolom 4
+                echo "<td>" . ($detail_data && $detail_data->hasil_pln_23 ? sprintf('%.3f', $detail_data->hasil_pln_23) : 0) . "</td>"; // Kolom 5
+                echo "</tr>";
+                
+                 echo "<tr>";
+                echo "<td>07:00</td>"; // No
+                echo "<td>" . ($detail_data && $detail_data->kwh_synchro_07 ? $detail_data->kwh_synchro_07 : 0) . "</td>"; // Kolom 1
+                echo "<td>" . ($detail_data && $detail_data->kwh_turbine_07 ? $detail_data->kwh_turbine_07 : 0) . "</td>"; // Kolom 2
+                echo "<td>" . ($detail_data && $detail_data->hasil_turbine_07 ? sprintf('%.3f', $detail_data->hasil_turbine_07) : 0) . "</td>"; // Kolom 3
+                echo "<td>" . ($detail_data && $detail_data->kwh_pln_07 ? $detail_data->kwh_pln_07 : 0) . "</td>"; // Kolom 4
+                echo "<td>" . ($detail_data && $detail_data->hasil_pln_07 ? sprintf('%.3f', $detail_data->hasil_pln_07) : 0) . "</td>"; // Kolom 5
+                echo "</tr>";
+           
+            ?>
+            <thead>
+            <tr>
+              <th colspan="2">Jumlah operasi Turbine</th>
+              <th colspan="2">Jumlah operasi Synchro</th>
+              <th colspan="2">jumlah operasi PLN</th>
+            </tr>
+          </thead>
+           <tr>
+              <th colspan="2"><?php echo ($detail_data && $detail_data->turbine_jam ? $detail_data->turbine_jam : 0); ?></th>
+              <th colspan="2"><?php echo ($detail_data && $detail_data->synchro_jam ? $detail_data->synchro_jam : 0); ?></th>
+              <th colspan="2"><?php echo ($detail_data && $detail_data->pln_jam ? $detail_data->pln_jam : 0); ?></th>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Hasil</th>
+              <th>Turbine</th>
+              <th>Synchro</th>
+              <th>PLN</th>
+            </tr>
+          </thead>
+          <tbody>
+           <?php
+                echo "<tr>";
+                echo "<td>Average</td>"; // No
+                echo "<td>" . ($detail_data && $detail_data->avg_turbine ? sprintf('%.3f', $detail_data->avg_turbine) : 0) . "</td>"; // Kolom 1
+                echo "<td>" . ($detail_data && $detail_data->avg_synchro ? sprintf('%.3f', $detail_data->avg_synchro) : 0) . "</td>"; // Kolom 2
+                echo "<td>" . ($detail_data && $detail_data->avg_pln ? sprintf('%.3f', $detail_data->avg_pln) : 0) . "</td>"; // Kolom 3
+                
+                echo "</tr>";
+
+                 echo "<tr>";
+                echo "<td>Hari/Day</td>"; // No
+                echo "<td>" . ($detail_data && $detail_data->day_turbine ? sprintf('%.3f', $detail_data->day_turbine) : 0) . "</td>"; // Kolom 1
+                echo "<td>" . ($detail_data && $detail_data->day_synchro ? sprintf('%.3f', $detail_data->day_synchro) : 0) . "</td>"; // Kolom 2
+                echo "<td>" . ($detail_data && $detail_data->day_pln ? sprintf('%.3f', $detail_data->day_pln) : 0) . "</td>"; // Kolom 3
+                
+                echo "</tr>";
+                
+                 echo "<tr>";
+                echo "<td>Bulan/Month</td>"; // No
+                echo "<td>" . ($detail_data && $detail_data->month_turbine ? sprintf('%.3f', $detail_data->month_turbine) : 0) . "</td>"; // Kolom 1
+                echo "<td>" . ($detail_data && $detail_data->month_synchro ? sprintf('%.3f', $detail_data->month_synchro) : 0) . "</td>"; // Kolom 2
+                echo "<td>" . ($detail_data && $detail_data->month_pln ? sprintf('%.3f', $detail_data->month_pln) : 0) . "</td>"; // Kolom 3
             
-            <thead> 
-                <tr> 
-                  <th>TIME</th>
-                   <th>kWh Synchro</th>
-                    <th>kWh Turbine</th> 
-                    <th>Hasil Turbine</th> 
-                    <th>kWh PLN</th> 
-                    <th>Hasil PLN</th> 
-                    <!-- <th>AKSI</th> --> 
-                    </tr> 
-                  </thead> 
-                  <tbody>
+                echo "</tr>";
+           
+            ?>
+          </tbody>
+        </table>
+
              
             </div>
             <div class="modal-footer justify-content-between">

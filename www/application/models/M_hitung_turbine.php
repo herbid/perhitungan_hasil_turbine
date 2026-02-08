@@ -248,6 +248,28 @@ public function update_energy_link($id_energy, $col_jam, $id_jam_baru) {
     $this->db->update('energy', array($col_jam => $id_jam_baru));
 }
 
+// Ambil detail data per energy untuk ditampilkan di modal
+public function get_detail_by_energy_id($id_energy) {
+    $this->db->select('energy.id_energy, energy.time,
+        jam_15.kwh_synchro_15, jam_15.kwh_turbine_15, jam_15.kwh_pln_15, jam_15.hasil_turbine_15, jam_15.hasil_pln_15,
+        jam_23.kwh_synchro_23, jam_23.kwh_turbine_23, jam_23.kwh_pln_23, jam_23.hasil_turbine_23, jam_23.hasil_pln_23,
+        jam_19.kwh_synchro_19, jam_19.kwh_turbine_19, jam_19.kwh_pln_19, jam_19.hasil_turbine_19, jam_19.hasil_pln_19,
+        jam_07.kwh_synchro_07, jam_07.kwh_turbine_07, jam_07.kwh_pln_07, jam_07.hasil_turbine_07, jam_07.hasil_pln_07,
+        hasil.avg_turbine, hasil.avg_synchro, hasil.avg_pln,
+        hasil.day_turbine, hasil.day_synchro, hasil.day_pln,
+        hasil.month_turbine, hasil.month_synchro, hasil.month_pln,
+        hours.turbine_jam, hours.synchro_jam, hours.pln_jam');
+    $this->db->from('energy');
+    $this->db->where('energy.id_energy', $id_energy);
+    $this->db->join('jam_15', 'energy.id_jam_15 = jam_15.id_jam_15', 'left');
+    $this->db->join('jam_23', 'energy.id_jam_23 = jam_23.id_jam_23', 'left');
+    $this->db->join('jam_19', 'energy.id_jam_19 = jam_19.id_jam_19', 'left');
+    $this->db->join('jam_07', 'energy.id_jam_07 = jam_07.id_jam_07', 'left');
+    $this->db->join('hasil', 'hasil.id_energy = energy.id_energy', 'left');
+    $this->db->join('hours', 'hasil.id_hours = hours.id_hours', 'left');
+    
+    return $this->db->get()->row();
+}
 
 }
 ?>

@@ -47,7 +47,15 @@ public function tambah_hitungan() {
     if (empty($tanggal)) {
         // Return appropriate HTTP status code for validation failure
         $this->output->set_status_header(400);
-        echo json_encode(array('error' => 'Tanggal harus diisi'));
+        echo json_encode(array('success' => false, 'error' => 'Tanggal harus diisi'));
+        return;
+    }
+
+    // Validasi apakah tanggal sudah ada di database
+    if ($this->m_hitung_turbine->cek_tanggal_ada($tanggal)) {
+        // Jika tanggal sudah ada, return error
+        $this->output->set_status_header(400);
+        echo json_encode(array('success' => false, 'error' => 'Tanggal yang sama sudah ada di database. Silakan pilih tanggal lain.'));
         return;
     }
 

@@ -334,23 +334,35 @@ function tgl_indo($tanggal){
         success: function(response) {
             console.log(response);
 
-            // Close the modal
-            $('#modal-hitung').modal('hide');
-
-            // Redirect to a different page if needed
             if (response.success) {
+                // Close the modal
+                $('#modal-hitung').modal('hide');
+                
                 // Ambil id_energy dari respons server
                 var idEnergy = response.id_energy;
                 // Arahkan ke halaman mulai_hitung dengan menyertakan id_energy
                 window.location.href = "<?php echo base_url('hitungan_turbine/mulai_hitung/') ?>" + idEnergy;
+            } else {
+                // Tampilkan pesan error jika ada
+                alert(response.error || 'Terjadi kesalahan saat menyimpan tanggal');
+                // Re-enable button setelah error
+                $('button').prop('disabled', false);
             }
         },
         error: function(xhr, status, error) {
             console.error(xhr.responseText);
+            // Parse error response dari server
+            try {
+                var response = JSON.parse(xhr.responseText);
+                alert(response.error || 'Terjadi kesalahan');
+            } catch(e) {
+                alert('Terjadi kesalahan pada server');
+            }
+            // Re-enable button setelah error
+            $('button').prop('disabled', false);
         },
         complete: function() {
-            // Re-enable the button after the request is complete
-            $('button').prop('disabled', false);
+            // Re-enable the button after the request is complete (jika belum di-enable di error/success)
         }
     });
 }

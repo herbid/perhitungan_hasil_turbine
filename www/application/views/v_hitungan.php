@@ -202,8 +202,9 @@ function tgl_indo($tanggal){
           <tbody>
             <?php
             // Ambil detail data dari array yang sudah di-pass dari controller
+            $numHari = date('N', strtotime($value->time));
             $detail_data = isset($energy_details[$value->id_energy]) ? $energy_details[$value->id_energy] : null;
-          
+            if ($numHari != 3): 
                 echo "<tr>";
                 echo "<td>15:00</td>"; // No
                 echo "<td>" . ($detail_data && $detail_data->kwh_synchro_15 ? $detail_data->kwh_synchro_15 : 0) . "</td>";
@@ -221,7 +222,16 @@ function tgl_indo($tanggal){
                 echo "<td>" . ($detail_data && $detail_data->kwh_pln_23 ? $detail_data->kwh_pln_23 : 0) . "</td>"; // Kolom 4
                 echo "<td>" . ($detail_data && $detail_data->hasil_pln_23 ? sprintf('%.3f', $detail_data->hasil_pln_23) : 0) . "</td>"; // Kolom 5
                 echo "</tr>";
-                
+                else:
+                  echo "<tr>";
+                echo "<td>19:00</td>"; // No
+                echo "<td>" . ($detail_data && $detail_data->kwh_synchro_19 ? $detail_data->kwh_synchro_19 : 0) . "</td>"; // Kolom 1
+                echo "<td>" . ($detail_data && $detail_data->kwh_turbine_19 ? $detail_data->kwh_turbine_19 : 0) . "</td>"; // Kolom 2
+                echo "<td>" . ($detail_data && $detail_data->hasil_turbine_19 ? sprintf('%.3f', $detail_data->hasil_turbine_19) : 0) . "</td>"; // Kolom 3
+                echo "<td>" . ($detail_data && $detail_data->kwh_pln_19 ? $detail_data->kwh_pln_19 : 0) . "</td>"; // Kolom 4
+                echo "<td>" . ($detail_data && $detail_data->hasil_pln_19 ? sprintf('%.3f', $detail_data->hasil_pln_19) : 0) . "</td>"; // Kolom 5
+                echo "</tr>";
+                endif ;
                  echo "<tr>";
                 echo "<td>07:00</td>"; // No
                 echo "<td>" . ($detail_data && $detail_data->kwh_synchro_07 ? $detail_data->kwh_synchro_07 : 0) . "</td>"; // Kolom 1

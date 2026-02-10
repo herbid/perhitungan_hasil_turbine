@@ -36,11 +36,9 @@ class Auth extends CI_Controller {
         }
     }
 
-
-    public function logout_user(){
-
-// Hapus data sesi atau lakukan operasi logout lainnya
-$this->session->sess_destroy();
-// Redirect ke halaman login
-redirect('auth/login');}
-}
+        public function logout_user(){
+        // Hapus data sesi atau lakukan operasi logout lainnya
+        $this->session->sess_destroy();
+        // Redirect ke halaman login
+        redirect('auth/login');}
+        }

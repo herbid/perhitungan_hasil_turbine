@@ -116,7 +116,8 @@ function tgl_indo($tanggal){
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span></button>
+                 <span aria-hidden="true">&times;</span>
+                </button>
                 <h4 class="modal-title">Pilih Hitung Tanggal Berapa?</h4>
               </div>
 
@@ -153,7 +154,7 @@ function tgl_indo($tanggal){
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h1 class="modal-title">Hapus </h1>
+              <h4 class="modal-title" id="myModalLabel">Hapus Data</h4>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>

@@ -46,7 +46,26 @@
 
 <script>
   $(document).ready(function () {
-    $('.sidebar-menu').tree()
+    $('.sidebar-menu').tree();
+    
+    // Initialize Push Menu
+    $('[data-toggle="push-menu"]').pushMenu({
+      collapseScreenSize: 767,
+      expandOnHover: false,
+      expandTransitionDelay: 200
+    });
+    
+    // Direct click handler for sidebar toggle
+    $(document).on('click', '[data-toggle="push-menu"]', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var isOpen = $('body').hasClass('sidebar-open');
+      if (isOpen) {
+        $('body').removeClass('sidebar-open').addClass('sidebar-collapse');
+      } else {
+        $('body').removeClass('sidebar-collapse').addClass('sidebar-open');
+      }
+    });
   })
 </script>
 <!-- page script -->

@@ -24,14 +24,6 @@
             </span>
           </a>
         </li>
-       
-        <li>
-          <a href="<?=base_url('user')?>">
-            <i class="fa fa-th"></i> <span>Widgets</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>
         
         <li>
           <a href="<?=base_url('hitungan_turbine')?>">
@@ -41,8 +33,34 @@
           </a>
         </li>
       
+         <li>
+        <a href="#" data-toggle="modal" data-target="#modal-logout">
+          <i class="fa fa-close"></i> <span>Keluar</span>
+          <span class="pull-right-container"></span>
+        </a>
+      </li>
 
       </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
+
+  <div class="modal fade" id="modal-logout">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Konfirmasi Keluar</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>Apakah Anda yakin ingin keluar dari aplikasi?</h1>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <a href="<?=base_url('auth/logout_user')?>" class="btn btn-danger">Keluar</a>
+      </div>
+    </div>
+    </div>
+  </div>

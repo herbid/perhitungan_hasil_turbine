@@ -251,9 +251,9 @@ function tgl_indo($tanggal){
             </tr>
           </thead>
            <tr>
-              <th colspan="2"><?php echo ($detail_data && $detail_data->turbine_jam ? $detail_data->turbine_jam : 0); ?></th>
-              <th colspan="2"><?php echo ($detail_data && $detail_data->synchro_jam ? $detail_data->synchro_jam : 0); ?></th>
-              <th colspan="2"><?php echo ($detail_data && $detail_data->pln_jam ? $detail_data->pln_jam : 0); ?></th>
+              <th colspan="2"><?php echo ($detail_data && $detail_data->turbine_jam ? $detail_data->turbine_jam : 0); ?> Jam </th>
+              <th colspan="2"><?php echo ($detail_data && $detail_data->synchro_jam ? $detail_data->synchro_jam : 0); ?> Jam</th>
+              <th colspan="2"><?php echo ($detail_data && $detail_data->pln_jam ? $detail_data->pln_jam : 0); ?> Jam</th>
             </tr>
           </tbody>
         </table>

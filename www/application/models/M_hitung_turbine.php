@@ -10,9 +10,17 @@ class M_hitung_turbine extends CI_Model {
 
     public function get_all_data(){
       
-        $this->db->select('*');
+        $this->db->select('energy.*, 
+            jam_15.kwh_synchro_15,
+            jam_23.kwh_synchro_23,
+            jam_19.kwh_synchro_19,
+            jam_07.kwh_synchro_07');
         
         $this->db->from('energy');
+        $this->db->join('jam_15', 'energy.id_jam_15 = jam_15.id_jam_15', 'left');
+        $this->db->join('jam_23', 'energy.id_jam_23 = jam_23.id_jam_23', 'left');
+        $this->db->join('jam_19', 'energy.id_jam_19 = jam_19.id_jam_19', 'left');
+        $this->db->join('jam_07', 'energy.id_jam_07 = jam_07.id_jam_07', 'left');
   
         $this->db->order_by('time', 'desc');
         return $this->db->get()->result();

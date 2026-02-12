@@ -56,14 +56,14 @@ function tgl_indo($tanggal){
                       // Rabu = 3
                       if ($numHari == 3) {
                         // Shift Pagi untuk Rabu menggunakan id_jam_19
-                        if (!empty($value->id_jam_19)): ?>
+                        if ($value->kwh_synchro_19 != 0): ?>
                           <span class="label label-success" style="font-size: 14px;">Sudah Terisi</span>
                         <?php else: ?>
                           <span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span>
                         <?php endif;
                       } else {
                         // Hari selain Rabu menggunakan id_jam_15
-                        if (!empty($value->id_jam_15)): ?>
+                        if ($value->kwh_synchro_15 != 0): ?>
                           <span class="label label-success" style="font-size: 14px;">Sudah Terisi</span>
                         <?php else: ?>
                           <span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span>
@@ -76,7 +76,7 @@ function tgl_indo($tanggal){
                       $numHari = date('N', strtotime($value->time));
                       // Sembunyikan Shift Sore untuk Rabu
                       if ($numHari != 3): ?>
-                        <?php if (!empty($value->id_jam_23)): ?>
+                        <?php if ($value->kwh_synchro_23 != 0): ?>
                           <span class="label label-success" style="font-size: 14px;">Sudah Terisi</span>
                         <?php else: ?>
                           <span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span>
@@ -86,7 +86,7 @@ function tgl_indo($tanggal){
                       <?php endif; ?>
                   </td>
                   <td>
-                    <?php if (!empty($value->id_jam_07)): ?>
+                    <?php if ($value->kwh_synchro_07 != 0): ?>
                       <span class="label label-success" style="font-size: 14px;">Sudah Terisi</span>
                     <?php else: ?>
                       <span class="label label-danger" style="font-size: 14px;">Belum Di Isi</span>

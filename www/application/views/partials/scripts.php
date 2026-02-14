@@ -238,7 +238,7 @@
     
     $('#line-chart').bind('plothover', function (event, pos, item) {
       if (item) {
-        var nilaiKWh = item.datapoint[1].toFixed(2);
+        var nilaiKWh = item.datapoint[1].toFixed(3);
         $('#line-chart-tooltip').html(nilaiKWh + ' kWh')
           .css({ top: item.pageY - 40, left: item.pageX + 5 })
           .fadeIn(200)
@@ -307,7 +307,7 @@
     
     $('#bar-chart').bind('plothover', function (event, pos, item) {
       if (item) {
-        var nilaiKWh = item.datapoint[1].toFixed(2);
+        var nilaiKWh = item.datapoint[1].toFixed(3);
         $('#bar-chart-tooltip').html(nilaiKWh + ' kWh')
           .css({ top: item.pageY - 40, left: item.pageX + 5 })
           .fadeIn(200)

@@ -101,22 +101,22 @@ if ($tanggal_saat_ini == '01' || !$previous_data) {
                  <!-- TAMPILKAN 15:00 dan 23:00 jika bukan Rabu -->
                 <tr>
                   <td>15:00</td>
-                  <td><input type="number" name="Synchro_15" class="form-control"  placeholder="Masukan kWh Synchro" value="<?= $current_data->kwh_synchro_15 ?? '' ?>"></td>                  
-                  <td><input type="number" name="Turbine_15" class="form-control"  placeholder="Masukan kWh Turbine" value="<?= $current_data->kwh_turbine_15 ?? '' ?>"></td>
+                  <td><input type="number" name="Synchro_15" class="form-control"  placeholder="Masukan Input kWh Synchro" value="<?= $current_data->kwh_synchro_15 ?? '' ?>"></td>                  
+                  <td><input type="number" name="Turbine_15" class="form-control"  placeholder="Masukan Input kWh Turbine" value="<?= $current_data->kwh_turbine_15 ?? '' ?>"></td>
                   <td data-hasil="hasil_turbine_15"><?= $current_data->hasil_turbine_15 ?? '' ?></td>
                   
-                  <td><input type="number" name="PLN_15" class="form-control"  placeholder="Masukan kWh PLN" value="<?= $current_data->kwh_pln_15 ?? '' ?>"></td>
+                  <td><input type="number" name="PLN_15" class="form-control"  placeholder="Masukan Input kWh PLN" value="<?= $current_data->kwh_pln_15 ?? '' ?>"></td>
                   <td data-hasil="hasil_pln_15"><?= $current_data->hasil_pln_15 ?? '' ?></td>
                   <!-- <td> <button type="button" class="btn btn-success">simpan</button></td> -->
 
                 </tr>
                 <tr>
                   <td>23:00</td>
-                  <td><input type="number" name="Synchro_23" class="form-control"  placeholder="Masukan kWh Synchro" value="<?= $current_data->kwh_synchro_23 ?? '' ?>"></td>
-                  <td><input type="number" name="Turbine_23" class="form-control"  placeholder="Masukan kWh Turbine" value="<?= $current_data->kwh_turbine_23 ?? '' ?>"></td>
+                  <td><input type="number" name="Synchro_23" class="form-control"  placeholder="Masukan Input kWh Synchro" value="<?= $current_data->kwh_synchro_23 ?? '' ?>"></td>
+                  <td><input type="number" name="Turbine_23" class="form-control"  placeholder="Masukan Input kWh Turbine" value="<?= $current_data->kwh_turbine_23 ?? '' ?>"></td>
                   <td data-hasil="hasil_turbine_23"><?= $current_data->hasil_turbine_23 ?? '' ?></td>
                   
-                  <td><input type="number" name="PLN_23" class="form-control"  placeholder="Masukan kWh PLN" value="<?= $current_data->kwh_pln_23 ?? '' ?>"></td>
+                  <td><input type="number" name="PLN_23" class="form-control"  placeholder="Masukan Input kWh PLN" value="<?= $current_data->kwh_pln_23 ?? '' ?>"></td>
                   <td data-hasil="hasil_pln_23"><?= $current_data->hasil_pln_23 ?? '' ?></td>
                   <!-- <td> <button type="button" class="btn btn-success">simpan</button></td> -->
                 </tr>
@@ -125,21 +125,21 @@ if ($tanggal_saat_ini == '01' || !$previous_data) {
 
                   <tr>
                     <td>19:00</td>
-                    <td><input type="number" name="Synchro_19" class="form-control" placeholder="Masukan kWh Synchro" value="<?= $current_data->kwh_synchro_19 ?? '' ?>"></td>
-                    <td><input type="number" name="Turbine_19" class="form-control" placeholder="Masukan kWh Turbine" value="<?= $current_data->kwh_turbine_19 ?? '' ?>"></td>
+                    <td><input type="number" name="Synchro_19" class="form-control" placeholder="Masukan Input kWh Synchro" value="<?= $current_data->kwh_synchro_19 ?? '' ?>"></td>
+                    <td><input type="number" name="Turbine_19" class="form-control" placeholder="Masukan Input kWh Turbine" value="<?= $current_data->kwh_turbine_19 ?? '' ?>"></td>
                     <td data-hasil="hasil_turbine_19"><?= $current_data->hasil_turbine_19 ?? '' ?></td>
-                    <td><input type="number" name="PLN_19" class="form-control" placeholder="Masukan kWh PLN" value="<?= $current_data->kwh_pln_19 ?? '' ?>"></td>
+                    <td><input type="number" name="PLN_19" class="form-control" placeholder="Masukan  kWh PLN" value="<?= $current_data->kwh_pln_19 ?? '' ?>"></td>
                     <td data-hasil="hasil_pln_19"><?= $current_data->hasil_pln_19 ?? '' ?></td>
                   </tr>
 
             <?php endif; ?>
                 <tr>
                   <td>07:00</td>
-                  <td><input type="number" name="Synchro_07" class="form-control"  placeholder="Masukan kWh Synchro" value="<?= $current_data->kwh_synchro_07 ?? '' ?>"></td>
-                  <td><input type="number" name="Turbine_07" class="form-control"  placeholder="Masukan kWh Turbine" value="<?= $current_data->kwh_turbine_07 ?? '' ?>"></td>
+                  <td><input type="number" name="Synchro_07" class="form-control"  placeholder="Masukan Input kWh Synchro" value="<?= $current_data->kwh_synchro_07 ?? '' ?>"></td>
+                  <td><input type="number" name="Turbine_07" class="form-control"  placeholder="Masukan Input kWh Turbine" value="<?= $current_data->kwh_turbine_07 ?? '' ?>"></td>
                   <td data-hasil="hasil_turbine_07"><?= $current_data->hasil_turbine_07 ?? '' ?></td>
 
-                  <td><input type="number" name="PLN_07" class="form-control"  placeholder="Masukan kWh PLN" value="<?= $current_data->kwh_pln_07 ?? '' ?>"></td>
+                  <td><input type="number" name="PLN_07" class="form-control"  placeholder="Masukan Input kWh PLN" value="<?= $current_data->kwh_pln_07 ?? '' ?>"></td>
                   <td data-hasil="hasil_pln_07"><?= $current_data->hasil_pln_07 ?? '' ?></td>
                   <!-- <td> <button type="button" class="btn btn-success">simpan</button></td> -->
 
@@ -171,21 +171,21 @@ if ($tanggal_saat_ini == '01' || !$previous_data) {
             <div class="col-md-4">
               <div class="form-group">
                 <label>TURBINE</label>
-                <input type="number" name="jam_operasi_turbine" class="form-control"  placeholder="Jumlah Total Jam Operasi Turbine" value="<?= $current_data->turbine_jam ?? '' ?>">
+                <input type="number" name="jam_operasi_turbine" class="form-control"  placeholder="Masukan Input Jumlah Total Jam Operasi Turbine" value="<?= $current_data->turbine_jam ?? '' ?>">
               </div>
             </div>
            
             <div class="col-md-4">
               <div class="form-group">
                 <label>SYNCHRO</label>
-                <input type="number" name="jam_operasi_synchro" class="form-control"  placeholder="Jumlah Total Jam Operasi Synchro" value="<?= $current_data->synchro_jam ?? '' ?>">
+                <input type="number" name="jam_operasi_synchro" class="form-control"  placeholder="Masukan Input Jumlah Total Jam Operasi Synchro" value="<?= $current_data->synchro_jam ?? '' ?>">
               </div>
             </div>
 
             <div class="col-md-4">
               <div class="form-group">
                 <label>PLN</label>
-                <input type="number" name="jam_operasi_pln" class="form-control"  placeholder="Jumlah Total Jam Operasi PLN" value="<?= $current_data->pln_jam ?? '' ?>">
+                <input type="number" name="jam_operasi_pln" class="form-control"  placeholder="Masukan Input Jumlah Total Jam Operasi PLN" value="<?= $current_data->pln_jam ?? '' ?>">
               </div>
             </div>
 

@@ -12,7 +12,7 @@
                             <h3><?php echo sprintf('%.3f', $day_turbine ?: 0); ?><sup style="font-size: 20px">  kWh</sup></h3>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-gear-b"></i>
+                                <i class="ion ion-nuclear"></i>
                             </div>
                             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                         </div>

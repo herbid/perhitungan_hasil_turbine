@@ -153,7 +153,7 @@
       checkboxClass: 'icheckbox_minimal-blue',
       radioClass   : 'iradio_minimal-blue'
     })
-    //Red color scheme for iCheck
+    //Red color scheme for iCheck  
     $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
       checkboxClass: 'icheckbox_minimal-red',
       radioClass   : 'iradio_minimal-red'
@@ -184,22 +184,18 @@
      * LINE CHART
      * ----------
      */
-    //LINE randomly generated data
-
-    var sin = [], cos = []
-    for (var i = 0; i < 14; i += 0.5) {
-      sin.push([i, Math.sin(i)])
-      cos.push([i, Math.cos(i)])
+    
+    // Ambil data line chart dari PHP (day_pln)
+    var lineChartDataJSON = <?php echo isset($line_chart_data) ? $line_chart_data : '[]'; ?>;
+    
+    // Persiapan data untuk line chart
+    var line_data = {
+      data : lineChartDataJSON.length > 0 ? lineChartDataJSON : [],
+      color: '#00c0ef',
+      label: 'Export PLN (kWh)'
     }
-    var line_data1 = {
-      data : sin,
-      color: '#3c8dbc'
-    }
-    var line_data2 = {
-      data : cos,
-      color: '#00c0ef'
-    }
-    $.plot('#line-chart', [line_data1, line_data2], {
+    
+    $.plot('#line-chart', [line_data], {
       grid  : {
         hoverable  : true,
         borderColor: '#f3f3f3',
@@ -217,34 +213,38 @@
       },
       lines : {
         fill : false,
-        color: ['#3c8dbc', '#f56954']
+        color: '#00c0ef'
       },
       yaxis : {
         show: true
       },
       xaxis : {
+        mode      : 'categories',
         show: true
       }
     })
-    //Initialize tooltip on hover
+    
+    // Tampilkan tooltip dengan nilai ketika hover di line chart
     $('<div class="tooltip-inner" id="line-chart-tooltip"></div>').css({
       position: 'absolute',
       display : 'none',
-      opacity : 0.8
+      opacity : 0.8,
+      backgroundColor: '#000',
+      color: '#fff',
+      padding: '5px 10px',
+      borderRadius: '3px',
+      fontSize: '12px'
     }).appendTo('body')
+    
     $('#line-chart').bind('plothover', function (event, pos, item) {
-
       if (item) {
-        var x = item.datapoint[0].toFixed(2),
-            y = item.datapoint[1].toFixed(2)
-
-        $('#line-chart-tooltip').html(item.series.label + ' of ' + x + ' = ' + y)
-          .css({ top: item.pageY + 5, left: item.pageX + 5 })
+        var nilaiKWh = item.datapoint[1].toFixed(2);
+        $('#line-chart-tooltip').html(nilaiKWh + ' kWh')
+          .css({ top: item.pageY - 40, left: item.pageX + 5 })
           .fadeIn(200)
       } else {
         $('#line-chart-tooltip').hide()
       }
-
     })
     /* END LINE CHART */
   
@@ -253,15 +253,32 @@
      * ---------
      */
 
-    var bar_data = {
-      data : [['January', 10], ['February', 8], ['March', 4], ['April', 13], ['May', 17], ['June', 9], ['July', 6],],
-      color: '#3c8dbc'
+    // Get chart data from PHP variable
+    // Format data: [['Tanggal', nilai_production], ...]
+    var chartDataJSON = <?php echo isset($chart_data) ? $chart_data : '[]'; ?>;
+    
+    // Inisialisasi bar chart dengan data dari database
+    var bar_data;
+    if (chartDataJSON && chartDataJSON.length > 0) {
+      // Menggunakan data actual dari database (day_turbine dengan tanggal)
+      bar_data = {
+        data : chartDataJSON,
+        color: '#3c8dbc'
+      };
+    } else {
+      // Tidak ada data dari database - tampilkan chart kosong
+      bar_data = {
+        data : [],
+        color: '#3c8dbc'
+      };
     }
+    
     $.plot('#bar-chart', [bar_data], {
       grid  : {
         borderWidth: 1,
         borderColor: '#f3f3f3',
-        tickColor  : '#f3f3f3'
+        tickColor  : '#f3f3f3',
+        hoverable  : true
       },
       series: {
         bars: {
@@ -273,6 +290,29 @@
       xaxis : {
         mode      : 'categories',
         tickLength: 0
+      }
+    })
+    
+    // Tampilkan tooltip dengan nilai ketika hover di bar chart
+    $('<div class="tooltip-inner" id="bar-chart-tooltip"></div>').css({
+      position: 'absolute',
+      display : 'none',
+      opacity : 0.8,
+      backgroundColor: '#000',
+      color: '#fff',
+      padding: '5px 10px',
+      borderRadius: '3px',
+      fontSize: '12px'
+    }).appendTo('body')
+    
+    $('#bar-chart').bind('plothover', function (event, pos, item) {
+      if (item) {
+        var nilaiKWh = item.datapoint[1].toFixed(2);
+        $('#bar-chart-tooltip').html(nilaiKWh + ' kWh')
+          .css({ top: item.pageY - 40, left: item.pageX + 5 })
+          .fadeIn(200)
+      } else {
+        $('#bar-chart-tooltip').hide()
       }
     })
     /* END BAR CHART */

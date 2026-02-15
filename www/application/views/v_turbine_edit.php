@@ -12,11 +12,18 @@ $nama_hari = array(
     'Saturday' => 'Sabtu'
 );
 
-// Mendapatkan nama hari dalam bahasa Indonesia
-$nama_hari_indonesia = $nama_hari[date('l', strtotime($energies->time))];
+// Parse tanggal menggunakan DateTime untuk menghindari ambiguity
+$date_obj = DateTime::createFromFormat('Y-m-d', $energies->time);
+if ($date_obj === false) {
+    // Jika format YYYY-MM-DD gagal, coba format alternatif
+    $date_obj = new DateTime($energies->time);
+}
 
-// Format tanggal dengan nama hari dalam bahasa Indonesia
-$tanggal_indonesia = date('d-F-Y', strtotime($energies->time));
+// Mendapatkan nama hari dalam bahasa Indonesia
+$nama_hari_indonesia = $nama_hari[$date_obj->format('l')];
+
+// Format tanggal dengan nama hari dalam bahasa Indonesia (Indonesian format: DD-Month-YYYY)
+$tanggal_indonesia = $date_obj->format('d-F-Y');
 
 // Menampilkan tanggal dengan format yang diminta (hari, tanggal bulan tahun)
 ?>

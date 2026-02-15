@@ -12,18 +12,25 @@ $nama_hari = array(
     'Saturday' => 'Sabtu'
 );
 
-// Mendapatkan nama hari dalam bahasa Indonesia
-$nama_hari_indonesia = $nama_hari[date('l', strtotime($energies->time))];
+// Parse tanggal menggunakan DateTime untuk menghindari ambiguity
+$date_obj = DateTime::createFromFormat('Y-m-d', $energies->time);
+if ($date_obj === false) {
+    // Jika format YYYY-MM-DD gagal, coba format alternatif
+    $date_obj = new DateTime($energies->time);
+}
 
-// Format tanggal dengan nama hari dalam bahasa Indonesia
-$tanggal_indonesia = date('d-F-Y', strtotime($energies->time));
+// Mendapatkan nama hari dalam bahasa Indonesia
+$nama_hari_indonesia = $nama_hari[$date_obj->format('l')];
+
+// Format tanggal dengan nama hari dalam bahasa Indonesia (Indonesian format: DD-Month-YYYY)
+$tanggal_indonesia = $date_obj->format('d-F-Y');
 
 // menampilakan data id yang di klik dan data ida sebelumnya 
 $current_data  = isset($combined_data[0]) ? $combined_data[0] : null;
 $previous_data = isset($combined_data[1]) ? $combined_data[1] : null;
 
 // Ambil tanggal hari ini dari data (misal: "01", "05", "31")
-$tanggal_saat_ini = date('d', strtotime($energies->time));
+$tanggal_saat_ini = $date_obj->format('d');
 
 // Variabel untuk menyimpan akumulasi bulan lalu (Data Excel baris sebelumnya)
 $akumulasi_sebelumnya_turbine = 0;

@@ -51,8 +51,21 @@ public function tambah_hitungan() {
         return;
     }
 
+    // Konversi format tanggal dari DD/MM/YYYY ke YYYY-MM-DD menggunakan DateTime
+    try {
+        $datetime = DateTime::createFromFormat('d/m/Y', $tanggal);
+        if ($datetime === false) {
+            throw new Exception('Format tanggal tidak valid');
+        }
+        $tanggal_db = $datetime->format('Y-m-d');
+    } catch (Exception $e) {
+        $this->output->set_status_header(400);
+        echo json_encode(array('success' => false, 'error' => 'Format tanggal tidak valid. Gunakan format DD/MM/YYYY'));
+        return;
+    }
+
     // Validasi apakah tanggal sudah ada di database
-    if ($this->m_hitung_turbine->cek_tanggal_ada($tanggal)) {
+    if ($this->m_hitung_turbine->cek_tanggal_ada($tanggal_db)) {
         // Jika tanggal sudah ada, return error
         $this->output->set_status_header(400);
         echo json_encode(array('success' => false, 'error' => 'Tanggal yang sama sudah ada di database. Silakan pilih tanggal lain.'));
@@ -67,7 +80,7 @@ public function tambah_hitungan() {
         // ... tambahkan kolom-kolom lainnya jika diperlukan
     );
 
-    $id_energy = $this->m_hitung_turbine->add_hitungan($tanggal, $data_jam);
+    $id_energy = $this->m_hitung_turbine->add_hitungan($tanggal_db, $data_jam);
     echo json_encode(array('success' => true, 'id_energy' => $id_energy));
 }
 

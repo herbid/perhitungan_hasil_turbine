@@ -1,5 +1,32 @@
 <?php
 date_default_timezone_set('Asia/Jakarta');
+
+// Helper function untuk mendapatkan nomor hari dari tanggal (1-7)
+function get_day_number($tanggal) {
+    try {
+        $date_obj = DateTime::createFromFormat('Y-m-d', $tanggal);
+        if ($date_obj === false) {
+            $date_obj = new DateTime($tanggal);
+        }
+        return (int)$date_obj->format('N');
+    } catch (Exception $e) {
+        return date('N', strtotime($tanggal));
+    }
+}
+
+// Helper function untuk format tanggal ke format DD-Month-YYYY
+function format_tanggal_display($tanggal) {
+    try {
+        $date_obj = DateTime::createFromFormat('Y-m-d', $tanggal);
+        if ($date_obj === false) {
+            $date_obj = new DateTime($tanggal);
+        }
+        return $date_obj->format('d-m-Y');
+    } catch (Exception $e) {
+        return date('d-m-Y', strtotime($tanggal));
+    }
+}
+
 function tgl_indo($tanggal){
     $bulan = array (
         1 => 'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
@@ -15,8 +42,18 @@ function tgl_indo($tanggal){
     // $pecahkan[1] = bulan
     // $pecahkan[2] = tahun
     
-    // Mendapatkan nama hari berdasarkan tanggal sekarang
-    $numHari = date('N', strtotime($tanggal));
+    // Mendapatkan nama hari menggunakan DateTime
+    try {
+        $date_obj = DateTime::createFromFormat('d-m-Y', $tanggal);
+        if ($date_obj === false) {
+            // Coba format alternatif jika gagal
+            $date_obj = new DateTime($tanggal);
+        }
+        $numHari = (int)$date_obj->format('N');
+    } catch (Exception $e) {
+        // Fallback jika DateTime gagal
+        $numHari = date('N', strtotime($tanggal));
+    }
     
     return $hari[$numHari] . ', ' . $pecahkan[0] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[2];
 }
@@ -49,10 +86,10 @@ function tgl_indo($tanggal){
                   
                 <tr>
                 <td data-order="<?php echo $value->time; ?>">
-                  <?php echo tgl_indo(date('d-m-Y ', strtotime($value->time))); ?></td>
+                  <?php echo tgl_indo(format_tanggal_display($value->time)); ?></td>
                   <td>
                     <?php 
-                      $numHari = date('N', strtotime($value->time));
+                      $numHari = get_day_number($value->time);
                       // Rabu = 3
                       if ($numHari == 3) {
                         // Shift Pagi untuk Rabu menggunakan id_jam_19
@@ -73,7 +110,7 @@ function tgl_indo($tanggal){
                   </td>
                   <td>
                     <?php 
-                      $numHari = date('N', strtotime($value->time));
+                      $numHari = get_day_number($value->time);
                       // Sembunyikan Shift Sore untuk Rabu
                       if ($numHari != 3): ?>
                         <?php if ($value->kwh_synchro_23 != 0): ?>
@@ -162,7 +199,7 @@ function tgl_indo($tanggal){
             <div class="modal-body">
 
             <h2>Anda Yakin Untuk Menghapus :</h2>	
-            <h1 style="color: #FF5733;"><?= tgl_indo(date('d-m-Y ', strtotime($value->time))); ?> !!! </h1> 
+            <h1 style="color: #FF5733;"><?= tgl_indo(format_tanggal_display($value->time)); ?> !!! </h1> 
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -203,7 +240,7 @@ function tgl_indo($tanggal){
           <tbody>
             <?php
             // Ambil detail data dari array yang sudah di-pass dari controller
-            $numHari = date('N', strtotime($value->time));
+            $numHari = get_day_number($value->time);
             $detail_data = isset($energy_details[$value->id_energy]) ? $energy_details[$value->id_energy] : null;
             if ($numHari != 3): 
                 echo "<tr>";

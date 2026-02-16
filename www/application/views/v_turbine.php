@@ -256,6 +256,28 @@ if ($tanggal_saat_ini == '01' || !$previous_data) {
           </div>
         </div>
       </div>
+
+
+
+<div class="modal fade" id="modal-notifikasi">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Notifikasi Sistem</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1 id="isi-pesan"></h1>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      
+      </div>
+    </div>
+    </div>
+  </div>
       
 <script>
 
@@ -744,7 +766,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // =======================================================
-    // FUNGSI BANTU 5: KIRIM AJAX (FETCH)
+    // FUNGSI BANTU 5: KIRIM AJAX (FETCH) DENGAN MODAL
     // =======================================================
     function kirimKeServer(dataPayload) {
         // Alamat tujuan di Controller
@@ -760,16 +782,40 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .then(response => response.json()) // Baca balasan server sebagai JSON
         .then(hasil => {
+            const modalNotif = $('#modal-notifikasi');
+            const isiPesan = $('#isi-pesan');
+            const modalHeader = modalNotif.find('.modal-header');
+
             if (hasil.status === true) {
-                alert("Berhasil: " + hasil.message);
-                location.reload(); // Refresh halaman agar data terbaru muncul
+                // Ubah header jadi hijau untuk sukses
+                modalHeader.removeClass('bg-danger').addClass('bg-success');
+                isiPesan.text("Berhasil: " + hasil.message);
+                
+                // Tampilkan modal
+                modalNotif.modal('show');
+                
+                // Hapus event listener sebelumnya agar tidak menumpuk, lalu tambahkan reload
+                modalNotif.off('hidden.bs.modal').on('hidden.bs.modal', function () {
+                    location.reload(); // Refresh halaman setelah modal ditutup
+                });
             } else {
-                alert("Gagal: " + hasil.message);
+                // Ubah header jadi merah untuk error/gagal
+                modalHeader.removeClass('bg-success').addClass('bg-danger');
+                isiPesan.text("Gagal: " + hasil.message);
+                
+                // Pastikan saat ditutup tidak ikut me-refresh halaman jika gagal
+                modalNotif.off('hidden.bs.modal');
+                modalNotif.modal('show');
             }
         })
         .catch(error => {
             console.error("Error:", error);
-            alert("Terjadi kesalahan sistem. Cek Console.");
+            const modalNotif = $('#modal-notifikasi');
+            modalNotif.find('.modal-header').removeClass('bg-success').addClass('bg-danger');
+            $('#isi-pesan').text("Terjadi kesalahan sistem. Cek Console.");
+            
+            modalNotif.off('hidden.bs.modal');
+            modalNotif.modal('show');
         });
     }
 

@@ -215,6 +215,23 @@ function tgl_indo($tanggal){
       </div>
       <?php } ?>
 
+      <div class="modal fade" id="modal-notifikasi">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Notifikasi</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body text-center">
+        <h3 id="isi-pesan"></h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <!-- /.modal detail -->
       <?php foreach ($energy as $key => $value) { ?>
       <div class="modal fade" role="dialog" aria-labelledby="myLargeModalLabel" id="detail<?= $value->id_energy ?>">
@@ -350,59 +367,92 @@ function tgl_indo($tanggal){
       <?php } ?>
 
           <!-- Add this script at the end of your view -->
-           <script>
-    function saveDate() {
-    var selectedDate = $('#datepicker').val();
+   <script>
+    // Fungsi Helper untuk menampilkan Modal Notifikasi
+    function tampilkanNotifikasi(pesan, tipe = 'error') {
+        // Set pesan ke dalam elemen h3
+        $('#isi-pesan').text(pesan);
+        
+        // Ubah warna teks berdasarkan tipe pesan
+        if (tipe === 'success') {
+            $('#isi-pesan').css('color', '#28a745'); // Hijau untuk sukses
+        } else {
+            $('#isi-pesan').css('color', '#dc3545'); // Merah untuk error
+        }
 
-    // Validasi apakah tanggal sudah diisi
-    if (!selectedDate) {
-        alert("Tanggal harus diisi");
-        return;
+        // Tampilkan Modal
+        $('#modal-notifikasi').modal('show');
     }
 
-    // Prevent further interactions during the AJAX request
-    $('button').prop('disabled', true);
+    function saveDate() {
+        var selectedDate = $('#datepicker').val();
 
-    $.ajax({
-        type: "POST",
-        url: "<?php echo base_url('hitungan_turbine/tambah_hitungan'); ?>",
-        data: {tanggal: selectedDate},
-        dataType: 'json',
-        // Inside the success callback
-        success: function(response) {
-            console.log(response);
-
-            if (response.success) {
-                // Close the modal
-                $('#modal-hitung').modal('hide');
-                
-                // Ambil id_energy dari respons server
-                var idEnergy = response.id_energy;
-                // Arahkan ke halaman mulai_hitung dengan menyertakan id_energy
-                window.location.href = "<?php echo base_url('hitungan_turbine/mulai_hitung/') ?>" + idEnergy;
-            } else {
-                // Tampilkan pesan error jika ada
-                alert(response.error || 'Terjadi kesalahan saat menyimpan tanggal');
-                // Re-enable button setelah error
-                $('button').prop('disabled', false);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error(xhr.responseText);
-            // Parse error response dari server
-            try {
-                var response = JSON.parse(xhr.responseText);
-                alert(response.error || 'Terjadi kesalahan');
-            } catch(e) {
-                alert('Terjadi kesalahan pada server');
-            }
-            // Re-enable button setelah error
-            $('button').prop('disabled', false);
-        },
-        complete: function() {
-            // Re-enable the button after the request is complete (jika belum di-enable di error/success)
+        // Validasi apakah tanggal sudah diisi
+        if (!selectedDate) {
+            tampilkanNotifikasi("Tanggal harus diisi!", 'error');
+            return;
         }
-    });
-}
+
+        // Disable tombol agar tidak diklik double
+        var btnSimpan = $('button[onclick="saveDate()"]');
+        btnSimpan.prop('disabled', true);
+        btnSimpan.html('<i class="fa fa-spinner fa-spin"></i> Memproses...');
+
+        $.ajax({
+            type: "POST",
+            url: "<?php echo base_url('hitungan_turbine/tambah_hitungan'); ?>",
+            data: {
+                tanggal: selectedDate
+            },
+            dataType: 'json',
+            success: function(response) {
+                console.log(response);
+
+                if (response.success) {
+                    // Tutup modal input tanggal
+                    $('#modal-hitung').modal('hide');
+                    
+                    // Tampilkan notifikasi sukses sebentar sebelum redirect
+                    tampilkanNotifikasi("Data Berhasil Dibuat. Sedang mengalihkan...", 'success');
+                    
+                    // Delay sedikit agar user sempat membaca pesan sukses
+                    setTimeout(function() {
+                        var idEnergy = response.id_energy;
+                        window.location.href = "<?php echo base_url('hitungan_turbine/mulai_hitung/') ?>" + idEnergy;
+                    }, 1500); // Delay 1.5 detik
+
+                } else {
+                    // Tampilkan pesan error di modal
+                    tampilkanNotifikasi(response.error || 'Terjadi kesalahan saat menyimpan tanggal', 'error');
+                    
+                    // Enable tombol kembali
+                    btnSimpan.prop('disabled', false);
+                    btnSimpan.html('<span class="glyphicon glyphicon-arrow-right"></span> Lanjut Hitung');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(xhr.responseText);
+                var pesanError = 'Terjadi kesalahan pada server';
+                
+                try {
+                    var response = JSON.parse(xhr.responseText);
+                    if(response.error) {
+                        pesanError = response.error;
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
+                
+                // Tampilkan error server di modal
+                tampilkanNotifikasi(pesanError, 'error');
+
+                // Enable tombol kembali
+                btnSimpan.prop('disabled', false);
+                btnSimpan.html('<span class="glyphicon glyphicon-arrow-right"></span> Lanjut Hitung');
+            }
+        });
+    }
+
+
 
 </script>

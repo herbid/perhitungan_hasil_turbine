@@ -11,7 +11,7 @@
     },
     "main_window": {
         "title": "Hitungan Turbine",
-        "icon": "",
+        "icon": "www/assets/icon/energy_industry_energetic_thunderbolt_power_icon_191372.ico",
         "default_size": [800, 600],
         "minimum_size": [640, 480],
         "maximum_size": [0, 0],
@@ -24,7 +24,7 @@
         "minimize_to_tray_message": "Minimized to tray"
     },
     "popup_window": {
-        "icon": "",
+        "icon": "www/assets/icon/energy_industry_energetic_thunderbolt_power_icon_191372.ico",
         "fixed_title": "",
         "center_relative_to_parent": true,
         "default_size": [800, 600]

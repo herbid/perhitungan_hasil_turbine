@@ -55,7 +55,7 @@ class home extends CI_Controller {
 			->join('hasil', 'hasil.id_energy = energy.id_energy', 'left')
 			->where('hasil.day_turbine !=', 0)
 			->order_by('energy.time', 'desc')
-			->limit(5)
+			->limit(7)
 			->get()
 			->result();
 		
@@ -75,7 +75,7 @@ class home extends CI_Controller {
 			->join('hasil', 'hasil.id_energy = energy.id_energy', 'left')
 			->where('hasil.day_pln !=', 0)
 			->order_by('energy.time', 'desc')
-			->limit(5)
+			->limit(7)
 			->get()
 			->result();
 		

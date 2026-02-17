@@ -21,13 +21,13 @@
 
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="<?=base_url('assets/')?>dist/img/logoop.png" class="user-image" alt="User Image">
+              <img src="<?=base_url('assets/')?>icon/labor_building_work_teamwork_construction_icon_227293.png" class="user-image" alt="User Image">
               <span class="hidden-xs">Operator Turbine</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="<?=base_url('assets/')?>dist/img/logoop.png" class="img-circle" alt="User Image">
+                <img src="<?=base_url('assets/')?>icon/1-93_icon-icons.com_65658.png" class="img-circle" alt="User Image">
 
                 <p>
                   Operator Turbine 

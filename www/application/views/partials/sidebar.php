@@ -5,36 +5,31 @@
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="<?=base_url('assets/')?>dist/img/logoop.png" class="img-circle" alt="User Image">
+          <img src="<?=base_url('assets/')?>icon/1-93_icon-icons.com_65658.png" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>Operator Turbine</p>
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
       </div>
-      
+      <?php $uri = $this->uri->segment(1); ?>
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" >
         <li class="header">MAIN NAVIGATION</li>
 
-        <li class="active ">
-          <a href="<?=base_url('home')?>">
+        <li class="<?= ($uri == '' || $uri == 'home') ? 'active' : '' ?>">
+        <a href="<?= base_url('home') ?>">
             <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>
-        
-        <li>
-          <a href="<?=base_url('hitungan_turbine')?>">
+        </a>
+    </li>
+
+    <li class="<?= ($uri == 'hitungan_turbine') ? 'active' : '' ?>">
+        <a href="<?= base_url('hitungan_turbine') ?>">
             <i class="fa fa-calculator"></i> <span>Hitung Turbine</span>
-            <span class="pull-right-container">
-            </span>
-          </a>
-        </li>
+        </a>
+    </li>
       
-         <li>
-        <a href="#" data-toggle="modal" data-target="#modal-logout">
+         <li><a href="#" data-toggle="modal" data-target="#modal-logout">
           <i class="fa fa-close"></i> <span>Keluar</span>
           <span class="pull-right-container"></span>
         </a>

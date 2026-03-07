@@ -538,79 +538,178 @@ if (!isNaN(jam_operasi_pln)&& jam_operasi_pln >0 && !isNaN(hasil_day_pln)) {
   hasil_day_pln_elem.textContent = "-";
 }
 })
-//-------------- DAY  ----------------
-// hari day turbine
-const hasil_day_turbine_15 =  toNumber("<?= $current_data->hasil_turbine_15 ?? 0 ?>");
-const hasil_day_turbine_23 =  toNumber("<?= $current_data->hasil_turbine_23 ?? 0 ?>");
-const hasil_day_turbine_19 =  toNumber("<?= $current_data->hasil_turbine_19 ?? 0 ?>");
-const hasil_day_turbine_07 =  toNumber("<?= $current_data->hasil_turbine_07 ?? 0 ?>");
-let hasil_day_turbine_total = 0;
-if (isRabu) {
-    hasil_day_turbine_total = hasil_day_turbine_19 + hasil_day_turbine_07;
-} else {
-    hasil_day_turbine_total = hasil_day_turbine_15 + hasil_day_turbine_23 + hasil_day_turbine_07;
+//-------------- DAY ----------------
+
+// Fungsi bantu untuk mengambil angka dari kolom hasil dengan aman
+function getHasilAngka(selector) {
+  const elemen = document.querySelector(selector);
+  // Jika elemen ditemukan, ambil teksnya lalu jadikan angka, kalau tidak ada/error jadikan 0
+  return elemen ? (toNumber(elemen.textContent) || 0) : 0;
 }
+
+// ==========================================
+// 1. Hari / Day TURBINE
+// ==========================================
 const hasil_day_turbine_elem = document.querySelector('[data-hasil="hasil_day_turbine"]');
-hasil_day_turbine_elem.textContent = toCommaFormat(hasil_day_turbine_total, 3);   
 
-// hari day synchro
-const day_synchro_07_before = toNumber("<?= $previous_data->kwh_synchro_07 ?? 0 ?>");
-const day_synchro_07_after= toNumber("<?= $current_data->kwh_synchro_07 ?? 0 ?>");
-const hasil_day_synchro_total = (day_synchro_07_after - day_synchro_07_before)*(11454/1000);
-const hasil_day_synchro_elem = document.querySelector('[data-hasil="hasil_day_synchro"]');
-hasil_day_synchro_elem.textContent = toCommaFormat(hasil_day_synchro_total, 3); 
-
-// hari day pln
-const hasil_day_pln_15 =  toNumber("<?= $current_data->hasil_pln_15 ?? 0 ?>");
-const hasil_day_pln_23 =  toNumber("<?= $current_data->hasil_pln_23 ?? 0 ?>");
-const hasil_day_pln_07 =  toNumber("<?= $current_data->hasil_pln_07 ?? 0 ?>");  
-const hasil_day_pln_19 =  toNumber("<?= $current_data->hasil_pln_19 ?? 0 ?>");
-let hasil_day_pln_total = 0;
-if (isRabu) {
-    hasil_day_pln_total = hasil_day_pln_19 + hasil_day_pln_07;
-} else {
-    hasil_day_pln_total = hasil_day_pln_15 + hasil_day_pln_23 + hasil_day_pln_07;
+function updateDayTurbine() {
+  let hasil_day_turbine_total = 0;
+  
+  if (isRabu) {
+    const hasil_19 = getHasilAngka('[data-hasil="hasil_turbine_19"]');
+    const hasil_07 = getHasilAngka('[data-hasil="hasil_turbine_07"]');
+    hasil_day_turbine_total = hasil_19 + hasil_07;
+  } else {
+    const hasil_15 = getHasilAngka('[data-hasil="hasil_turbine_15"]');
+    const hasil_23 = getHasilAngka('[data-hasil="hasil_turbine_23"]');
+    const hasil_07 = getHasilAngka('[data-hasil="hasil_turbine_07"]');
+    hasil_day_turbine_total = hasil_15 + hasil_23 + hasil_07;
+  }
+  
+  hasil_day_turbine_elem.textContent = toCommaFormat(hasil_day_turbine_total, 3);
 }
+
+// Pasang event listener ke semua kolom input Turbine
+document.querySelectorAll('input[name^="Turbine_"]').forEach(function(inputElement) {
+  inputElement.addEventListener("input", function() {
+    // Gunakan setTimeout agar perhitungan kolom hasil_turbine (yang ada di atas) 
+    // selesai duluan sebelum ditotal ke hasil_day
+    setTimeout(updateDayTurbine, 50);
+  });
+});
+
+
+// ==========================================
+// 2. Hari / Day SYNCHRO
+// ==========================================
+const input_synchro_07 = document.querySelector('input[name="Synchro_07"]');
+const hasil_day_synchro_elem = document.querySelector('[data-hasil="hasil_day_synchro"]');
+const day_synchro_07_before = toNumber("<?= $previous_data->kwh_synchro_07 ?? 0 ?>");
+
+function updateDaySynchro() {
+  // Ambil data langsung dari yang sedang di-input user
+  const day_synchro_07_after = toNumber(input_synchro_07.value);
+  
+  if (!isNaN(day_synchro_07_after)) {
+    const hasil_day_synchro_total = (day_synchro_07_after - day_synchro_07_before) * (11454 / 1000);
+    hasil_day_synchro_elem.textContent = toCommaFormat(hasil_day_synchro_total, 3);
+  } else {
+    hasil_day_synchro_elem.textContent = "-";
+  }
+}
+
+// Pasang event listener ke input Synchro 07
+if (input_synchro_07) {
+  input_synchro_07.addEventListener("input", updateDaySynchro);
+}
+
+
+// ==========================================
+// 3. Hari / Day PLN
+// ==========================================
 const hasil_day_pln_elem = document.querySelector('[data-hasil="hasil_day_pln"]');
-hasil_day_pln_elem.textContent = toCommaFormat(hasil_day_pln_total, 3);  
 
+function updateDayPLN() {
+  let hasil_day_pln_total = 0;
+  
+  if (isRabu) {
+    const hasil_19 = getHasilAngka('[data-hasil="hasil_pln_19"]');
+    const hasil_07 = getHasilAngka('[data-hasil="hasil_pln_07"]');
+    hasil_day_pln_total = hasil_19 + hasil_07;
+  } else {
+    const hasil_15 = getHasilAngka('[data-hasil="hasil_pln_15"]');
+    const hasil_23 = getHasilAngka('[data-hasil="hasil_pln_23"]');
+    const hasil_07 = getHasilAngka('[data-hasil="hasil_pln_07"]');
+    hasil_day_pln_total = hasil_15 + hasil_23 + hasil_07;
+  }
+  
+  hasil_day_pln_elem.textContent = toCommaFormat(hasil_day_pln_total, 3);
+}
 
-//-------------- MONTH  ----------------
-// 1. Ambil "Data Kemarin" dari Hidden Input
-// Jika tgl 1, ini isinya 0.
-// Jika tgl 2, ini isinya nilai Month tgl 1 (misal 32.340).
+// Pasang event listener ke semua kolom input PLN
+document.querySelectorAll('input[name^="PLN_"]').forEach(function(inputElement) {
+  inputElement.addEventListener("input", function() {
+    // Gunakan setTimeout juga di sini
+    setTimeout(updateDayPLN, 50);
+  });
+});
+
+// ==========================================
+// Jalankan inisialisasi awal saat halaman dimuat
+// ==========================================
+updateDayTurbine();
+updateDaySynchro();
+updateDayPLN();
+
+//-------------- MONTH ----------------
+
+// 1. Ambil "Data Kemarin" dari Hidden Input (Tetap dipertahankan)
+// Jika tgl 1, ini isinya 0. Jika tgl 2, ini isinya nilai Month tgl 1.
 const nilai_akumulasi_sebelumnya_turbine = parseFloat(document.getElementById('data_akumulasi_sebelumnya_turbine').value) || 0;
 const nilai_akumulasi_sebelumnya_synchro = parseFloat(document.getElementById('data_akumulasi_sebelumnya_synchro').value) || 0;
 const nilai_akumulasi_sebelumnya_pln = parseFloat(document.getElementById('data_akumulasi_sebelumnya_pln').value) || 0;
 
-
-// 2. Ambil "Day Hari Ini" (hasil hitungan realtime)
-// Pastikan variabel 'hasil_day_turbine_total' sudah dihitung di script Anda sebelumnya
-const day_hari_ini_turbine = hasil_day_turbine_total; 
-const day_hari_ini_synchro = hasil_day_synchro_total;
-const day_hari_ini_pln = hasil_day_pln_total;
-// 3. Rumus Penjumlahan
-// Tanggal 1: 0 + Day Hari Ini = Day Hari Ini (Cocok dengan Excel baris 1)
-// Tanggal 2: Nilai Kemarin + Day Hari Ini (Cocok dengan Excel baris 2 rumus H14+H27)
-const total_month_turbine = nilai_akumulasi_sebelumnya_turbine + day_hari_ini_turbine;
-const total_month_synchro = nilai_akumulasi_sebelumnya_synchro + day_hari_ini_synchro;
-const total_month_pln = nilai_akumulasi_sebelumnya_pln + day_hari_ini_pln;
-
-// 4. Tampilkan ke Layar
-const elemen_month_turbine = document.querySelector('[data-hasil="hasil_month_turbine"]');
-if (elemen_month_turbine) {
-    elemen_month_turbine.textContent = toCommaFormat(total_month_turbine, 3);
+// Fungsi untuk update Month Turbine secara realtime
+function updateMonthTurbine() {
+    const day_hari_ini_turbine = getHasilAngka('[data-hasil="hasil_day_turbine"]');
+    const total_month_turbine = nilai_akumulasi_sebelumnya_turbine + day_hari_ini_turbine;
+    
+    const elemen_month_turbine = document.querySelector('[data-hasil="hasil_month_turbine"]');
+    if (elemen_month_turbine) {
+        elemen_month_turbine.textContent = toCommaFormat(total_month_turbine, 3);
+    }
 }
 
-const elemen_month_synchro = document.querySelector('[data-hasil="hasil_month_synchro"]');
-if (elemen_month_synchro) {
-    elemen_month_synchro.textContent = toCommaFormat(total_month_synchro, 3);
+// Fungsi untuk update Month Synchro secara realtime
+function updateMonthSynchro() {
+    const day_hari_ini_synchro = getHasilAngka('[data-hasil="hasil_day_synchro"]');
+    const total_month_synchro = nilai_akumulasi_sebelumnya_synchro + day_hari_ini_synchro;
+    
+    const elemen_month_synchro = document.querySelector('[data-hasil="hasil_month_synchro"]');
+    if (elemen_month_synchro) {
+        elemen_month_synchro.textContent = toCommaFormat(total_month_synchro, 3);
+    }
 }
 
-const elemen_month_pln = document.querySelector('[data-hasil="hasil_month_pln"]');
-if (elemen_month_pln) {
-    elemen_month_pln.textContent = toCommaFormat(total_month_pln, 3);
+// Fungsi untuk update Month PLN secara realtime
+function updateMonthPLN() {
+    const day_hari_ini_pln = getHasilAngka('[data-hasil="hasil_day_pln"]');
+    const total_month_pln = nilai_akumulasi_sebelumnya_pln + day_hari_ini_pln;
+    
+    const elemen_month_pln = document.querySelector('[data-hasil="hasil_month_pln"]');
+    if (elemen_month_pln) {
+        elemen_month_pln.textContent = toCommaFormat(total_month_pln, 3);
+    }
 }
+
+// --- BAGIAN REAKSI OTOMATIS (TRIGGER) ---
+
+// Reaksi untuk Turbine (saat input jam turbine diketik)
+document.querySelectorAll('input[name^="Turbine_"]').forEach(el => {
+    el.addEventListener("input", function() {
+        setTimeout(updateMonthTurbine, 100); // Tunggu 100ms agar angka DAY selesai dihitung dulu
+    });
+});
+
+// Reaksi untuk Synchro (saat input Synchro_07 diketik)
+const inputSynchro = document.querySelector('input[name="Synchro_07"]');
+if (inputSynchro) {
+    inputSynchro.addEventListener("input", function() {
+        setTimeout(updateMonthSynchro, 100);
+    });
+}
+
+// Reaksi untuk PLN (saat input jam PLN diketik)
+document.querySelectorAll('input[name^="PLN_"]').forEach(el => {
+    el.addEventListener("input", function() {
+        setTimeout(updateMonthPLN, 100);
+    });
+});
+
+// Jalankan sekali saat halaman pertama kali dibuka
+updateMonthTurbine();
+updateMonthSynchro();
+updateMonthPLN();
 
 // ================================================================
 
